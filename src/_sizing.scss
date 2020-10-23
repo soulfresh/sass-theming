@@ -1,0 +1,138 @@
+@import './_sizing.json';
+
+// Spacing / Measurement
+$s-xxxs  : 4   !default;
+$s-xxs   : 8   !default;
+$s-xs    : 12  !default;
+$s-s     : 16  !default;
+$s-m     : 22  !default;
+$s-l     : 30  !default;
+$s-xl    : 38  !default;
+$s-xxl   : 56  !default;
+$s-xxxl  : 72  !default;
+$s-xxxxl : 144 !default;
+
+// Custom Sizes
+$card-width: 304 !default;
+$pin-width: 50 !default;
+
+$sizes: (
+  default: $s-m,
+  xxxxl: $s-xxxxl,
+  xxxl : $s-xxxl,
+  xxl  : $s-xxl,
+  xl   : $s-xl,
+  l    : $s-l,
+  m    : $s-m,
+  s    : $s-s,
+  xs   : $s-xs,
+  xxs  : $s-xxs,
+  xxxs : $s-xxxs,
+  card-width: $card-width,
+  pin-width: $pin-width,
+) !default;
+
+// Border radii
+$r-s: 2 !default;
+$r-m: 4 !default;
+$r-l: 12 !default;
+
+$radii: (
+  default: $r-m,
+  s: $r-s,
+  m: $r-m,
+  l: $r-l,
+);
+
+$grid-breakpoints: (
+  default: 0,
+  xs: 360px,
+  s:  576px,
+  m:  768px,
+  l:  992px,
+  xl: 1200px
+) !default;
+
+$icon-xl: 48 !default;
+$icon-l:  32 !default;
+$icon-m:  18 !default;
+$icon-s:  12 !default;
+
+$icon-sizes: (
+  xl: $icon-xl,
+  l:  $icon-l,
+  m:  $icon-m,
+  s:  $icon-s,
+) !default;
+
+////
+// Get one of standard measurements (sizes) from the theme.
+//
+// Ex: `margin: size(xxl);`
+////
+@function size($size: default) {
+  $s: map-get($sizes, $size);
+
+  @if $s == null {
+    @error('Could not find measurement/size #{$size} on the theme provided: #{$sizes}');
+  }
+
+  @return rem($s);
+}
+
+@function radius($size: m) {
+  $s: map-get($radii, $size);
+
+  @if $s == null {
+    @error('Could not find measurement/size #{$size} on the theme provided: #{$radii}');
+  }
+
+  @return rem($s);
+}
+
+@function icon-size($size: m) {
+  $s: map-get($icon-sizes, $size);
+
+  @if $s == null {
+    @error('Could not find measurement/size #{$size} on the theme provided: #{$icon-sizes}');
+  }
+
+  @return rem($s);
+}
+
+// Minimum breakpoint width. Null for the smallest (first) breakpoint.
+//
+//    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    576px
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min * 1px, null);
+}
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  }
+  @else {
+    @content;
+  }
+}
+
+// Make any sizing property responsive.
+//
+// Ex:
+// @include responsive-sizing(30px, margin);
+// @include responsive-sizing(2rem, width);
+@mixin responsive-sizing($size, $prop: padding) {
+  $size-down: $size * 0.5;
+
+  #{$prop}: rem($size-down);
+  @include media-breakpoint-up(md) {
+    #{$prop}: rem($size);
+  }
+}

@@ -1,0 +1,295 @@
+$black: #000 !default;
+$white: #FFF !default;
+
+////
+// Generate a palette with even color gradiation
+// between 3 stops (100, 500, 900).
+////
+@function make-palette($color1, $color5, $color9) {
+  @return (
+    100: $color1,
+    200: mix($color1, $color5, 75%),
+    300: mix($color1, $color5, 50%),
+    400: mix($color1, $color5, 25%),
+    500: $color5,
+    600: mix($color5, $color9, 75%),
+    700: mix($color5, $color9, 50%),
+    800: mix($color5, $color9, 25%),
+    900: $color9,
+  );
+}
+
+////
+// Generate a palette with even color gradiation
+// between 5 stops (100, 500, 900).
+////
+@function make-palette-5($color1, $color3, $color5, $color7, $color9) {
+  @return (
+    100: $color1,
+    200: mix($color1, $color3, 50%),
+    300: $color3,
+    400: mix($color3, $color5, 50%),
+    500: $color5,
+    600: mix($color5, $color7, 50%),
+    700: $color7,
+    800: mix($color7, $color9, 50%),
+    900: $color9,
+  );
+}
+
+//// PRIMARY ////
+$primary-1: #E0CBC6;
+$primary-3: #E2755C;
+$primary-5: #D64928;
+$primary-7: #A94128;
+$primary-9: #7A2F1D;
+$palette-primary: make-palette-5($primary-1, $primary-3, $primary-5, $primary-7, $primary-9) !default;
+
+//// SECONDARY ////
+$secondary-1: #A9FFFf;
+$secondary-3: #B2EBF2;
+$secondary-5: #10AEBE;
+$secondary-7: #098390;
+$secondary-9: #006064;
+$palette-secondary: make-palette-5($secondary-1, $secondary-3, $secondary-5, $secondary-7, $secondary-9) !default;
+
+//// GRAYSCALE ////
+// Give the grayscale colors a little bit of the brand color.
+$grayscale-1: mix(#e5e5e6, $primary-5, 97%);
+$grayscale-5: mix(#545658, $primary-5, 97%);
+$grayscale-9: $black;
+$palette-grayscale: make-palette($grayscale-1, $grayscale-5, $grayscale-9) !default;
+
+//// SUCCESS ////
+$success-1: #DCEDC8;
+$success-5: #8BC34A;
+$success-9: #33691E;
+$palette-success: make-palette($success-1, $success-5, $success-9) !default;
+
+//// WARN ////
+$warn-1: #FFE1C8;
+$warn-5: #FF9236;
+$warn-9: #9C5921;
+$palette-warn: make-palette($warn-1, $warn-5, $warn-9) !default;
+
+//// ERROR ////
+$error-1: #FFCEBF;
+$error-5: #D64928;
+$error-9: #922E0F;
+$palette-error: make-palette($error-1, $error-5, $error-9) !default;
+
+
+//// BACKGROUND ////
+$focus-color: map-get($palette-secondary, 500);
+// Colors for use as element backgrounds like hover states or card backgrounds.
+$palette-background-light: (
+  default: $white,
+  shaded: map-get($palette-grayscale, 100),
+  hover: rgba($black, 0.1),
+  focus: $focus-color,
+  highlight: rgba($focus-color, 0.2),
+  input: rgba($black, 0.1),
+  overlay: rgba($black, 0.2),
+  fade: rgba($black, 0.6),
+) !default;
+
+$palette-background-dark: (
+  default: $black,
+  shaded: map-get($palette-grayscale, 900),
+  hover: rgba($black, 0.6),
+  focus: $focus-color,
+  highlight: rgba($focus-color, 0.2),
+  input: rgba($white, 0.02),
+  overlay: rgba($white, 0.2),
+  fade: rgba($black, 0.4),
+) !default;
+
+
+//// FOREGROUND ////
+$text-color-1: #2d2e2f; //#393A3b; // darker (grayscale 800?)
+$text-color-2: #545658; // grayscale 500
+// Colors for text and other foreground elements like horizontal rules and borders.
+$palette-foreground-light: (
+  opaque: $black,
+  default: rgba($black, 0.9),
+  text: rgba($black, 0.8),
+  light-text: rgba($black, 0.65),
+  faded-text: rgba($black, 0.3),
+  disabled-text: rgba($black, 0.4),
+  focus: $focus-color,
+  divider: rgba($black, 0.3),
+  border: rgba($black, 0.08)
+) !default;
+
+$palette-foreground-dark: (
+  opaque: $white,
+  default: rgba($white, 0.9),
+  text: rgba($white, 0.9),
+  light-text: rgba($white, 0.8),
+  faded-text: rgba($white, 0.7),
+  disabled-text: rgba($white, 0.5),
+  active-text: rgba($white, 1),
+  focus: $focus-color,
+  divider: rgba($white, 0.3),
+  border: rgba($white, 0.08)
+) !default;
+
+
+//// GRADIENTS ////
+$palette-dark-gradients: (
+  active: linear-gradient(
+    0deg,
+    map-get($palette-primary, 500) 0%,
+    map-get($palette-primary, 600) 100%
+  )
+) !default;
+
+$palette-light-gradients: (
+  active: linear-gradient(
+    0deg,
+    map-get($palette-primary, 500) 0%,
+    map-get($palette-primary, 600) 100%
+  )
+) !default;
+
+
+//// SHADOWS ////
+// Background and box shadows.
+$shadow-overlay      : 0 1px 12px 0 rgba(0, 0, 0, 0.15) !default;
+$shadow-card         : 0 0 5px 0 rgba(0, 0, 0, 0.25) !default;
+$shadow-card-focus   : 0 0 5px 0 rgba($focus-color, 0.25) !default;
+
+$palette-light-shadows: (
+  overlay: $shadow-overlay,
+  card: $shadow-card,
+  card-focus: $shadow-card-focus,
+) !default;
+
+$shadow-overlay-dark     : 0 1px 12px 0 rgba(0, 0, 0, 0.15) !default;
+$shadow-card-dark        : 0 0 5px 0 rgba(0, 0, 0, 0.25) !default;
+$shadow-card-dark-focus  : 0 0 5px 0 rgba($focus-color, 0.25) !default;
+
+$palette-dark-shadows: (
+  overlay: $shadow-overlay-dark,
+  card: $shadow-card-dark,
+  card-focus: $shadow-card-dark-focus,
+) !default;
+
+
+//// COMPLEMENTARY ////
+// Complementary colors that can be used as needed and fit with the theme and brand.
+$palette-complementary: (
+) !default;
+
+$theme-light: (
+  primary: $palette-primary,
+  secondary: $palette-secondary,
+  warn: $palette-warn,
+  error: $palette-error,
+  success: $palette-success,
+  grayscale: $palette-grayscale,
+  background: $palette-background-light,
+  foreground: $palette-foreground-light,
+  gradients: $palette-light-gradients,
+  shadows: $palette-light-shadows,
+  complementary: $palette-complementary,
+  is-dark: false
+) !default;
+
+$theme-dark: (
+  primary: $palette-primary,
+  secondary: $palette-secondary,
+  warn: $palette-warn,
+  error: $palette-error,
+  success: $palette-success,
+  grayscale: $palette-grayscale,
+  background: $palette-background-dark,
+  foreground: $palette-foreground-dark,
+  gradients: $palette-dark-gradients,
+  shadows: $palette-dark-shadows,
+  complementary: $palette-complementary,
+  is-dark: true
+) !default;
+
+////
+// Get a color out of the theme two SASS maps deep. In other words,
+// get the hue specified from palettes inside of the theme map structure.
+//
+// ```
+// .my-primary-thing {
+//   // Get the 100 color value from the primary palette.
+//   color: theme-color( $theme, primary, 100 );
+//   // Get the border from the foreground palette.
+//   border: 1px solid theme-color( $theme, foreground, border );
+// }
+// ```
+////
+@function theme-color($theme, $palette: primary, $hue: 500) {
+  $palette-map: map-get($theme, $palette);
+
+  @if $palette-map == null {
+    @error('Could not find property #{$palette} on the theme provided: #{$theme}');
+  }
+  $color: map-get($palette-map, $hue);
+
+  @if $color == null {
+    @error('Could not find hue #{$hue} on the palette: #{$palette-map}');
+  }
+
+  @return $color;
+}
+
+@function theme-background($theme: $theme-light, $hue: default) {
+  @return theme-color($theme, background, $hue);
+}
+
+@function theme-foreground($theme: $theme-light, $hue: default) {
+  @return theme-color($theme, foreground, $hue);
+}
+
+@function theme-complementary-color($name) {
+  @return map-get($palette-complementary, $name);
+}
+
+////
+// Get a color from the light theme.
+////
+@function color($palette: primary, $hue: 500) {
+  @return theme-color($theme-light, $palette, $hue);
+}
+
+////
+// Get a color from the dark theme.
+///;
+@function color-dark($palette: primary, $hue: 500) {
+  @return theme-color($theme-dark, $palette, $hue);
+}
+
+////
+// Get a background color (overlay, hover, etc) from the light theme.
+////
+@function background($hue: default) {
+  @return theme-color($theme-light, background, $hue);
+}
+
+////
+// Get a background color (overlay, hover, etc) from the dark theme.
+////
+@function background-dark($hue: default) {
+  @return theme-color($theme-dark, background, $hue);
+}
+
+////
+// Get a foreground color (text color, disabled text color, etc) from the light theme.
+///;
+@function foreground($hue: default) {
+  @return theme-color($theme-light, foreground, $hue);
+}
+
+////
+// Get a foreground color (text color, disabled text color, etc) from the light theme.
+////
+@function foreground-dark($hue: default) {
+  @return theme-color($theme-dark, foreground, $hue);
+}
+

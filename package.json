@@ -1,0 +1,10 @@
+{
+  "name": "@thesoulfresh/sass-theming",
+  "version": "1.0.0",
+  "description": "Simple theming for SASS based projects",
+  "main": "_theme.scss",
+  "repository": "git@github.com:soulfresh/sass-theming.git",
+  "author": "Marc Wren <things@soul-fresh.com>",
+  "license": "MIT",
+  "private": false
+}
