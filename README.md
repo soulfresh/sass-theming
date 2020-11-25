@@ -17,5 +17,23 @@ with the following:
 @import '~@thesoulfresh/theme';
 ```
 
-This will give you access to the theming funnctions detailed below.
+Now you can simply `@import 'theme'` in any of your SASS files to
+get access to the theming funnctions detailed below.
+
+To customize the theme, you can override theme variables and maps in
+your theme file.
+
+```scss
+// Set the primary color of your theme. This will
+// generate a primary palette with values from 100 - 900
+// that you can access using "color(primary, 500)".
+$primary: #E0CBC6;
+```
+
+## API
+
+### Functions
+### Customization
+#### Variables
+#### Maps
 
