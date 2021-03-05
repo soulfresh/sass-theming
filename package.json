@@ -1,12 +1,18 @@
 {
   "name": "@thesoulfresh/sass-theming",
   "version": "1.0.0",
-  "description": "Simple theming for SASS based projects",
+  "description": "Simple theming tools for SASS based projects.",
   "main": "_theme.scss",
   "repository": "git@github.com:soulfresh/sass-theming.git",
   "author": "Marc Wren <things@soul-fresh.com>",
   "license": "MIT",
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src/*"
+  ],
   "devDependencies": {
     "@babel/core": "^7.13.8",
     "@storybook/addon-actions": "^6.1.21",
@@ -21,13 +27,20 @@
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "rimraf": "^3.0.2",
     "sass-loader": "^10.1.1",
     "style-loader": "^2.0.0",
     "yarn": "^1.22.10"
   },
   "dependencies": {},
   "scripts": {
+    "build": "",
+    "clean": "rimraf storybook-static",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "release": "./scripts/release"
+  },
+  "storybook-deployer": {
+    "commitMessage": "Deploy Storybook [skip ci]"
   }
 }
