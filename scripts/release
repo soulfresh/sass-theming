@@ -10,7 +10,7 @@ if output=$(git status --porcelain) && [ -z "$output" ]; then
   git pull
 
   echo '\nBuilding docs...'
-  yarn storybook
+  yarn build-storybook
 
   echo '\nBuilding release...'
   yarn clean
@@ -19,6 +19,7 @@ if output=$(git status --porcelain) && [ -z "$output" ]; then
   version=$(node -e "console.log(require('./package.json').version)")
 
   echo '\nPublishing...'
+  yarn publish
 
   echo '\nTagging release...'
   yarn config set version-tag-prefix "release/"
