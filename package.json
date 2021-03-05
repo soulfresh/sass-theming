@@ -6,5 +6,28 @@
   "repository": "git@github.com:soulfresh/sass-theming.git",
   "author": "Marc Wren <things@soul-fresh.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-links": "^6.1.21",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/react": "^6.1.21",
+    "@thesoulfresh/utils": "^0.1.1",
+    "add": "^2.0.6",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.1.1",
+    "node-sass": "^5.0.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "sass-loader": "^10.1.1",
+    "style-loader": "^2.0.0",
+    "yarn": "^1.22.10"
+  },
+  "dependencies": {},
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  }
 }

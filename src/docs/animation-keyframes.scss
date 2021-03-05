@@ -1,0 +1,111 @@
+/* animation-keyframes */
+// Keyframes and other aniamtion definitions that can only be imported once.
+@import '../theme';
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes power-logo-spin-double-line {
+  0% {
+    stroke-dasharray: 20 30;
+    stroke-dashoffset: 75;
+  }
+  100% {
+    stroke-dasharray: 20 30;
+    stroke-dashoffset: 25;
+  }
+}
+
+@keyframes power-logo-arc-spin {
+  /* Hold State */
+  0% {
+    stroke-dasharray: 70 70;
+    stroke-dashoffset: 140;
+  }
+  10% {
+    stroke-dasharray: 70 70;
+    stroke-dashoffset: 140;
+  }
+
+  /* Animate Out */
+  45% {
+    stroke-dasharray: 70 70;
+    stroke-dashoffset: 70;
+  }
+  55% {
+    stroke-dasharray: 70 70;
+    stroke-dashoffset: 70;
+  }
+
+  /* Reset */
+  55.001% {
+    stroke-dasharray: 35 70;
+    stroke-dashoffset: 140;
+  }
+
+  /* Animate In */
+  90% {
+    stroke-dasharray: 70 70;
+    stroke-dashoffset: 140;
+  }
+  100% {
+    stroke-dasharray: 70 70;
+    stroke-dashoffset: 140;
+  }
+}
+
+@keyframes power-logo-arc-swoop {
+  /* Completely In State */
+  0% {
+    stroke-dasharray: 70 70;
+    stroke-dashoffset: 140;
+  }
+  10% {
+    stroke-dasharray: 70 70;
+    stroke-dashoffset: 140;
+  }
+
+  /* Hidden state */
+  25% {
+    stroke-dasharray: 70 70;
+    stroke-dashoffset: 70;
+  }
+
+  /* Swoop */
+  25.001% {
+    stroke-dasharray: 1 73;
+    stroke-dashoffset: 150;
+  }
+
+  /*
+  60% {
+    stroke-dasharray: 10 24;
+    stroke-dashoffset: 100;
+  }
+  */
+
+  /* Completely In state */
+  80% {
+    stroke-dasharray: 70 70;
+    stroke-dashoffset: 140;
+  }
+  100% {
+    stroke-dasharray: 70 70;
+    stroke-dashoffset: 140;
+  }
+}

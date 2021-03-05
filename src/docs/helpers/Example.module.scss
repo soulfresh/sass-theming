@@ -1,0 +1,30 @@
+/* Shared Story Styles */
+@import 'theme';
+
+.RowOfItems,
+.ColumnOfItems {
+  display: flex;
+  flex-wrap: wrap;
+
+  > * {
+    align-self: flex-start;
+    margin: size(xxs);
+  }
+}
+
+.ColumnOfItems {
+  flex-direction: column;
+}
+
+.Centered {
+  @include flex-centered;
+}
+
+.DarkTheme,
+.LightTheme {
+  padding: size(m);
+}
+
+.dark {
+  background-color: background-dark();
+}

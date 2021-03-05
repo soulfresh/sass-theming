@@ -1,0 +1,247 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { ColorPalette, ForegroundPalette, BackgroundPalette, ShadowsPalette, GradientsPalette } from './Color.jsx';
+
+<Meta title="Colors" />
+
+# Foreground Palettes
+
+These palettes are used to specify the color of foreground content
+such as various shades of text, element border colors, horizontal rules
+and other content dividers.
+
+When you're building your theme, it is recommended (but not required) that your theme
+colors be partially transparent. This allows them to be placed over any background
+color and look natural. This follows the recommendations from
+[Material Design Guide](https://material.io/design/color/text-legibility.html#text-backgrounds).
+
+
+## Default Foreground Colors
+
+The following colors are provided out of the box.
+
+<Story name="Foreground Palettes">
+  <>
+    <ForegroundPalette name="Foreground" />
+    <ForegroundPalette name="Foreground Dark" dark />
+  </>
+</Story>
+
+### foreground() function
+
+| Param | Type | Description |
+| --- | --- | --- |
+| `name` | `key` | A key in the `$foreground` palette map. |
+| __Return__ | `color` | A CSS color value |
+
+
+To access the foreground palettes you can use the `foreground(name)` and
+`foreground-dark(name)` functions. The name parameter is the value you
+see in the palette definitions above and defaults to `default`.
+
+```css
+.foo {
+  color: foreground(light-text);
+}
+
+.bar {
+  color: foreground-dark(border);
+}
+```
+
+### foreground() setup
+
+To provide your own foreground colors, you can specify your own version of
+`$palette-foreground-light` or `$palette-foreground-dark` before
+importing `@thesoulfresh/sass-theming`.
+
+```css
+/* You can override the full map with your own, defining
+any property names/values you like. */
+$palette-foreground-light: (
+  opaque: $black,
+  default: rgba($black, 0.9),
+  text: rgba($black, 0.8),
+  light-text: rgba($black, 0.65),
+  faded-text: rgba($black, 0.3),
+  disabled-text: rgba($black, 0.4),
+  focus: $focus-color,
+  divider: rgba($black, 0.3),
+  border: rgba($black, 0.08)
+);
+
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+
+# Background Palettes
+
+These palettes are used to specify the color of background content
+such as the page background, hover states, focus states, overlays, etc.
+
+## Default Background Palettes
+
+<Story name="Background Palettes">
+  <>
+    <BackgroundPalette name="Background" />
+    <BackgroundPalette name="Background Dark" dark />
+  </>
+</Story>
+
+### background() function
+
+To access the background palettes you can use the `background(name)` function.
+This works just the same as the `foreground()` function.
+
+```css
+.foo {
+  color: background(hover);
+}
+
+.bar {
+  color: background-dark(input);
+}
+```
+
+### background() setup
+
+To provide your own background colors, you can specify your own version of
+`$palette-background-light` or `$palette-background-dark` before
+importing `@thesoulfresh/sass-theming`.
+
+```css
+/* This is the default implementation but you can use any property names/values you like. */
+$palette-background-light: (
+  default: $white,
+  hover: rgba($black, 0.1),
+  focus: $focus-color,
+  ...
+);
+
+/* And the dark version... */
+$palette-background-dark: (...);
+
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+# Color Palettes
+
+These palettes are named by their hue number. The reason for using a "palette name" + "hue number"
+(as opposed to individual color names) is it enables changing colors without having to modify
+code. It also makes it possible to generate multiple themes for the application and to change
+themes at runtime.
+
+This system is pulled from the [Material Design Guide](https://material.io/design/color/the-color-system.html).
+
+## Default Color Palettes
+
+<Story name="Color Palettes">
+  <>
+    <ColorPalette name="Primary" />
+    <ColorPalette name="Grayscale" />
+    <ColorPalette name="Success" />
+    <ColorPalette name="Warn" />
+    <ColorPalette name="Error" />
+  </>
+</Story>
+
+## color() usage
+
+To access these palettes in SASS, you can use the `color(name, hue)` function.
+It takes the name of the palette (ex. primary, secondary, grayscale) and
+the hue (ex. 100, 400, etc.) as parameters. The hue is optional an defaults to 500.
+
+```css
+@import 'theme';
+
+.foo {
+  background-color: color(primary, 300);
+  /* This will use the 500 by default. */
+  color: color(secondary);
+}
+```
+
+## color() setup
+
+The `color()` function exposes the following maps:
+
+- `$palette-primary`
+- `$palette-secondary`
+- `$palette-success`
+- `$palette-warn`
+- `$palette-error`
+
+Just like other palettes, you can provide your own implementation of these
+maps or append to them with [SASS map.set()](https://sass-lang.com/documentation/values/maps#add-to-a-map).
+
+```css
+$palette-primary: (
+  100: #fff,
+  200: #eee,
+  300: #ccc,
+  400: #aaa,
+  500: #888,
+  600: #666,
+  700: #444,
+  800: #222,
+  900: #000,
+);
+
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+Generating these palettes can be a bit of a bear so the following
+functions are provided which allow you to generate a color palette
+using just a couple of the colors.
+
+- `make-palette($color-100, $color-500, $color-900)`
+  Generates a full palette given just the lightest, darkest and mid colors.
+- `make-palette-5($color-100, $color-300, $color-500, $color-700, $color-900)`
+  Generates a full palette from just the 100, 300, 500, 700, and 900 colors.
+
+  For other cases, you can use the [SASS mix](https://sass-lang.com/documentation/modules/color#mix)
+function to help you mix colors to generate a full palette.
+
+# Shadows Palette
+
+This palette can be used to add box shadows behind/around/inside elements.
+
+<Story name="Shadows Palette">
+  <>
+    <ShadowsPalette name="Shadows" />
+    <ShadowsPalette name="Shadows Dark" />
+  </>
+</Story>
+
+## Shadows Palette SASS
+
+To access the shadows palettes, just use the `color(name, hue)` function, passing
+shadows as the palette name and the shadow name as the hue.
+
+```css
+.foo {
+  box-shadow: color(shadows, overlay);
+}
+```
+
+# Gradients Palette
+
+This palette can be used to add gradients to an element backgroud.
+
+<Story name="Gradients Palette">
+  <>
+    <GradientsPalette name="Gradients" />
+    <GradientsPalette name="Gradients Dark" />
+  </>
+</Story>
+
+## Gradients Palette SASS
+
+To access the gradients palettes, just use the `color(name, hue)` function, passing
+gradients as the palette name and the shadow name as the hue.
+
+```css
+.foo {
+  box-shadow: color(gradients, active);
+}
+```
+

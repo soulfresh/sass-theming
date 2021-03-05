@@ -1,0 +1,109 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+<Meta title="Introduction" />
+
+# Introduction
+
+`@thesoulfresh/sass-theming` provides a set of simple SASS
+functions you can use to create and use theme variables in
+your SASS based projects. The main goal of these functions
+is to make it dead simple for developers to constently use
+theme values without memorizing specific variable names or
+pixel/color values.
+
+## Using Your Theme
+
+Here's a quick example showing how easy it is to use
+your theme.
+
+```css
+.my-component {
+  /* The foreground() function gives you access to
+  common text, border and other foreground element
+  colors. Colors are accessed by a memorable name
+  that describes the purpose for that color. */
+  color: foreground(light-text);
+  /* The background() function gives you access to
+  common colors for backgrounds behind text. */
+  background-color: background(shaded);
+  /* The font-family() function gives you access
+  to the main genres of font families used in your
+  application such as title, body, code, etc. */
+  font-family: font-family(title);
+  /* The font-size() function gives you access
+  to the various font sizes used in your app
+  using small/medium/large type names so
+  developers do not need to remember the exact
+  font size values used in your designs. */
+  font-size: font-size(l);
+  /* There are multiple functions that use the
+  small/medium/large naming convension such as
+  border radii. You also have the ability to use
+  other naming convensions that better suit your needs. */
+  border-radius: radius(m);
+  /* These functions are easy to use in shortcut
+  css properties. */
+  border: 1px solid foreground(border);
+}
+
+.my-other-component {
+  /* In addition to the foreground and background
+  color palettes, you can have as many gradiated
+  color palettes as you like ala Google Material Palettes. */
+  background-color: color(primary, 200);
+}
+```
+
+## Setting Up Your Theme
+
+Creating a new theme is pretty simple. The theme
+consists of a set of SASS map objects containing the theme values.
+Those maps are accessed through memorable convenience functions.
+You can have full control over the names and values in your theme
+but `@thesoulfresh/sass-theming` provides reasonable defaults
+for all of them as well.
+
+Here's an example of how you can specify the border radius
+values for your theme.
+
+`_theme.scss`
+```css
+/* Radii is the map exposed through the radius() function.
+Define it before you load @thesoulfresh/sass-theming and
+it will overwrite the default values. */
+$radii: (
+  s: 2,
+  m: 5,
+  l: 10,
+);
+
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+`my-component.scss`
+```css
+/* Import _theme.scss with your theme definitions. */
+@import 'theme';
+
+/* And then use your theme settings... */
+.my-component {
+  border-radius: radius(m); /* outputs --> border-radius: 5px; */
+}
+```
+
+## TODO
+
+Move color generator helpers into a file that can be imported separately.
+Add documentation for:
+- Merging custom palette with existing palette
+- Adding keys to the theme
+- Adding more themes
+
+## Let's Get Started
+
+The following sections will walk you through all of the available
+theme functions and details on getting your theme setup.
+
+[Next](/?path=/docs/colors--color-palettes)
+

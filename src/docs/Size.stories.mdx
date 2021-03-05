@@ -1,0 +1,108 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Sizes, Breakpoints, Radii } from './Size.jsx';
+
+<Meta title="Sizes" />
+
+# Spacing
+
+These measurements should be used for margins, paddings and other small
+size increments in order to maintain consistent layout across the application.
+Custom sizes outside of this list are acceptible wherever these don't fit the bill.
+
+<Story name="Spacing">
+  <Sizes />
+</Story>
+
+## Spacing SASS
+
+The predefined spacing values are accessed through the `size(size)`
+(ex. size(xl)). The size parameter defaults to `m` if not passed.
+
+```scss
+.foo {
+  margin: size(m);
+  // This gives us the medium size
+  padding: size();
+  width: size(xxxl);
+}
+```
+
+# Breakpoints
+
+The following are the breakpoint dimensions used for responsive layouts.
+Generally you should use a mobile first approach to these breakpoints so you
+would first define the moble styles and then override them in a breakpoint
+definition.
+
+<Story name="Breakpoints">
+  <Breakpoints />
+</Story>
+
+## Breakpoint SASS
+
+To use the webpage breakpoints, you should use the `@include breakpoint-up(m)` mixin.
+You can pass the breakpoint size as the parameter and any styles that you want
+to use at that breakpoint as the mixin content.
+
+```scss
+.foo {
+  // This is the mobile size:
+  width: size(m);
+
+  // Anything above the small point should
+  // be wider.
+  @include breapoint-up(s) {
+    width: size(xl);
+  }
+}
+```
+
+# Border Radius
+
+The following border radius sizes are available.
+
+<Story name="Border Radius">
+  <Radii />
+</Story>
+
+## Border Radius SASS
+
+To access the border radii, you can use the `radius(size)` function.
+
+```scss
+.foo {
+  border-radius: radius(m);
+}
+```
+
+# Layers
+
+The layers define the `z-index` of various components.
+
+The available layers are (lowest to highest):
+
+<Story name="Layers">
+  <ol>
+    <li>behind</li>
+    <li>normal</li>
+    <li>above</li>
+    <li>floating</li>
+    <li>header</li>
+    <li>tooltip</li>
+    <li>modal</li>
+  </ol>
+</Story>
+
+## Layers SASS
+
+To set the `z-index` of elements, we use the `layers(name)` function.
+
+```scss
+.header {
+  z-index: layer(header);
+}
+
+.toolTip {
+  z-index: layer(tooltip);
+}
+```

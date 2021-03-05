@@ -1,0 +1,31 @@
+@import '../theme';
+
+// Font faces that can only be imported once.
+
+// Proxima Nova is the font face used in the Power Pro logo.
+@font-face {
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  src: url('../assets/fonts/Proxima Nova Alt Regular-webfont.eot');
+  src:
+    url('../assets/fonts/Proxima Nova Alt Regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/Proxima Nova Alt Regular-webfont.woff') format('woff'),
+    url('../assets/fonts/Proxima Nova Alt Regular-webfont.ttf') format('truetype'),
+    url('../assets/fonts/Proxima Nova Alt Regular-webfont.svg#proxima_nova_altregular') format('svg');
+}
+
+// Replacement for Proxima Nova SemiBold because we don't have that font.
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../assets/fonts/OpenSans-SemiBold.ttf');
+}
+
+// Title fonts
+@font-face {
+  font-family: 'Sofia Pro';
+  font-style: normal;
+  src: url('../assets/fonts/Mostardesign - Sofia Pro Semi Bold.otf');
+}
+

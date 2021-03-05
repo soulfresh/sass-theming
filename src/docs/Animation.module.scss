@@ -1,0 +1,38 @@
+@import '../theme';
+
+@keyframes slide-left {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.Animation {
+  position: relative;
+  margin-right: size(m);
+}
+
+$speed-anim: slide-left speed(m) ease(in-out) alternate infinite;
+.anim {
+  display: flex;
+  justify-content: center;
+  width: size(m);
+  height: size(m);
+  margin: size(s) 0;
+  color: foreground-dark();
+  background-color: color(primary);
+  position: relative;
+
+  @each $name, $value in $speeds {
+    &:global(.#{$name}) {
+      animation-duration: $value !important;
+    }
+  }
+
+  &:global(.active) {
+    animation: $speed-anim;
+  }
+}
+

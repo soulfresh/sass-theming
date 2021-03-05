@@ -1,0 +1,80 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { FontFamilies, FontWeights } from './Font.jsx';
+
+<Meta title="Design System/Fonts" />
+
+# Titles
+
+For titles, it is prefered that you use one of the following title
+components rather than setting the font size and family through CSS.
+
+<Canvas>
+  <Story name="Title Components">
+    <>
+      <XLTitle>XLTitle: The Quick Brown Fox...</XLTitle>
+      <Title>Title: The Quick Brown Fox...</Title>
+      <SubTitle>SubTitle: The Quick Brown Fox...</SubTitle>
+      <ItemName>ItemName: The Quick Brown Fox...</ItemName>
+      <SmallTitle>SmallTitle: The Quick Brown Fox...</SmallTitle>
+      <MiniTitle>MiniTitle: The Quick Brown Fox...</MiniTitle>
+    </>
+  </Story>
+</Canvas>
+
+# Font Families & Sizes
+
+The following font faces and sizes are available.
+
+<Story name="Font Families">
+  <FontFamilies />
+</Story>
+
+## Font Families & Sizing SASS
+
+The font families are be accessed through the `font-family(name)` function.
+It takes the name of the font-family as documented above (ex. font-family(title)).
+
+```scss
+.foo {
+ font-family: font-family(title);
+}
+
+.bar {
+  font-family: font-family(code);
+}
+```
+
+Font sizes are accessed using the `font-size(size)` function.
+
+```scss
+.foo {
+  font-size: font-size(s);
+}
+
+.bar {
+  font-size: font-size(xxl);
+}
+```
+
+# Font Weights
+
+The following font weights can be used with any of the font families.
+
+<Story name="Font Weights">
+  <FontWeights />
+</Story>
+
+## Font Weights SASS
+
+The font weights are be accessed through the `font-weight(weight)` function.
+It takes the name of the font-weight as documented above (ex. font-weight(bold)).
+
+```scss
+.foo {
+ font-weight: font-weight(bold);
+}
+
+.bar {
+  font-weight: font-weight(normal);
+}
+```

@@ -1,0 +1,114 @@
+@import '../theme';
+
+@mixin generate-size($all-sizes) {
+  @each $size in $all-sizes {
+    .size-#{$size} {
+      .measurement {
+        width: size($size);
+
+        &::after {
+          content: '#{size($size)}';
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-breakpoint($all-sizes) {
+  @each $size in $all-sizes {
+    $val: map-get($grid-breakpoints, $size);
+    .breakpoint-#{$size} {
+      .measurement {
+        width: $val;
+
+        &::after {
+          content: '#{$val}';
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-radii($all-sizes) {
+  @each $size in $all-sizes {
+    $val: radius($size);
+    .radius-#{$size} {
+      border-radius: $val;
+
+      &::after {
+        content: '#{$val}';
+      }
+    }
+  }
+}
+
+
+:global {
+  $sizes: xxxs, xxs, xs, s, m, l, xl, xxl, xxxl;
+  @include generate-size($sizes);
+
+  $breakpoints: xs, s, m, l, xl;
+  @include generate-breakpoint($breakpoints);
+
+  $radii: s, m, l;
+  @include generate-radii($radii);
+
+  .measurement {
+    $b: 2px solid foreground();
+    border-bottom: $b;
+    border-left: $b;
+    border-right: $b;
+    height: 5px;
+    display: flex;
+    align-items: flex-end;
+
+    &::after {
+      color: foreground(light-text);
+      font-size: size(xs);
+      margin-bottom: size(xxs);
+    }
+  }
+}
+
+.Size {
+  display: flex;
+  align-items: center;
+  box-sizing: content-box;
+  height: size(xxl);
+}
+
+.name {
+  width: 100px;
+  text-align: right;
+  padding-right: size(m);
+  text-transform: uppercase;
+}
+
+.Sizes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow-x: auto;
+}
+
+.Radius {
+  @include flex-centered;
+  width: size(xxl);
+  height: size(xxl);
+  margin: size(m);
+  position: relative;
+
+  color: foreground-dark();
+  background-color: color(primary);
+  text-transform: uppercase;
+
+  &::after {
+    position: absolute;
+    left: 100%;
+    margin: 0 size(m);
+    color: foreground(light-text);
+    text-transform: lowercase;
+    font-size: font-size(xs);
+  }
+}
+
