@@ -13,8 +13,6 @@ if output=$(git status --porcelain) && [ -z "$output" ]; then
   yarn build-storybook
 
   echo '\nBuilding release...'
-  yarn clean
-  yarn build
   yarn version
   version=$(node -e "console.log(require('./package.json').version)")
 
