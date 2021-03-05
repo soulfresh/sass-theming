@@ -1,6 +1,6 @@
 {
   "name": "@thesoulfresh/sass-theming",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple theming tools for SASS based projects.",
   "main": "_theme.scss",
   "repository": "git@github.com:soulfresh/sass-theming.git",
