@@ -5,3 +5,4 @@ node_modules/
 *.scss.map
 .DS_Store
 yarn-error.log
+storybook-static/

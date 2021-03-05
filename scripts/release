@@ -10,7 +10,7 @@ if output=$(git status --porcelain) && [ -z "$output" ]; then
   git pull
 
   echo '\nBuilding docs...'
-  yarn build-storybook
+  yarn deploy-storybook
 
   echo '\nBuilding release...'
   yarn version

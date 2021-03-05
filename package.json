@@ -20,6 +20,7 @@
     "@storybook/addon-links": "^6.1.21",
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.1.21",
+    "@storybook/storybook-deployer": "^2.8.7",
     "@thesoulfresh/utils": "^0.1.1",
     "add": "^2.0.6",
     "babel-loader": "^8.2.2",
@@ -37,7 +38,9 @@
     "clean": "rimraf storybook-static",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "release": "./scripts/release"
+    "release": "./scripts/release",
+    "deploy-storybook": "storybook-to-ghpages",
+    "deploy-storybook-ci": "storybook-to-ghpages -- --ci"
   },
   "storybook-deployer": {
     "commitMessage": "Deploy Storybook [skip ci]"
