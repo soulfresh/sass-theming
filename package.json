@@ -11,7 +11,10 @@
     "access": "public"
   },
   "files": [
-    "src/*"
+    "src/*",
+    "_variables.scss",
+    "_utils.scss",
+    "_theme.scss"
   ],
   "devDependencies": {
     "@babel/core": "^7.13.8",
