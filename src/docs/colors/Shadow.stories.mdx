@@ -22,18 +22,20 @@ greatly by project.
   </>
 </Story>
 
-## Accessing Shadows
+## `shadow()` function
 
-To access the shadows palettes, just use the `color(name, hue)` function, passing
-shadows as the palette name and the shadow name as the hue.
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| `name` | `key` | `overlay` | A key in the `$palette-shadow` or `$palette-shadow-dark` palette map. |
+| __Return__ | `box-shadow` | | A CSS box-shadow definition |
 
 ```css
 .foo {
-  box-shadow: color(shadows, overlay);
+  box-shadow: shadow(overlay);
 }
 ```
 
-## Shadows Setup
+## `shadow()` setup
 
 To configure the shadows for your project, provide or modify the `$palette-shadow-light`
 and `$palette-shadow-dark` maps.

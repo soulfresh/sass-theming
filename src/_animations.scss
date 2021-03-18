@@ -1,5 +1,5 @@
 
-@function speed($speed: default) {
+@function speed($speed: m) {
   $s: map-get($palette-speed, $speed);
 
   @if $s == null {
@@ -9,7 +9,7 @@
   @return $s;
 }
 
-@function ease($ease: default) {
+@function ease($ease: out) {
   $s: map-get($palette-ease, $ease);
 
   @if $s == null {

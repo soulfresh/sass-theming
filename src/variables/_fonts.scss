@@ -1,30 +1,24 @@
 
-$base-font: 14 !default;
+$sans-serif : -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif !default ;
+$monospace : source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 
-$font-family-sans-serif  : Roboto, -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif !default ;
-$font-family-title       : $font-family-sans-serif;
-$font-family-code        : source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace !default                                    ;
-
-$palette-font-family: (
-  default     : $font-family-sans-serif,
-  body        : $font-family-sans-serif,
-  title       : $font-family-title,
-  code        : $font-family-code,
+$palette-font-family : (
+  body  : (Roboto, $sans-serif),
+  title : ("HelveticaNeue-Light", "Helvetica Neue Light", $sans-serif),
+  code  : $monospace,
 ) !default;
 
 $palette-font-size: (
-  default : $base-font,
   xxxl    : 36,
   xxl     : 32,
   xl      : 24,
   l       : 16,
-  m       : $base-font,
+  m       : 14,
   s       : 12,
   xs      : 10
 ) !default;
 
 $palette-font-weight: (
-  default :500,
   light   :300,
   normal  :400,
   medium  :500,

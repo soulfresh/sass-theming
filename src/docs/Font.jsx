@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { combineClasses } from '@thesoulfresh/utils';
 
 import styles from './Font.module.scss';
 
-export const fontFamilies = ['Title', 'Body', 'Code'];
-export const fontWeights = ['Normal', 'Medium', 'Bold'];
+export const defaultFamilies = ['Title', 'Body', 'Code'];
+export const defaultWeights = ['Normal', 'Medium', 'Bold'];
 
 export function Lorem({
   className,
@@ -17,13 +18,17 @@ export function Lorem({
   );
 }
 
+/**
+ * @param {object} props
+ * @param {*} [props.children]
+ * @param {string[]} [props.sizes]
+ */
 export function Font({
   children,
   className,
+  sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl', 'xxxl'],
   ...rest
 }) {
-  let sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl', 'xxxl'];
-
   return (
     <div className={combineClasses(styles.Font, className)} {...rest}>
       <h3 className="font-name">{ children }</h3>
@@ -40,6 +45,8 @@ export function Font({
 
 export function FontFamilies({
   className,
+  families = defaultFamilies,
+  children,
   ...rest
 }) {
   return (
@@ -47,9 +54,34 @@ export function FontFamilies({
       className={combineClasses(styles.FontFamilies, className)}
       {...rest}
     >
-      { fontFamilies.map(f => (
-        <Font className={`font-${f.toLowerCase()}`} key={f}>{ f }</Font>
+      { families.map(f => (
+        <div key={f}
+          className={combineClasses(
+            `font-${f.toLowerCase()}`,
+            styles.Font,
+          )}
+        >
+          <h3 className="font-name">{ f }</h3>
+          <Lorem
+            className={`font-size-xl ${styles.fontSize}`}
+          />
+        </div>
       ))}
+    </div>
+  );
+}
+
+
+export function FontSizes({
+  className,
+  ...rest
+}) {
+  return (
+    <div
+      className={combineClasses(styles.FontFamilies, className)}
+      {...rest}
+    >
+      <Font className={`font-body`}>Body Font</Font>
     </div>
   );
 }
@@ -58,6 +90,7 @@ export function FontFamilies({
 export function FontWeight({
   className,
   children,
+  families = defaultFamilies,
   ...rest
 }) {
   return (
@@ -65,8 +98,8 @@ export function FontWeight({
       className={combineClasses(styles.FontWeight, className)}
       {...rest}
     >
-      <h3>{ children }</h3>
-      { fontFamilies.map(f => (
+      <h3 className="font-name">{ children }</h3>
+      { families.map(f => (
         <Lorem
           key={f}
           className={combineClasses(
@@ -82,12 +115,13 @@ export function FontWeight({
 
 
 export function FontWeights({
+  weights = defaultWeights,
   className,
   ...rest
 }) {
   return (
     <div className={combineClasses(styles.FontWeights, className)} {...rest}>
-      { fontWeights.map(w => (
+      { weights.map(w => (
         <FontWeight
           className={`font-weight-${w.toLowerCase()}`}
           key={w}

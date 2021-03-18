@@ -1,40 +1,78 @@
 @import '../../theme';
 
-@keyframes slide-left {
-  0% {
-    left: 0%;
-  }
-  100% {
-    left: 100%;
-  }
+$speed-count: 0;
+@each $name in $palette-speed {
+  $speed-count: $speed-count + 1;
 }
 
-.Animation {
+$ease-count: 0;
+@each $name in $palette-ease {
+  $ease-count: $ease-count + 1;
+}
+
+$icon-small: size(xs);
+$icon-large: size(l);
+$icon-margin: size(s);
+
+.AnimationSpeed,
+.AnimationEasing {
   position: relative;
-  margin-right: size(m);
+  @include flex-centered;
   font-family: font-family(body);
+  color: foreground(faded-text);
 }
 
-$speed-anim: slide-left speed(m) ease(in-out) alternate infinite;
+.AnimationSpeed {
+  height: $speed-count * $icon-large;
+}
+
+.AnimationEasing {
+  height: $ease-count * ($icon-large + $icon-margin);
+}
+
 .anim {
-  display: flex;
-  justify-content: center;
-  width: size(m);
-  height: size(m);
-  margin: size(s) 0;
+  @include flex-centered;
+  position: absolute;
+  left: 0;
+
+  @include unstyled-button;
+  cursor: pointer;
+  border-radius: radius(s);
   color: foreground-dark();
   background-color: color(primary);
-  position: relative;
+  padding: $icon-small;
+
   font-family: font-family(body);
 
-  @each $name, $value in $palette-speed {
-    &:global(.#{$name}) {
-      animation-duration: $value !important;
+  &:global(.active) {
+    left: 100%;
+    transform: translateX(-100%);
+  }
+}
+
+.AnimationEasing {
+  .anim {
+    $i: 0;
+    @each $name, $value in $palette-ease {
+      &:global(.#{$name}) {
+        top: $i * ($icon-large + $icon-margin);
+        transition: left speed(m) $value, transform speed(m) $value;
+      }
+      $i: $i + 1;
     }
   }
+}
 
-  &:global(.active) {
-    animation: $speed-anim;
+.AnimationSpeed {
+  .anim {
+    $i: 0;
+    @each $name, $value in $palette-speed {
+      &:global(.#{$name}) {
+        top: $i * ($icon-large + $icon-margin);
+        transition: left $value linear, transform $value linear;
+      }
+      $i: $i + 1;
+    }
   }
 }
 

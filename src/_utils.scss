@@ -1,4 +1,5 @@
-// URL encode a color value.
+/// URL encode a color value.
+/// @param {string} $string - The string to encode
 @function encodecolor($string) {
   @if type-of($string) == 'color' {
     $hex: str-slice(ie-hex-str($string), 4);
@@ -8,14 +9,16 @@
   @return $string;
 }
 
-// Generate a dropdown arrow image.
+/// Generate a dropdown arrow image.
+/// @param {color} $color - The color of the arrow.
 @function dropdown-arrow-icon($color: foreground()) {
   $c: encodecolor($color);
   @return url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 11 5' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%0A%3E%3Cpath style='fill:#{$c};' d='M0,0l11,0l-5,5l-6,-5Z'/%3E%3C/svg%3E");
 }
 
-// Adds a background down arrow icon that can be
-// used for dropdown elements.
+/// Adds a background down arrow icon that can be
+/// used for dropdown elements.
+/// @param {color} $color - The color of the arrow.
 @mixin down-arrow($color: foreground()) {
   background-image: dropdown-arrow-icon($color);
   background-size: size(xs);
@@ -23,9 +26,13 @@
   background-position: right 0 top 50%;
 }
 
-// Short cut to defining hover + focus + active styling.
-// An additional class selector is also added so you
-// can programatically emulate this styling.
+/// Short cut to defining hover + focus + active styling.
+/// An additional class selector is also added so you
+/// can programatically emulate this styling.
+/// @param {string} $class - The class name that can be used to
+///    simulate the active state.
+/// @param {boolean} $global - Whether to the class name is global
+///    if you are using css modules.
 @mixin active($class: 'active', $global: true) {
   @if $global {
     &:global(.#{$class}),
@@ -45,35 +52,35 @@
   }
 }
 
-// Add ellipsis to an element. This
-// will force the element to be a single
-// line of text (it is not possible
-// to add ellipses to multiline text with CSS).
+/// Add ellipsis to an element. This
+/// will force the element to be a single
+/// line of text (it is not possible
+/// to add ellipses to multiline text with CSS).
 @mixin ellipsis {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
 
-// Fade out an element and make it unclickable.
+/// Fade out an element and make it unclickable.
 @mixin disabled {
   opacity: 0.2;
   cursor: default;
   pointer-events: none;
 }
 
-// Center the elements inside a
-// container by making it a flex
-// element.
+/// Center the elements inside a
+/// container by making it a flex
+/// element.
 @mixin flex-centered {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-// Make an element fill its parent
-// using fixed positioning. This is
-// good for covering an element.
+/// Make an element fill its parent
+/// using fixed positioning. This is
+/// good for covering an element.
 @mixin fixed-fill {
   position: fixed;
   top: 0;
@@ -82,8 +89,8 @@
   left: 0;
 }
 
-// Make an element fill its parent
-// using absolute positioning.
+/// Make an element fill its parent
+/// using absolute positioning.
 @mixin absolute-fill {
   position: absolute;
   top: 0;
@@ -92,8 +99,8 @@
   left: 0;
 }
 
-// Center the element inside a container
-// using absolute positioning.
+/// Center the element inside a container
+/// using absolute positioning.
 @mixin absolute-centered {
   position: absolute;
   top: 50%;
@@ -101,67 +108,78 @@
   transform: translate(-50%, -50%);
 }
 
-// Represents a horizontal row of elements
-// where the contents are justified with
-// space-between so they align to the edges
-// of the browser.
+/// Represents a horizontal row of elements
+/// where the contents are justified with
+/// space-between so they align to the edges
+/// of the browser.
 @mixin row() {
   display: flex;
   justify-content: space-between;
 }
 
-// Represents flex items arranged in a column.
+/// Represents flex items arranged in a column.
 @mixin flex-column() {
   display: flex;
   flex-direction: column;
 }
 
-// Generates an HSL color string. Useful
-// if you don't want SCSS to convert HSL
-// values to HEX.
+/// Generates an HSL color string. Useful
+/// if you don't want SCSS to convert HSL
+/// values to HEX.
+/// @param {number} $hue
+/// @param {number} $saturation
+/// @param {number} $lightness
 @function hsls($hue, $saturation, $lightness) {
   @return unquote("hsl(#{$hue}, #{$saturation}, #{$lightness})");
 }
 
-// Make a <ul> or <ol> element look like a regular div.
+/// Make a "ul" or "ol" element look like a regular "div".
 @mixin unbulleted-list {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-// Make an image fill it's parent container
-// and make sure the parent container background
-// is not visible (image fills the container).
+/// Make button look like a regular "div"
+@mixin unstyled-button {
+  background: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+}
+
+/// Make an image fill it's parent container
+/// and make sure the parent container background
+/// is not visible (image fills the container).
 @mixin cover-image {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
-// Make an image fill it's parent container
-// and make sure the image is fully visible
-// in the parent container (it should show
-// the parent container background if necessary).
+/// Make an image fill it's parent container
+/// and make sure the image is fully visible
+/// in the parent container (it should show
+/// the parent container background if necessary).
 @mixin contain-image {
   object-fit: contain;
   width: 100%;
   height: 100%;
 }
 
-// When printing, Firefox needs top level DOM
-// elements to be block level elements in order
-// for page breaks to work as expected. Therefore,
-// this mixin should be included in the top level
-// elements leading up to nodes where the
-// `printer-page` mixin is used.
+/// When printing, Firefox needs top level DOM
+/// elements to be block level elements in order
+/// for page breaks to work as expected. Therefore,
+/// this mixin should be included in the top level
+/// elements leading up to nodes where the
+/// `printer-page` mixin is used.
 @mixin print-wrapper {
   @media print {
     display: block;
   }
 }
 
-// Consistent margins for printer pages.
+/// Consistent margins for printer pages.
 @mixin printer-page-margins {
   @media print {
     margin: 0;
@@ -169,12 +187,12 @@
   }
 }
 
-// Forces a page break when printing and sets
-// consistent margins for the page. This assumes
-// that the element that includes this mixin
-// contains all contents for the page. You can
-// also include any additional styles you want
-// by invoking this mixin with a content block.
+/// Forces a page break when printing and sets
+/// consistent margins for the page. This assumes
+/// that the element that includes this mixin
+/// contains all contents for the page. You can
+/// also include any additional styles you want
+/// by invoking this mixin with a content block.
 @mixin printer-page {
   @include printer-page-margins;
 
@@ -185,18 +203,10 @@
   }
 }
 
-// Hides the current element when printing.
+/// Hides the current element when printing.
 @mixin printer-hidden {
   @media print {
     display: none;
   }
-}
-
-// Remove all styling from a button element.
-@mixin unstyled-button {
-  background: none;
-  border: none;
-  border-radius: 0;
-  outline: none;
 }
 

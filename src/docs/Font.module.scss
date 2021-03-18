@@ -66,6 +66,8 @@
   }
 
   .font-name {
+    font-family: font-family(title);
+
     &::after {
       display: block;
       color: foreground(light-text);

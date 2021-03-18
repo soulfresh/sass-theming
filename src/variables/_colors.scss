@@ -69,7 +69,6 @@ $palette-background-dark: (
 // Colors for text and other foreground elements like horizontal rules and borders.
 $palette-foreground-light: (
   opaque: $black,
-  default: rgba($black, 0.9),
   text: rgba($black, 0.9),
   light-text: rgba($black, 0.70),
   faded-text: rgba($black, 0.5),
@@ -81,7 +80,6 @@ $palette-foreground-light: (
 
 $palette-foreground-dark: (
   opaque: $white,
-  default: rgba($white, 0.9),
   text: rgba($white, 0.9),
   light-text: rgba($white, 0.75),
   faded-text: rgba($white, 0.6),

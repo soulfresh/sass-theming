@@ -6,9 +6,7 @@
 // Ex: `margin: rem(10);`
 ////
 @function rem($pixels) {
-  // If you want to debug things in pixel values, uncomment the following...
   @return $pixels * 1px;
-  // @return ($pixels / $base-font) * 1rem;
 }
 
 ////
@@ -17,7 +15,7 @@
 //
 // Ex: `font-size: font-size(xxl);`
 ////
-@function font-size($size: default) {
+@function font-size($size: m) {
   $s: map-get($palette-font-size, $size);
 
   @if $s == null {
@@ -33,7 +31,7 @@
 //
 // Ex: `font-size: font-size(bold);`
 ////
-@function font-weight($weight: default) {
+@function font-weight($weight: normal) {
   $w: map-get($palette-font-weight, $weight);
 
   @if $w == null {
@@ -43,7 +41,7 @@
   @return $w;
 }
 
-@function font-family($family: default) {
+@function font-family($family: body) {
   $f: map-get($palette-font-family, $family);
 
   @if $f == null {

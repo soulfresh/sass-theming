@@ -1,0 +1,10 @@
+@import './colors';
+@import './sizes';
+@import './fonts';
+@import './layers';
+@import './animations';
+
+
+// TODO combine all of the palettes into the $theme-light
+// and $theme-dark variables so themes can changes the
+// sizes as well.

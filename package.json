@@ -15,6 +15,7 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.13.8",
+    "@hidoo/sassdoc-to-markdown": "^0.4.2",
     "@storybook/addon-actions": "^6.1.21",
     "@storybook/addon-essentials": "^6.1.21",
     "@storybook/addon-links": "^6.1.21",
@@ -36,6 +37,7 @@
   "dependencies": {},
   "scripts": {
     "clean": "rimraf storybook-static",
+    "sass-docs": "npx sassdoc2md ./src/_utils.scss --markdown ./src/docs/helpers/Mixins.stories.mdx.hbs -s Mixins > ./src/docs/helpers/Mixins.stories.mdx",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "release": "./scripts/release",

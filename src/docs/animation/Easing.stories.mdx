@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/addon-docs/blocks';
-import { AnimationSpeed } from '../Animation.jsx';
+import { AnimationEasing } from '../Animation.jsx';
 
 <Meta title="Animation/Easing Palette" />
 
@@ -13,20 +13,9 @@ easing like `out-hard` or `in-out-soft`.
 
 The following easing values are provided out of the box.
 
-- `default` The same as `out`
-- `linear` Standard linear ease
-- `out` Standard `ease-out`
-- `in` Standard `ease-in`
-- `in-out` Standard `ease-in-out`
-- `out-hard` Circ easing out
-- `in-hard` Circ easing in
-- `in-out-hard` Circ easing in-out
-- `out-soft` Quad easing out
-- `in-soft` Quad easing in
-- `in-out-soft` Quad easing in-out
-- `out-bounce` Bounce easing out
-- `in-bounce` Bounce easing in
-- `in-out-bounce` Bounce easing in-out
+<Story name="Easing Palette">
+  <AnimationEasing />
+</Story>
 
 ## ease() function
 

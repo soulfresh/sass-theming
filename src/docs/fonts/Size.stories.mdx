@@ -1,34 +1,29 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
-import { FontFamilies, FontWeights } from '../Font.jsx';
+import { FontSizes, FontWeights } from '../Font.jsx';
 
 <Meta title="Fonts/Font Size Palette" />
 
-# Font Families & Sizes
+# Font Sizes
 
-The following font faces and sizes are available.
+The `font-size()` function provides access to a Named Palette
+of font sizes using s/m/l naming.
+
+## Default Font Sizes
+
+The following sizes are provided out of the box.
 
 <Story name="Font Size Palette">
-  <FontFamilies />
+  <FontSizes />
 </Story>
 
-## Font Families & Sizing SASS
+## `font-size()` function
 
-The font families are be accessed through the `font-family(name)` function.
-It takes the name of the font-family as documented above (ex. font-family(title)).
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| `name` | `key` | `m` | A key in the `$palette-font-size` palette map. |
+| __Return__ | `px number` | | A CSS pixel value |
 
-```scss
-.foo {
- font-family: font-family(title);
-}
-
-.bar {
-  font-family: font-family(code);
-}
-```
-
-Font sizes are accessed using the `font-size(size)` function.
-
-```scss
+```css
 .foo {
   font-size: font-size(s);
 }
@@ -38,3 +33,23 @@ Font sizes are accessed using the `font-size(size)` function.
 }
 ```
 
+## Configuration
+
+To configure the font sizes for your project, provide or modify
+the `$palette-font-size` map.
+
+```css
+$palette-font-size: (
+  xxxl    : 36,
+  xxl     : 32,
+  xl      : 24,
+  l       : 16,
+  m       : 14,
+  s       : 12,
+  xs      : 10
+);
+
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+[NEXT](/?path=/docs/fonts-font-weight-palette--font-weight-palette)

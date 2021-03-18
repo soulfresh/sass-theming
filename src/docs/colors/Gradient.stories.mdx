@@ -21,10 +21,12 @@ This Named Palette can be used to add gradients to an element backgroud.
   </>
 </Story>
 
-## Accessing Gradients
+## `gradient()` function
 
-To access the gradients palettes, just use the `color(name, hue)` function, passing
-gradients as the palette name and the shadow name as the hue.
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| `name` | `key` | `light` | A key in the `$palette-shadow` or `$palette-shadow-dark` palette map. |
+| __Return__ | `box-shadow` | | A CSS box-shadow definition |
 
 ```css
 .foo {
@@ -32,7 +34,7 @@ gradients as the palette name and the shadow name as the hue.
 }
 ```
 
-## Gradients Setup
+## Configuration
 
 To configure the gradients for your project, provide or modify the `$palette-gradient-light`
 and `$palette-gradient-dark` maps.

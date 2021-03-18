@@ -69,14 +69,41 @@
 ////
 // Get a foreground color (text color, disabled text color, etc) from the light theme.
 ///;
-@function foreground($hue: default) {
+@function foreground($hue: text) {
   @return theme-color($theme-light, foreground, $hue);
 }
 
 ////
-// Get a foreground color (text color, disabled text color, etc) from the light theme.
+// Get a foreground color (text color, disabled text color, etc) from the dark theme.
 ////
-@function foreground-dark($hue: default) {
+@function foreground-dark($hue: text) {
   @return theme-color($theme-dark, foreground, $hue);
 }
 
+////
+// Get a foreground color (text color, disabled text color, etc) from the light theme.
+///;
+@function shadow($hue: overlay) {
+  @return theme-color($theme-light, shadow, $hue);
+}
+
+////
+// Get a shadow color (text color, disabled text color, etc) from the dark theme.
+////
+@function shadow-dark($hue: overlay) {
+  @return theme-color($theme-dark, shadow, $hue);
+}
+
+////
+// Get a foreground color (text color, disabled text color, etc) from the light theme.
+///;
+@function gradient($hue: light) {
+  @return theme-color($theme-light, gradient, $hue);
+}
+
+////
+// Get a gradient color (text color, disabled text color, etc) from the dark theme.
+////
+@function gradient-dark($hue: light) {
+  @return theme-color($theme-dark, gradient, $hue);
+}

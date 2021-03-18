@@ -1,6 +1,5 @@
 
 $palette-speed: (
-  default : 300ms  ,
   xs      : 60ms   ,
   s       : 150ms  ,
   m       : 300ms  ,
@@ -11,7 +10,6 @@ $palette-speed: (
 );
 
 $palette-ease: (
-  default     : ease-out,
   linear      : linear,
   out         : ease-out,
   in          : ease-in,

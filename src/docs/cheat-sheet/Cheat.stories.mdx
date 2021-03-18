@@ -7,8 +7,8 @@ import {
   ShadowsPalette,
   GradientsPalette,
 } from '../Color.jsx';
-import { FontFamilies, FontWeights } from '../Font.jsx';
-import { AnimationSpeed } from '../Animation.jsx';
+import { FontFamilies, FontSizes, FontWeights } from '../Font.jsx';
+import { AnimationSpeed, AnimationEasing } from '../Animation.jsx';
 import { Sizes, Breakpoints, Radii } from '../Size.jsx';
 
 <Meta title="Cheat Sheet/Cheat Sheet" />
@@ -16,29 +16,37 @@ import { Sizes, Breakpoints, Radii } from '../Size.jsx';
 # Cheat Sheet
 
 The following cheat sheet lists all of the functions
-and their default values.
+and their default values. All function definitions
+include a dark version by appending `-dark` to the
+function name.
 
-## foreground()
+## Foregrounds
 
-<Story name="foreground()">
+`foreground($name: text)`
+
+<Story name="Foregrounds">
   <>
     <ForegroundPalette name="Foreground" />
     <ForegroundPalette name="Foreground Dark" dark />
   </>
 </Story>
 
-## background()
+## Backgrounds
 
-<Story name="background()">
+`background($name: default)`
+
+<Story name="Backgrounds">
   <>
     <BackgroundPalette name="Background" />
     <BackgroundPalette name="Background Dark" dark />
   </>
 </Story>
 
-## color()
+## Numbered Colors
 
-<Story name="color()">
+`color($palette: primary, $hue: 500)`
+
+<Story name="Numbered Colors">
   <>
     <ColorPalette name="Primary" />
     <ColorPalette name="Secondary" />
@@ -50,69 +58,98 @@ and their default values.
   </>
 </Story>
 
-## color(shadow)
+## Shadows
 
-<Story name="shadows">
+`shadow($name: overlay)`
+
+<Story name="Shadows">
   <>
     <ShadowsPalette name="Shadows" />
     <ShadowsPalette name="Shadows Dark" />
   </>
 </Story>
 
-## color(gradient)
+## Gradients
 
-<Story name="gradients">
+`gradient($name: light)`
+
+<Story name="Gradients">
   <>
     <GradientsPalette name="Gradients" />
     <GradientsPalette name="Gradients Dark" />
   </>
 </Story>
 
-## size()
+## Sizes
 
-<Story name="size()">
+`size($name: m)`
+
+<Story name="Sizes">
   <Sizes />
 </Story>
 
-## radius()
+## Radius
 
-<Story name="radius()">
+`radius($size: m)`
+
+<Story name="Radius">
   <Radii />
 </Story>
 
-## breakpoint()
+## Breakpoints
 
-<Story name="breakpoint()">
+**Mixin:** `breakpoint-up($size: m)`<br/>
+**Function:** `breakpoint($size: m)`
+
+<Story name="Breakpoints">
   <Breakpoints />
 </Story>
 
-## layer()
+## Z-Index (Layers)
 
-TODO
+`layer($name: above)`
 
-## icon-size()
+## Icon Sizes
 
-TODO
+`icon-size($size: m)`
 
-## font-family() & font-size()
+## Font Families
 
-<Story name="font-family() & font-size()">
+`font-family($family: body)`
+
+<Story name="Font Families">
   <FontFamilies />
 </Story>
 
-## font-weight()
+## Font Sizes
 
-<Story name="Font Weight Palette">
+`font-size($size: m)`
+
+<Story name="Font Sizes">
+  <FontSizes />
+</Story>
+
+## Font Weights
+
+`font-weight($weight: normal)`
+
+<Story name="Font Weights">
   <FontWeights />
 </Story>
 
-## ease()
+## Animation Easing
 
-TODO
+`ease($name: out)`
 
-## speed()
+<Story name="Animation Easing">
+  <AnimationEasing />
+</Story>
 
-<Story name="Speed Palette">
+## Animation Speed
+
+`speed($speed: m)`
+
+<Story name="Animation Speed">
   <AnimationSpeed />
 </Story>
 

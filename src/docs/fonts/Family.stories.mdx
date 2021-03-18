@@ -5,18 +5,25 @@ import { FontFamilies, FontWeights } from '../Font.jsx';
 
 # Font Families & Sizes
 
-The following font faces and sizes are available.
+The `font-family()` function provides a Named Palette of
+font family definitions named by their usage (ex. `title`, `body`, etc).
+
+## Default Font Families
+
+The following default font families are configured out of the box.
 
 <Story name="Family Palette">
   <FontFamilies />
 </Story>
 
-## Font Families & Sizing SASS
+## `font-family()` function
 
-The font families are be accessed through the `font-family(name)` function.
-It takes the name of the font-family as documented above (ex. font-family(title)).
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| `name` | `key` | `body` | A key in the `$palette-font-family` palette map. |
+| __Return__ | `list` | | A CSS font-family list |
 
-```scss
+```css
 .foo {
  font-family: font-family(title);
 }
@@ -26,15 +33,36 @@ It takes the name of the font-family as documented above (ex. font-family(title)
 }
 ```
 
-Font sizes are accessed using the `font-size(size)` function.
+## Global Variables
 
-```scss
-.foo {
-  font-size: font-size(s);
-}
+In addition to the `font-family()` function, there are a couple
+font family global variables that are useful in generating font
+definitions. You can use them as your fallbacks after your desired font
+face.
 
-.bar {
-  font-size: font-size(xxl);
-}
+- `$sans-serif`: Fallbacks to for your Sans Serf faces.
+- `$monospace`: Fallback to use for your Code font.
+
+Here's how you can use them:
+
+```css
+$my-title-font: Roboto $sans-serif;
+$my-code-font: Menlo $monospace;
 ```
 
+## Configuration
+
+To configure the font families for your project, provide or modify
+the `$palette-font-family` map.
+
+```css
+$palette-font-family : (
+  body  : (Roboto, $sans-serif),
+  title : ("HelveticaNeue-Light", "Helvetica Neue Light", $sans-serif),
+  code  : (Monaco, $monospace),
+);
+
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+[NEXT](/?path=/docs/fonts-font-size-palette--font-size-palette)
