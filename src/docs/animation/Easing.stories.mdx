@@ -1,0 +1,65 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { AnimationSpeed } from '../Animation.jsx';
+
+<Meta title="Animation/Easing Palette" />
+
+# Easing Palette
+
+The `ease()` function provides access to your animation easing
+equations. This is a Named Palette with names describing the
+easing like `out-hard` or `in-out-soft`.
+
+## Default Easing Values
+
+The following easing values are provided out of the box.
+
+- `default` The same as `out`
+- `linear` Standard linear ease
+- `out` Standard `ease-out`
+- `in` Standard `ease-in`
+- `in-out` Standard `ease-in-out`
+- `out-hard` Circ easing out
+- `in-hard` Circ easing in
+- `in-out-hard` Circ easing in-out
+- `out-soft` Quad easing out
+- `in-soft` Quad easing in
+- `in-out-soft` Quad easing in-out
+- `out-bounce` Bounce easing out
+- `in-bounce` Bounce easing in
+- `in-out-bounce` Bounce easing in-out
+
+## ease() function
+
+| Param | Type | Description |
+| --- | --- | --- |
+| `name` | `key` | A key in the `$palette-ease` map. |
+| __Return__ | `cubic-bezier` | A value that can be used as an easing equation. |
+
+```scss
+.foo {
+  transition: margin-right speed(m) ease(out-hard);
+}
+
+.bar {
+  animation: some-anim speed(l) ease(in-out-bounce);
+}
+```
+
+## ease() setup
+
+The `ease()` function exposes the `$palette-ease` map and can be
+customized in the same way as other palettes.
+
+```css
+$palette-ease: (
+  default : ease-out,
+  out    : cubic-bezier(0.075, 0.820, 0.165, 1.000),
+  in     : cubic-bezier(0.600, 0.040, 0.980, 0.335),
+  in-out : cubic-bezier(1.000, 0.000, 0.000, 1.000),
+);
+
+/* Now import the theme which will configure the theme functions */
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+[NEXT](/?path=/docs/animation-speed-palette--speed-palette)

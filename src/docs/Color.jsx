@@ -41,7 +41,7 @@ Palette.propTypes = {
 export function ColorPalette({
   ...rest
 }) {
-  let hues = [];
+  let hues = ['50'];
   for (let i = 1; i < 10; i++) {
     hues.push(`${i * 100}`);
   }
@@ -65,8 +65,7 @@ export function ForegroundPalette({
     'light-text',
     'faded-text',
     'disabled-text',
-    // TODO Add focus color
-    // 'focus',
+    'focus',
     'divider',
     'border',
   ];
@@ -85,12 +84,14 @@ export function BackgroundPalette({
 }) {
   const hues = [
     'default',
-    'hover',
-    // TODO Add focus color
-    // 'focus',
     'input',
+    'hover',
+    'shaded',
+    'deeply-shaded',
     'overlay',
     'fade',
+    'focus',
+    'highlight',
   ];
 
   return (
@@ -110,8 +111,8 @@ export function ShadowsPalette({
   ...rest
 }) {
   const hues = [
-    'light',
     'overlay',
+    'card',
   ];
 
   return (
@@ -128,7 +129,9 @@ export function GradientsPalette({
   ...rest
 }) {
   const hues = [
-    'active',
+    'light',
+    'focus',
+    'primary',
   ];
 
   return (

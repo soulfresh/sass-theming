@@ -1,3 +1,5 @@
+// TODO Consistent naming
+
 // Spacing / Measurement
 $s-xxxs  : 4   !default;
 $s-xxs   : 8   !default;
@@ -11,9 +13,11 @@ $s-xxxl  : 72  !default;
 $s-xxxxl : 144 !default;
 
 // Custom Sizes
+// TODO Remove these?
 $card-width: 304 !default;
 $pin-width: 50 !default;
 
+// TODO Rename palette-size
 $sizes: (
   default: $s-m,
   xxxxl: $s-xxxxl,
@@ -98,6 +102,16 @@ $icon-sizes: (
   @return rem($s);
 }
 
+@function breakpoint($size: default) {
+  $s: map-get($breakpoint, $size);
+
+  @if $s == null {
+    @error('Could not find breakpoint #{$size} on the theme provided: #{$grid-breakpoints}');
+  }
+
+  @return rem($s);
+}
+
 // Minimum breakpoint width. Null for the smallest (first) breakpoint.
 //
 //    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
@@ -121,16 +135,3 @@ $icon-sizes: (
   }
 }
 
-// Make any sizing property responsive.
-//
-// Ex:
-// @include responsive-sizing(30px, margin);
-// @include responsive-sizing(2rem, width);
-@mixin responsive-sizing($size, $prop: padding) {
-  $size-down: $size * 0.5;
-
-  #{$prop}: rem($size-down);
-  @include media-breakpoint-up(md) {
-    #{$prop}: rem($size);
-  }
-}

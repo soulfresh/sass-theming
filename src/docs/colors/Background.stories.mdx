@@ -1,0 +1,138 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import {
+  ColorPalette,
+  ForegroundPalette,
+  BackgroundPalette,
+  ShadowsPalette,
+  GradientsPalette,
+} from '../Color.jsx';
+
+<Meta title="Colors/Background Palette" />
+
+# Background Palettes
+
+These palettes are used to specify the color of background content
+such as the page background, hover states, focus states, overlays, etc.
+
+## Default Background Palettes
+
+The background colors are accessed through the `background()` and `background-dark()`
+functions. Background palette hues are named for how they should be used.
+
+Here are the default backgrounds provided for you:
+
+- `default` The default color for light backgrounds such as the html/body background.
+- `input` The background color for input elements.
+- `hover` The background color used to indicate an item is hovered.
+- `shaded` A secondary option for background colors to help
+   a section stand apart for other page sections.
+- `deeply-shaded` A more prominent version of the shaded color.
+- `overlay` The background color used to overlay other elements inorder
+   to bring the user's focus to a foreground element.
+   Example: the background behind modals.
+- `fade` Make the background elements fade further into the background.
+   Example: disable a section of the page.
+- `focus` The background color used to indicate an item has focus.
+- `highlight` A color used like a highlighter.
+
+<Story name="Background Palette">
+  <>
+    <BackgroundPalette name="Background" />
+    <BackgroundPalette name="Background Dark" dark />
+  </>
+</Story>
+
+### background() function
+
+| Param | Type | Description |
+| --- | --- | --- |
+| `name` | `key` | A key in the `$palette-background-light` or `$palette-background-dark` palette map. |
+| __Return__ | `color` | A CSS color value |
+
+There is also an equivalent `background-dark()` function.
+These work just the same as the `foreground()` and `foreground-dark()` functions.
+
+```css
+.foo {
+  color: background(hover);
+}
+
+.bar {
+  color: background-dark(input);
+}
+```
+
+### background() setup
+
+To provide your own background colors, you can specify your own version of
+`$palette-background-light` or `$palette-background-dark` before
+importing `@thesoulfresh/sass-theming`.
+
+```css
+/* This is the default implementation but you can use any property names/values you like. */
+$palette-background-light: (
+  default: $white,
+  hover: rgba(#111, 0.1),
+  focus: $focus-color,
+  ...
+);
+
+/* And the dark version... */
+$palette-background-dark: (...);
+
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+Or override individual palette values:
+
+```css
+/* Import the palette definitions */
+@import '@thesoulfresh/sass-theming/variables';
+
+/* Use map-set to set individual keys in the palette. */
+map-set($palette-background-light, border, rgba(#111, 0.95));
+
+/* Now import the theme which will configure the theme functions */
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+## Adding New Themes
+
+Use `theme-background()` to access additional themes other than `light` and `dark`.
+
+See the [foreground docs](?path=/docs/colors-foreground--foreground-palettes#adding-new-themes)
+for more information on this.
+
+### `theme-background()` function
+
+| Param | Type | Description |
+| --- | --- | --- |
+| `theme` | `map` | A theme map that includes a sub-palette called `background`. |
+| `name` | `key` | A key in the `background` palette to access. |
+| __Return__ | `color` | A CSS color value |
+
+This is the function used under the hood by the `background()` function.
+
+Here's an example of how to use it:
+
+```css
+/* _theme.scss */
+$pink-theme: (
+  background: (
+    input: #ff00ff;
+    ...
+  )
+  ...
+);
+
+@import '@thesoulfresh/sass-theming/theme';
+
+/* my-component.scss */
+@import '_theme.scss';
+
+.my-component {
+  background-color: theme-background($pink-theme, input);
+}
+```
+
+[NEXT](/?path=/docs/colors-color-palettes--color-palettes)

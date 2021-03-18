@@ -1,0 +1,80 @@
+////
+// Utilities to help generate themes.
+////
+
+
+////
+// Generate a palette with even color gradiation
+// using a single color as the 500 value.
+////
+@function make-palette($color1, $black: #000, $white: #fff) {
+  @return (
+    50 : mix($color1, $white, 10%),
+    100: mix($color1, $white, 30%),
+    200: mix($color1, $white, 40%),
+    300: mix($color1, $white, 60%),
+    400: mix($color1, $white, 80%),
+    500: $color1,
+    600: mix($color1, $black, 80%),
+    700: mix($color1, $black, 60%),
+    800: mix($color1, $black, 50%),
+    900: mix($color1, $black, 40%),
+  );
+}
+////
+// Generate a palette with even color gradiation
+// between 2 stops (100, 900).
+////
+@function make-palette-2($color1, $color9) {
+  @return (
+    50 : mix($color1, #ffffff, 50%),
+    100: $color1,
+    200: mix($color1, $color9, 87%),
+    300: mix($color1, $color9, 75%),
+    400: mix($color1, $color9, 62%),
+    500: mix($color1, $color9, 50%),
+    600: mix($color1, $color9, 37%),
+    700: mix($color1, $color9, 25%),
+    800: mix($color1, $color9, 12%),
+    900: $color9,
+  );
+}
+
+////
+// Generate a palette with even color gradiation
+// between 3 stops (100, 500, 900).
+////
+@function make-palette-3($color1, $color5, $color9) {
+  @return (
+    50 : mix($color1, #ffffff, 50%),
+    100: $color1,
+    200: mix($color1, $color5, 75%),
+    300: mix($color1, $color5, 50%),
+    400: mix($color1, $color5, 25%),
+    500: $color5,
+    600: mix($color5, $color9, 75%),
+    700: mix($color5, $color9, 50%),
+    800: mix($color5, $color9, 25%),
+    900: $color9,
+  );
+}
+
+////
+// Generate a palette with even color gradiation
+// between 5 stops (100, 500, 900).
+////
+@function make-palette-5($color1, $color3, $color5, $color7, $color9) {
+  @return (
+    50 : mix($color1, #ffffff, 50%),
+    100: $color1,
+    200: mix($color1, $color3, 50%),
+    300: $color3,
+    400: mix($color3, $color5, 50%),
+    500: $color5,
+    600: mix($color5, $color7, 50%),
+    700: $color7,
+    800: mix($color7, $color9, 50%),
+    900: $color9,
+  );
+}
+

@@ -1,0 +1,62 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import {
+  ColorPalette,
+  ForegroundPalette,
+  BackgroundPalette,
+  ShadowsPalette,
+  GradientsPalette,
+} from '../Color.jsx';
+
+<Meta title="Colors/Gradient Palette" />
+
+
+# Gradients Palette
+
+This Named Palette can be used to add gradients to an element backgroud.
+
+<Story name="Gradient Palette">
+  <>
+    <GradientsPalette name="Gradients" />
+    <GradientsPalette name="Gradients Dark" />
+  </>
+</Story>
+
+## Accessing Gradients
+
+To access the gradients palettes, just use the `color(name, hue)` function, passing
+gradients as the palette name and the shadow name as the hue.
+
+```css
+.foo {
+  background: linear-gradient( #{color(gradients, active)} );
+}
+```
+
+## Gradients Setup
+
+To configure the gradients for your project, provide or modify the `$palette-gradient-light`
+and `$palette-gradient-dark` maps.
+
+```css
+$palette-gradient-light: (
+  primary: linear-gradient(
+    0deg,
+    map-get($palette-primary, 600) 0%,
+    map-get($palette-primary, 400) 100%
+  ),
+  focus: linear-gradient(
+    0deg,
+    mix($focus, $black, 90%) 0%,
+    mix($focus, $white, 90%) 100%
+  ),
+);
+
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+## Adding New Themes
+
+Since gradients are accessed using the `color()` function, you can follow
+[the same directions](/?path=/docs/colors-palettes--color-palettes#named-color-palettes).
+
+[NEXT](/?path=/docs/measurements-introduction--page)

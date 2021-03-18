@@ -1,0 +1,66 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Sizes, Breakpoints, Radii } from '../Size.jsx';
+
+<Meta title="Measurements/Layer Palette" />
+
+# Layers
+
+The `layer()` function is used to access `z-index` values.
+This is helpful for keeping `z-index` values centralized
+in order to prevent unexpected conflicts.
+
+This is a Named Palette with names describing the layer
+the content should reside on.
+
+## Default Layer Values
+
+- `behind` Just behind the normal content.
+- `normal` The normal z-index for elements.
+- `above` Just above the normal content.
+- `floating` Things that should float just above that.
+- `header` Generally used for a floating page header.
+- `dropdown` Used for dropdown menus.
+- `tooltip` Used for tool tips.
+- `modal` Used for modals.
+- `login` Ensure a login modal is always on top.
+
+Here's an example usage:
+
+```scss
+.header {
+  z-index: layer(header);
+}
+
+.toolTip {
+  z-index: layer(tooltip);
+}
+```
+
+## layer() function
+
+| Param | Type | Description |
+| --- | --- | --- |
+| `name` | `key` | A key in the `$palette-layer` map. |
+| __Return__ | `number` | A value that can be used as a z-index. |
+
+## layer() setup
+
+The `layer()` function exposes the `$palette-layer` map and
+can be customized in the same way as other palettes.
+
+```css
+$palette-layer: (
+  behind: -1,
+  normal: 0,
+  above: 1,
+  floating: 10,
+  header: 50,
+  dropdown: 100,
+  tooltip: 500,
+  modal: 1000,
+  login: 2000,
+);
+
+/* Now import the theme which will configure the theme functions */
+@import '@thesoulfresh/sass-theming/theme';
+```

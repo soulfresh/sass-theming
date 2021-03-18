@@ -3,7 +3,8 @@ $l-normal   : 0 !default;
 $l-above    : 1 !default;
 $l-floating : 10 !default;
 $l-header   : 50 !default;
-$l-tooltip  : 100 !default;
+$l-dropdown : 100 !default;
+$l-tooltip  : 500 !default;
 $l-modal    : 1000 !default;
 $l-login    : 2000 !default;
 
@@ -13,6 +14,7 @@ $layers: (
   above: $l-above,
   floating: $l-floating,
   header: $l-header,
+  dropdown: $l-dropdown,
   tooltip: $l-tooltip,
   modal: $l-modal,
   login: $l-login,

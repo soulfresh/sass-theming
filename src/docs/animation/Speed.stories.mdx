@@ -1,0 +1,56 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { AnimationSpeed } from '../Animation.jsx';
+
+<Meta title="Animation/Speed Palette" />
+
+# Speed Palette
+
+The `speed()` function provides access to your animation
+timing values. This is a Named Palette with s/m/l type names
+describing how fast the animation will run.
+
+## Default Speeds
+
+The following shows the speeds provided out of the box.
+
+<Story name="Speed Palette">
+  <AnimationSpeed />
+</Story>
+
+## speed() function
+
+| Param | Type | Description |
+| --- | --- | --- |
+| `name` | `key` | A key in the `$palette-speed` map. |
+| __Return__ | `duration` | A value that can be used as an easing duration. |
+
+```scss
+.foo {
+  transition: margin-right speed(m) ease(out-hard);
+}
+
+.bar {
+  animation: some-anim speed(l) ease(out);
+}
+```
+
+## speed() setup
+
+The `speed()` function exposes the `$palette-speed` map and can be
+customized in the same way as other palettes.
+
+```css
+$palette-speed: (
+  default : 300ms  ,
+  xs      : 60ms   ,
+  s       : 150ms  ,
+  m       : 300ms  ,
+  l       : 500ms  ,
+  xl      : 750ms  ,
+);
+
+/* Now import the theme which will configure the theme functions */
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+[NEXT](/?path=/docs/cheat-sheet-cheat-sheet--page)

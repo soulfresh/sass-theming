@@ -1,0 +1,171 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import {
+  ColorPalette,
+  ForegroundPalette,
+  BackgroundPalette,
+  ShadowsPalette,
+  GradientsPalette,
+} from '../Color.jsx';
+
+<Meta title="Colors/Foreground Palette" />
+
+# Foreground Palettes
+
+The foreground palettes are used to specify the color of foreground content
+such as text shades, element border colors, horizontal rules
+and other content dividers.
+
+
+## Default Foreground Colors
+
+The foreground colors are accessed through the `foreground()` and `foreground-dark()`
+functions. Foreground palette hues are named for how they should be used.
+
+Here are the default foregrounds provided for you:
+
+- `opaque` A non-transparent foreground color that is equivalent to using the global `$white` or `$black`
+    variables depending on the light or dark theme in use.
+- `default` The default color to use when no parameter is passed to the `foreground()` function.
+    By default, this is the same as the `text` value.
+- `text` The default text color.
+- `light-text` A lighter text color.
+- `faded-text` Very light text coloring.
+- `disabled-text` Text coloring for items that are disabled.
+- `focus` The color to use for items that have focus.
+- `divider` The color to use for page dividers like `<hr>` elements.
+- `border` The color to use for borders.
+
+<Story name="Foreground Palette">
+  <>
+    <ForegroundPalette name="Foreground" />
+    <ForegroundPalette name="Foreground Dark" dark />
+  </>
+</Story>
+
+### foreground() function
+
+| Param | Type | Description |
+| --- | --- | --- |
+| `name` | `key` | A key in the `$palette-foreground-light` or `$palette-foreground-dark` palette map. |
+| __Return__ | `color` | A CSS color value |
+
+
+To access the foreground palettes you can use the `foreground(name)` and
+`foreground-dark(name)` functions. The name parameter is the value you
+see in the palette definitions above and defaults to `default`.
+
+```css
+.foo {
+  color: foreground(light-text);
+}
+
+.bar {
+  color: foreground-dark(border);
+}
+```
+
+### foreground() setup
+
+When you're building your theme, it is recommended (but not required) that your theme
+colors be partially transparent. This allows them to be placed over any background
+color and look natural. This follows the recommendations from
+[Material Design Guide](https://material.io/design/color/text-legibility.html#text-backgrounds).
+
+To provide your own foreground colors, you can specify your own version of
+`$palette-foreground-light` or `$palette-foreground-dark` before
+importing `@thesoulfresh/sass-theming/theme`.
+
+The values in the maps do not need to have the same names as the default
+palettes. The maps can have any property names that make sense for your needs.
+
+```css
+/* You can override the full map with your own, defining
+any property names/values you like. */
+$palette-foreground-light: (
+  opaque: #111,
+  default: rgba(#111, 0.9),
+  text: rgba(#111, 0.8),
+  light-text: rgba(#111, 0.65),
+  faded-text: rgba(#111, 0.3),
+  disabled-text: rgba(#111, 0.4),
+  focus: $focus-color,
+  divider: rgba(#111, 0.3),
+  border: rgba(#111, 0.08),
+  /* Any values you'd like to include... */
+  widget: rgba(#111, 0.5)
+);
+
+/* Now import the theme which will configure the theme functions */
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+You can also modify individual values in the default foreground palette
+by importing `@thesoulfresh/sass-theming/variables`, making modifications
+to the map and then importing the theme.
+
+```css
+/* Import the palette definitions */
+@import '@thesoulfresh/sass-theming/variables';
+
+/* Use map-set to set individual keys in the palette. */
+map-set($palette-foreground-light, text, rgba(#111, 0.95));
+
+/* Now import the theme which will configure the theme functions */
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+## Adding New Themes
+
+By default, this library only provides you with `light` and `dark` themes.
+If you need additional color themes, you will need to access those through
+the `theme-foreground()` function which allows you to pass an arbitrary
+theme map.
+
+### `theme-foreground()` function
+
+| Param | Type | Description |
+| --- | --- | --- |
+| `theme` | `map` | A theme map that includes a sub-palette called `foreground`. |
+| `name` | `key` | A key in the `foreground` palette to access. |
+| __Return__ | `color` | A CSS color value |
+
+This is the function used under the hood by the `foreground()` function.
+
+Here's an example of how to use it:
+
+```css
+/* _theme.scss */
+$pink-theme: (
+  foreground: (
+    text: #ff00ff;
+    ...
+  )
+  ...
+);
+
+@import '@thesoulfresh/sass-theming/theme';
+
+/* my-component.scss */
+@import '_theme.scss';
+
+.my-component {
+  color: theme-foreground($pink-theme, text);
+}
+```
+
+You could also create your own convenience method for accessing the
+foreground palette on your custom theme.
+
+```css
+/* Get a foreground color from the pink theme */
+@function foreground-pink($hue: default) {
+  @return theme-foreground($pink-theme, $hue);
+}
+
+/* And use it like this */
+.my-component {
+  color: foreground-pink(text);
+}
+```
+
+[NEXT](/?path=/docs/colors-background-palette--background-palette)

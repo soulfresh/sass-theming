@@ -1,0 +1,80 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Sizes, Breakpoints, Radii } from '../Size.jsx';
+
+<Meta title="Measurements/Breakpoint Palette" />
+
+# Breakpoints
+
+Breakpoints are usually accessed through the `breakpoint-up()` mixin that allows
+you to create breakpoint media queries. Under the hood, breakpoints
+are a Named Palette and are available through the `breakpoint()` map.
+
+## Default Size Values
+
+The following are the breakpoints defined out of the box.
+
+<Story name="Breakpoint Palette">
+  <Breakpoints />
+</Story>
+
+## breakpoint-up() mixin
+
+| Param | Type | Description |
+| --- | --- | --- |
+| `size` | `key` | A key in the `$palette-breakpoint` map. |
+| `content` | `CSS` | The CSS content to render at the given breakpoint. |
+| __Return__ | `media query` | A media query with the given content. |
+
+To use the breakpoints, you would generally use the `@include breakpoint-up(m)` mixin.
+You can pass the breakpoint size as the parameter and any styles that you want
+to use at that breakpoint as the mixin content.
+
+```css
+.foo {
+  /* This is the mobile size */
+  width: 200px;
+
+  /* Anything above the medium breakpoint should be wider. */
+  @include breapoint-up(m) {
+    width: 300px;
+  }
+}
+```
+
+## breakpoint() function
+
+| Param | Type | Description |
+| --- | --- | --- |
+| `size` | `key` | A key in the `$palette-breakpoint` map. |
+| __Return__ | `number` | The width value for the breakpoint in question. |
+
+Should you need the raw breakpoint width, you can access it as follows.
+
+```css
+.foo {
+  /* Make the width exactly match the medium breakpoint width. */
+  width: breakpoint(m);
+}
+```
+
+## breakpoint() setup
+
+Both the `breakpoint-up()` mixin and the `breakpoint()` function use
+the same map under the hood. It is just a Named Palette and can be
+customized in the same way as other palettes.
+
+```css
+$palette-breakpoint: (
+  default: 0,
+  xs: 360px,
+  s:  576px,
+  m:  768px,
+  l:  992px,
+  xl: 1200px
+);
+
+/* Now import the theme which will configure the theme functions */
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+[NEXT](/?path=/docs/measurements-radius-palette--radius-palette)

@@ -1,0 +1,56 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import {
+  ColorPalette,
+  ForegroundPalette,
+  BackgroundPalette,
+  ShadowsPalette,
+  GradientsPalette,
+} from '../Color.jsx';
+
+<Meta title="Colors/Shadow Palette" />
+
+# Shadows Palette
+
+This is a Named Palette used to access box shadows behind/around/inside elements.
+There are only a couple shadows provided out of the box as shadow usage varies
+greatly by project.
+
+<Story name="Shadow Palette">
+  <>
+    <ShadowsPalette name="Shadows" />
+    <ShadowsPalette name="Shadows Dark" />
+  </>
+</Story>
+
+## Accessing Shadows
+
+To access the shadows palettes, just use the `color(name, hue)` function, passing
+shadows as the palette name and the shadow name as the hue.
+
+```css
+.foo {
+  box-shadow: color(shadows, overlay);
+}
+```
+
+## Shadows Setup
+
+To configure the shadows for your project, provide or modify the `$palette-shadow-light`
+and `$palette-shadow-dark` maps.
+
+```css
+$palette-shadow-light: (
+  overlay: 0 1px 12px 0 rgba($black, 0.10),
+  card: 0 0 5px 0 rgba($black, 0.25),
+);
+
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+## Adding New Themes
+
+Since shadows are accessed using the `color()` function, you can follow
+[the same directions](/?path=/docs/colors-palettes--color-palettes#named-color-palettes).
+
+[NEXT](/?path=/docs/colors-gradient-palette--gradient-palette)
+

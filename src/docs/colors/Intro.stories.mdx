@@ -1,0 +1,59 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import {
+  ColorPalette,
+  ForegroundPalette,
+  BackgroundPalette,
+  ShadowsPalette,
+  GradientsPalette,
+} from '../Color.jsx';
+
+<Meta title="Colors/Introduction" />
+
+# Colors
+
+Colors can be broken down into Named Palettes and Numbered Palettes.
+
+**Named Palettes** have values that are accessed using a memorable
+name that describes how the value should be used. For example, the `foreground`
+palette includes colors like `text` and `light-text`. Palettes are
+simply a SASS Map object.
+
+**Numbered Palettes** have values that are accessed using a hue
+number that describes how dark or light the color is. These palettes provide
+a range of hues based around a single color. For example, the `primary`
+palette includes 10 colors with shades ranging from `50` (lightest)
+to `900` (darkest). Palettes are simply a SASS Map object.
+
+**Themes** are a collection of palettes. For example, this library provides
+`light` and `dark` themes out of the box. As you might expect, the light theme
+provides dark text and foreground values paired with light background values.
+The dark theme is the inverse of that. Your project can have as many themes
+as you want to define. Themes are simply a SASS Map object with palette maps
+as their properties.
+
+## Default Theme Structure
+
+By default, themes include the following palettes.
+
+- `theme`: You can have as many color themes as you like. This project comes
+           with `light` and `dark` themes.
+  - `foreground`: A Named Palette of foreground colors with names like `light-text` and `border`.
+  - `background`: A Named Palette of background colors with names like `hover` and `shaded`.
+  - `gradient`: A Named Palette of reusable gradient definitions with names like `light` and `primary`.
+  - `shadow`: A Named Palette of reusable shadow defintions with names like `card` and `overlay`.
+  - `primary`: A Numbered Palette of 10 primary colors gradiented from light to dark.
+  - `secondary`: A Numbered Palette of 10 secondary colors gradiented from light to dark.
+  - `grayscale`: A Numbered Palette of 10 grayscale colors gradiented from light to dark.
+  - `focus`: A Numbered Palette of 10 focus colors gradiented from light to dark.
+  - `success`: A Numbered Palette of 10 success colors gradiented from light to dark.
+  - `warn`: A Numbered Palette of 10 warn colors gradiented from light to dark.
+  - `error`: A Numbered Palette of 10 error colors gradiented from light to dark.
+
+You can define as many color themes as your project needs and then use them
+through the color functions exposed in the following sections.
+
+Each theme can include whatever palette objects you want it to have. However,
+it is recommended (but not required) that all of your themes provide the same
+palettes so your code will remain agnostic to the theme it is using.
+
+[NEXT](/?path=/docs/colors-globals--page)

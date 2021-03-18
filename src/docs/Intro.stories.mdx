@@ -6,16 +6,19 @@ import LinkTo from '@storybook/addon-links/react';
 # Introduction
 
 `@thesoulfresh/sass-theming` provides a set of simple SASS
-functions you can use to create and use theme variables in
+tooks you can use to create and use themes in
 your SASS based projects. The main goal of these functions
-is to make it dead simple for developers to constently use
+is to make it dead simple for developers to consistently use
 theme values without memorizing specific variable names or
 pixel/color values.
 
+Unlike most theming tools, `@thesoulfresh/sass-theming` themes
+are not limited to theming colors but include all aspects
+of your design such as font families, font sizes, margins, etc.
+
 ## Using Your Theme
 
-Here's a quick example showing how easy it is to use
-your theme.
+Here's a quick example of using a theme.
 
 ```css
 .my-component {
@@ -64,8 +67,9 @@ You can have full control over the names and values in your theme
 but `@thesoulfresh/sass-theming` provides reasonable defaults
 for all of them as well.
 
-Here's an example of how you can specify the border radius
-values for your theme.
+The following chapters discuss in depth how to setup and use
+your theme but here's a quick example of how you migh customize
+the border radius values of your theme.
 
 `_theme.scss`
 ```css
@@ -92,11 +96,43 @@ $radii: (
 }
 ```
 
+You also have the option of updating the existing theme maps
+if you only want to change a few values in them.
+
+`_theme.scss`
+```css
+/* Start by importing the theme maps */
+@import '@thesoulfresh/sass-theming/variables';
+
+/* Then change the specific values you want */
+map-set($radii, m, 8);
+
+/* Or add new values to an existing map */
+map-set($adii, xxxxxxxxl, 10000000);
+
+/* Then import the theme */
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+## General Structure
+
+There's nothing magic to this library. It is really just a wrapper
+around SASS maps and some convenience functions for accessing values
+on those maps. It also pulls most of it's practices from Material Design
+without forcing you to use Material Design.
+
+You can easily implement your own version of this library in your own
+project by using `map-get()` to access properties in your own custom
+maps. However, since I found myself repeating that
+work across multiple projects, I've exposed a simple way to get
+it up and running quickly in new projects.
+
 ## TODO
 
 Move color generator helpers into a file that can be imported separately.
 Add documentation for:
-- Merging custom palette with existing palette
+- Install
+- SASS Path
 - Adding keys to the theme
 - Adding more themes
 
@@ -105,5 +141,5 @@ Add documentation for:
 The following sections will walk you through all of the available
 theme functions and details on getting your theme setup.
 
-[Next](/?path=/docs/colors--color-palettes)
+[Next](/?path=/docs/colors-introduction--page)
 

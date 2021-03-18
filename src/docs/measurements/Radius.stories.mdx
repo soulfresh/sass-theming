@@ -1,0 +1,46 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Sizes, Breakpoints, Radii } from '../Size.jsx';
+
+<Meta title="Measurements/Radius Palette" />
+
+# Radius
+
+The `radius()` function exposes border radius values.
+
+## Default Radius Values
+
+<Story name="Radius Palette">
+  <Radii />
+</Story>
+
+## radius() function
+
+| Param | Type | Description |
+| --- | --- | --- |
+| `size` | `key` | A key in the `$palette-radius` map. |
+| __Return__ | `number` | A value that can be used as a border radius. |
+
+```css
+.foo {
+  border-radius: radius(m);
+}
+```
+
+## radius() setup
+
+The `radius()` function exposes the `$palette-radius` map and
+can be customized in the same way as other palettes.
+
+```css
+$palette-radius: (
+  default: 2,
+  s: 2,
+  m: 4,
+  l: 8,
+);
+
+/* Now import the theme which will configure the theme functions */
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+[NEXT](/?path=/docs/measurements-layer-palette--layer-palette)

@@ -1,51 +1,47 @@
 // Speeds
-$t-xs   : 60ms   !default;
-$t-s    : 150ms  !default;
-$t-m    : 300ms  !default;
-$t-l    : 500ms  !default;
-$t-xl   : 750ms  !default;
-$t-xxl  : 1000ms !default;
-$t-xxxl : 2000ms !default;
-
-$speeds: (
-  default: $t-m,
-  xs: $t-xs,
-  s: $t-s,
-  m: $t-m,
-  l: $t-l,
-  xl: $t-xl,
-  xxl: $t-xxl,
-  xxxl: $t-xxxl,
+$palette-speed: (
+  default : 300ms  ,
+  xs      : 60ms   ,
+  s       : 150ms  ,
+  m       : 300ms  ,
+  l       : 500ms  ,
+  xl      : 750ms  ,
+  xxl     : 1000ms ,
+  xxxl    : 2000ms ,
 );
 
 @function speed($speed: default) {
-  $s: map-get($speeds, $speed);
+  $s: map-get($palette-speed, $speed);
 
   @if $s == null {
-    @error('Could not find speed #{$speed} on the theme provided: #{$speeds}');
+    @error('Could not find speed #{$speed} on the theme provided: #{$palette-speed}');
   }
 
   @return $s;
 }
 
-$e-out         : ease-out !default;
-$e-in-out      : ease-in-out !default;
-$e-out-hard    : cubic-bezier(0.215, 0.61,  0.355, 1) !default;
-$e-in-out-hard : cubic-bezier(0.645, 0.045, 0.355, 1) !default;
-
-$easings: (
-  default: $e-out,
-  out: $e-out,
-  in-out: $e-in-out,
-  out-hard: $e-out-hard,
-  in-out-hard: $e-in-out-hard,
+$palette-ease: (
+  default     : ease-out,
+  linear      : linear,
+  out         : ease-out,
+  in          : ease-in,
+  in-out      : ease-in-out,
+  out-hard    : cubic-bezier(0.075, 0.820, 0.165, 1.000),
+  in-hard     : cubic-bezier(0.600, 0.040, 0.980, 0.335),
+  in-out-hard : cubic-bezier(1.000, 0.000, 0.000, 1.000),
+  out-soft    : cubic-bezier(0.250, 0.460, 0.450, 0.940),
+  in-soft     : cubic-bezier(0.550, 0.085, 0.680, 0.530),
+  in-out-soft : cubic-bezier(0.455, 0.030, 0.515, 0.955),
+  out-bounce    : cubic-bezier(0.175, 0.885, 0.320, 1.275),
+  in-bounce     : cubic-bezier(0.600, -0.280, 0.735, 0.045),
+  in-out-bounce : cubic-bezier(0.680, -0.550, 0.265, 1.550),
 );
 
 @function ease($ease: default) {
-  $s: map-get($easings, $ease);
+  $s: map-get($palette-ease, $ease);
 
   @if $s == null {
-    @error('Could not find ease #{$ease} on the theme provided: #{$easings}');
+    @error('Could not find ease #{$ease} on the theme provided: #{$palette-ease}');
   }
 
   @return $s;

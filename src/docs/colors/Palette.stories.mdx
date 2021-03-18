@@ -1,0 +1,221 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import {
+  ColorPalette,
+  ForegroundPalette,
+  BackgroundPalette,
+  ShadowsPalette,
+  GradientsPalette,
+} from '../Color.jsx';
+
+<Meta title="Colors/Color Palettes" />
+
+# Color Palettes
+
+These palettes are named by their palette name and hue number. For example,
+to retrieve the primary brand color for your application, you would use `color(primary, 500)`.
+
+This system follows the
+[Material Design Guide](https://material.io/design/color/the-color-system.html).
+
+## Default Color Palettes
+
+Here are the colors palettes provided out of the box which you
+will definitely want to customize.
+
+<Story name="Color Palettes">
+  <>
+    <ColorPalette name="Primary" />
+    <ColorPalette name="Secondary" />
+    <ColorPalette name="Focus" />
+    <ColorPalette name="Grayscale" />
+    <ColorPalette name="Success" />
+    <ColorPalette name="Warn" />
+    <ColorPalette name="Error" />
+  </>
+</Story>
+
+In addition to these defaults, you could include any color palettes
+you like in your themes.
+
+## color() usage
+
+| Param | Type | Description |
+| --- | --- | --- |
+| `name` | `key` | A key in the `$palette-foreground-light` or `$palette-foreground-dark` palette map. |
+| `hue` | `number` | A number between 50 - 900 representing the hue in the palette. |
+| __Return__ | `color` | A CSS color value |
+
+To access these palettes in SASS, you can use the `color(name, hue)` and
+`color-dark(name, hue)` functions.
+They take the name of the palette (ex. primary, secondary, grayscale) and
+the hue (ex. 100, 400, etc.) as parameters. The hue is optional and defaults to 500.
+
+```css
+@import 'theme';
+
+.foo {
+  background-color: color(primary, 300);
+  /* This will use the 500 by default. */
+  color: color(secondary);
+}
+```
+
+## color() setup
+
+The `color()` function exposes the following maps:
+
+- `$palette-primary` Your primary (brand?) color.
+- `$palette-secondary` A secondary and complementary color.
+- `$palette-focus` The colors used to indicate element focus.
+- `$palette-success` Colors used for success messages.
+- `$palette-warn` Colors used for warnings.
+- `$palette-error` Colors used for errors.
+
+Just like other palettes, you can provide your own implementation of these
+maps or append to them with [SASS map.set()](https://sass-lang.com/documentation/values/maps#add-to-a-map).
+
+```css
+$palette-primary: (
+  100: #fff,
+  200: #eee,
+  300: #ccc,
+  400: #aaa,
+  500: #888,
+  600: #666,
+  700: #444,
+  800: #222,
+  900: #000,
+);
+
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+### Palette Helpers
+
+Generating these palettes can be a bit tedious so the following
+functions are provided which allow you to generate a color palette
+using just a couple of the colors.
+
+- `make-palette($color-500)`
+  Generates a full palette given just the mid color.
+- `make-palette-2($color-100, $color-900)`
+  Generates a full palette given just the 100 and darkest colors.
+- `make-palette-3($color-100, $color-500, $color-900)`
+  Generates a full palette given just the 100, darkest and mid colors.
+- `make-palette-5($color-100, $color-300, $color-500, $color-700, $color-900)`
+  Generates a full palette from just the 100, 300, 500, 700, and 900 colors.
+
+To use them, you can import `@thesoulfresh/sass-theming/utils`.
+
+```css
+@import '@thesoulfresh/sass-theming/utils';
+
+$palette-primary: make-palette(#ff00ff);
+
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+For other cases, you can use the [SASS mix](https://sass-lang.com/documentation/modules/color#mix)
+function to help you mix colors to generate a full palette.
+
+## Additional Palettes
+
+You are not limited to the Numbered Palettes described above. Here's an
+example showing you how to add a new palette to the `light` theme.
+
+```css
+/* Import the default variables */
+@import '@thesoulfresh/sass-theming/variables';
+/* Import the palette helpers */
+@import '@thesoulfresh/sass-theming/utils';
+
+/* Add a "tertiary" palette to the light theme. */
+map-set($theme-light, tertiary, make-palette(#ff00ff));
+
+/* Import the theme functionality */
+@import '@thesoulfresh/sass-theming/theme';
+
+/* Later on, you can use the tertiary palette like this: */
+.my-component {
+  background-color: color(tertiary, 300);
+}
+```
+
+### Named Color Palettes
+
+Sometimes Numbered Palettes might not fit the bill. In that case you
+can use all the same tools to create a Named Palette. For example,
+I sometimes need a complementary palette with a list of colors that
+I know will work well with my theme.
+
+Here's an example:
+
+```css
+@import '@thesoulfresh/sass-theming/variables';
+@import '@thesoulfresh/sass-theming/utils';
+
+/* Create a named palette with complementary colors */
+$complementary-palette: (
+  blue: ##0000ff,
+  deep-red: #A31515,
+);
+
+/* Add the complementary palette to my theme */
+map-set($theme-light, complementary, $complementary-palette);
+
+@import '@thesoulfresh/sass-theming/theme';
+
+/* Later on, you can use the tertiary palette like this: */
+.my-component {
+  background-color: color(complementary, deep-red);
+}
+```
+
+## Adding New Themes
+
+Use `theme-color()` to access additional themes other than `light` and `dark`. This is what
+the `color()` function uses under the hood.
+
+See the [foreground docs](?path=/docs/colors-foreground--foreground-palettes#adding-new-themes)
+for more information on this.
+
+### `theme-color()` function
+
+| Param | Type | Description |
+| --- | --- | --- |
+| `theme` | `map` | A theme map that includes all of your palettes. |
+| `palette` | `key` | The name of the palette you want to access. |
+| `hue` | `key` | A hue in the palette you are accessing. |
+| __Return__ | `color` | A CSS color value |
+
+Here's an example of how to use it:
+
+```css
+/* _theme.scss */
+@import '@thesoulfresh/sass-theming/utils';
+
+/* Build your theme object */
+$pink-theme: (
+  primary: make-palette(#ff00ff),
+  ...
+);
+
+@import '@thesoulfresh/sass-theming/theme';
+
+/* You could also provide a convenience function for
+   accessing colors in this palette */
+@function color-pink($palette: primary, $hue: 500) {
+  @return theme-color($pink-theme, $palette, $hue);
+}
+
+/* my-component.scss */
+@import '_theme.scss';
+
+.my-component {
+  background-color: theme-color($pink-theme, primary, 400);
+  /* or */
+  border-color: color-pink(primary, 200);
+}
+```
+
+[NEXT](/?path=/docs/colors-shadow-palette--shadow-palette)
