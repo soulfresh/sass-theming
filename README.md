@@ -7,5 +7,6 @@ easy access to them variables.
 
     npm install @thesoulfresh/sass-theming
 
-Find the docs at https://soulfresh.github.io/sass-theming/
+Find the docs at
+[https://soulfresh.github.io/sass-theming](https://soulfresh.github.io/sass-theming/?path=/docs/introduction--page)
 
