@@ -1,8 +1,118 @@
 import { Meta, Story } from '@storybook/addon-docs/blocks';
+
+import {
+  ColorPalette,
+  ForegroundPalette,
+  BackgroundPalette,
+  ShadowsPalette,
+  GradientsPalette,
+} from '../Color.jsx';
+import { FontFamilies, FontWeights } from '../Font.jsx';
 import { AnimationSpeed } from '../Animation.jsx';
+import { Sizes, Breakpoints, Radii } from '../Size.jsx';
 
 <Meta title="Cheat Sheet/Cheat Sheet" />
 
 # Cheat Sheet
 
-TODO All palettes with their function
+The following cheat sheet lists all of the functions
+and their default values.
+
+## foreground()
+
+<Story name="foreground()">
+  <>
+    <ForegroundPalette name="Foreground" />
+    <ForegroundPalette name="Foreground Dark" dark />
+  </>
+</Story>
+
+## background()
+
+<Story name="background()">
+  <>
+    <BackgroundPalette name="Background" />
+    <BackgroundPalette name="Background Dark" dark />
+  </>
+</Story>
+
+## color()
+
+<Story name="color()">
+  <>
+    <ColorPalette name="Primary" />
+    <ColorPalette name="Secondary" />
+    <ColorPalette name="Focus" />
+    <ColorPalette name="Grayscale" />
+    <ColorPalette name="Success" />
+    <ColorPalette name="Warn" />
+    <ColorPalette name="Error" />
+  </>
+</Story>
+
+## color(shadow)
+
+<Story name="shadows">
+  <>
+    <ShadowsPalette name="Shadows" />
+    <ShadowsPalette name="Shadows Dark" />
+  </>
+</Story>
+
+## color(gradient)
+
+<Story name="gradients">
+  <>
+    <GradientsPalette name="Gradients" />
+    <GradientsPalette name="Gradients Dark" />
+  </>
+</Story>
+
+## size()
+
+<Story name="size()">
+  <Sizes />
+</Story>
+
+## radius()
+
+<Story name="radius()">
+  <Radii />
+</Story>
+
+## breakpoint()
+
+<Story name="breakpoint()">
+  <Breakpoints />
+</Story>
+
+## layer()
+
+TODO
+
+## icon-size()
+
+TODO
+
+## font-family() & font-size()
+
+<Story name="font-family() & font-size()">
+  <FontFamilies />
+</Story>
+
+## font-weight()
+
+<Story name="Font Weight Palette">
+  <FontWeights />
+</Story>
+
+## ease()
+
+TODO
+
+## speed()
+
+<Story name="Speed Palette">
+  <AnimationSpeed />
+</Story>
+

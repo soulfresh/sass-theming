@@ -1,0 +1,40 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { FontFamilies, FontWeights } from '../Font.jsx';
+
+<Meta title="Fonts/Font Size Palette" />
+
+# Font Families & Sizes
+
+The following font faces and sizes are available.
+
+<Story name="Font Size Palette">
+  <FontFamilies />
+</Story>
+
+## Font Families & Sizing SASS
+
+The font families are be accessed through the `font-family(name)` function.
+It takes the name of the font-family as documented above (ex. font-family(title)).
+
+```scss
+.foo {
+ font-family: font-family(title);
+}
+
+.bar {
+  font-family: font-family(code);
+}
+```
+
+Font sizes are accessed using the `font-size(size)` function.
+
+```scss
+.foo {
+  font-size: font-size(s);
+}
+
+.bar {
+  font-size: font-size(xxl);
+}
+```
+

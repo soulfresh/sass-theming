@@ -1,4 +1,4 @@
-@import '../theme';
+@import '../../theme';
 
 @mixin generate-size($all-sizes) {
   @each $size in $all-sizes {
@@ -16,7 +16,7 @@
 
 @mixin generate-breakpoint($all-sizes) {
   @each $size in $all-sizes {
-    $val: map-get($grid-breakpoints, $size);
+    $val: map-get($palette-breakpoint, $size);
     .breakpoint-#{$size} {
       .measurement {
         width: $val;
@@ -85,6 +85,7 @@
 }
 
 .Sizes {
+  font-family: font-family(body);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -92,6 +93,7 @@
 }
 
 .Radius {
+  font-family: font-family(body);
   @include flex-centered;
   width: size(xxl);
   height: size(xxl);

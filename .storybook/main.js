@@ -17,10 +17,18 @@ module.exports = {
     "../src/docs/measurements/Radius.stories.mdx",
     "../src/docs/measurements/Layer.stories.mdx",
     "../src/docs/measurements/*.stories.mdx",
+    // Fonts
+    "../src/docs/fonts/Family.stories.mdx",
+    "../src/docs/fonts/Size.stories.mdx",
+    "../src/docs/fonts/Weight.stories.mdx",
+    "../src/docs/fonts/*.stories.mdx",
     // Animation
     "../src/docs/animation/Easing.stories.mdx",
     "../src/docs/animation/Speed.stories.mdx",
     "../src/docs/animation/*.stories.mdx",
+    // Helpers
+    "../src/docs/helpers/Mixins.stories.mdx",
+    "../src/docs/helpers/*.stories.mdx",
     // Cheat Sheet
     "../src/docs/cheat-sheet/Cheat.stories.mdx",
     "../src/docs/cheat-sheet/Boilerplate.stories.mdx",

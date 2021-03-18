@@ -1,0 +1,183 @@
+$black: #000 !default;
+$white: #FFF !default;
+// $focus: #3f51b5 !default;
+$focus: #4a7ddc !default;
+
+//// PRIMARY ////
+$palette-primary: make-palette-2(#6ec6ff, #0069c0) !default;
+
+//// SECONDARY ////
+$palette-secondary: make-palette-2(#ffd95a, #c17900) !default;
+
+//// FOCUS ////
+$palette-focus: make-palette($focus) !default;
+
+//// GRAYSCALE ////
+$palette-grayscale: make-palette-2(#dddddd, #111111) !default;
+
+//// SUCCESS ////
+$palette-success: make-palette-2(#80e27e, #087f23) !default;
+
+//// WARN ////
+$palette-warn: make-palette-2(#ffe54c, #c68400) !default;
+
+//// ERROR ////
+$palette-error: make-palette-2(#ff7961, #ba000d) !default;
+
+
+//// BACKGROUND ////
+// Colors for use as element backgrounds like hover states or card backgrounds.
+$palette-background-light: (
+  // The default color for light backgrounds.
+  default: $white,
+  // The background color for input elements.
+  input: rgba($black, 0.05),
+  // The background color used to indicate an item is hovered.
+  hover: rgba($black, 0.1),
+  // A secondary option for background colors to help
+  // a section stand apart for other page sections.
+  shaded: rgba($black, 0.2),
+  // A more prominent version of the shaded color.
+  deeply-shaded: rgba($black, 0.3),
+  // The background color used to overlay other elements inorder
+  // to bring the user's focus to a foreground element.
+  // Example: the background behind modals.
+  overlay: rgba($black, 0.8),
+  // Make the bacground elements fade further into the background.
+  // Example: disable a section of the page.
+  fade: rgba($white, 0.8),
+  // The background color used to indicate an item has focus.
+  focus: $focus,
+  // A color used like a highlighter.
+  highlight: rgba($focus, 0.5),
+) !default;
+
+$palette-background-dark: (
+  default: $black,
+  input: rgba($white, 0.05),
+  hover: rgba($white, 0.1),
+  shaded: rgba($white, 0.2),
+  deeply-shaded: rgba($white, 0.3),
+  overlay: rgba($white, 0.8),
+  fade: rgba($black, 0.8),
+  focus: $focus,
+  highlight: rgba($focus, 0.5),
+) !default;
+
+
+//// FOREGROUND ////
+// Colors for text and other foreground elements like horizontal rules and borders.
+$palette-foreground-light: (
+  opaque: $black,
+  default: rgba($black, 0.9),
+  text: rgba($black, 0.9),
+  light-text: rgba($black, 0.70),
+  faded-text: rgba($black, 0.5),
+  disabled-text: rgba($black, 0.4),
+  focus: $focus,
+  divider: rgba($black, 0.3),
+  border: rgba($black, 0.2)
+) !default;
+
+$palette-foreground-dark: (
+  opaque: $white,
+  default: rgba($white, 0.9),
+  text: rgba($white, 0.9),
+  light-text: rgba($white, 0.75),
+  faded-text: rgba($white, 0.6),
+  disabled-text: rgba($white, 0.4),
+  active-text: rgba($white, 1),
+  focus: $focus,
+  divider: rgba($white, 0.3),
+  border: rgba($white, 0.2)
+) !default;
+
+
+//// GRADIENTS ////
+$palette-gradient-light: (
+  primary: linear-gradient(
+    0deg,
+    map-get($palette-primary, 600) 0%,
+    map-get($palette-primary, 400) 100%
+  ),
+  focus: linear-gradient(
+    0deg,
+    mix($focus, $black, 90%) 0%,
+    mix($focus, $white, 90%) 100%
+  ),
+  light: linear-gradient(
+    0deg,
+    rgba($black, 0.1) 0%,
+    rgba($black, 0.0) 100%
+  ),
+) !default;
+
+$palette-gradient-dark: (
+  primary: linear-gradient(
+    0deg,
+    map-get($palette-primary, 600) 0%,
+    map-get($palette-primary, 400) 100%
+  ),
+  focus: linear-gradient(
+    0deg,
+    mix($focus, $black, 90%) 0%,
+    mix($focus, $white, 90%) 100%
+  ),
+  light: linear-gradient(
+    0deg,
+    rgba($white, 0.1) 0%,
+    rgba($white, 0.2) 100%
+  ),
+) !default;
+
+
+//// SHADOWS ////
+// Background and box shadows.
+$palette-shadow-light: (
+  overlay: 0 1px 12px 0 rgba($black, 0.10),
+  card: 0 0 5px 0 rgba($black, 0.25),
+) !default;
+
+$palette-shadow-dark: (
+  overlay: 0 1px 12px 0 rgba($white, 0.30),
+  card: 0 0 5px 0 rgba($white, 0.40),
+) !default;
+
+
+//// COMPLEMENTARY ////
+// Complementary colors that can be used as needed and fit with the theme and brand.
+$palette-complementary: (
+) !default;
+
+$theme-light: (
+  primary: $palette-primary,
+  secondary: $palette-secondary,
+  focus: $palette-focus,
+  warn: $palette-warn,
+  error: $palette-error,
+  success: $palette-success,
+  grayscale: $palette-grayscale,
+  background: $palette-background-light,
+  foreground: $palette-foreground-light,
+  gradients: $palette-gradient-light,
+  shadows: $palette-shadow-light,
+  complementary: $palette-complementary,
+  is-dark: false
+) !default;
+
+$theme-dark: (
+  primary: $palette-primary,
+  secondary: $palette-secondary,
+  focus: $palette-focus,
+  warn: $palette-warn,
+  error: $palette-error,
+  success: $palette-success,
+  grayscale: $palette-grayscale,
+  background: $palette-background-dark,
+  foreground: $palette-foreground-dark,
+  gradients: $palette-gradient-dark,
+  shadows: $palette-shadow-dark,
+  complementary: $palette-complementary,
+  is-dark: true
+) !default;
+

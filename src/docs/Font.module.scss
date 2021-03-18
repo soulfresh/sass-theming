@@ -1,4 +1,4 @@
-@import '../theme';
+@import '../../theme';
 
 @mixin generate-font-sizes($sizes) {
   @each $size in $sizes {
@@ -47,9 +47,9 @@
 }
 
 :global {
-  @include generate-families(map-keys($font-families));
-  @include generate-font-sizes(map-keys($font-sizes));
-  @include generate-font-weights(map-keys($font-weights));
+  @include generate-families(map-keys($palette-font-family));
+  @include generate-font-sizes(map-keys($palette-font-size));
+  @include generate-font-weights(map-keys($palette-font-weight));
 
   .lorem {
     display: flex;

@@ -1,4 +1,4 @@
-@import '../theme';
+@import '../../theme';
 
 @keyframes slide-left {
   0% {
@@ -12,6 +12,7 @@
 .Animation {
   position: relative;
   margin-right: size(m);
+  font-family: font-family(body);
 }
 
 $speed-anim: slide-left speed(m) ease(in-out) alternate infinite;
@@ -24,6 +25,7 @@ $speed-anim: slide-left speed(m) ease(in-out) alternate infinite;
   color: foreground-dark();
   background-color: color(primary);
   position: relative;
+  font-family: font-family(body);
 
   @each $name, $value in $palette-speed {
     &:global(.#{$name}) {

@@ -1,0 +1,27 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { FontFamilies, FontWeights } from '../Font.jsx';
+
+<Meta title="Fonts/Font Weight Palette" />
+
+# Font Weights
+
+The following font weights can be used with any of the font families.
+
+<Story name="Font Weight Palette">
+  <FontWeights />
+</Story>
+
+## Font Weights SASS
+
+The font weights are be accessed through the `font-weight(weight)` function.
+It takes the name of the font-weight as documented above (ex. font-weight(bold)).
+
+```scss
+.foo {
+ font-weight: font-weight(bold);
+}
+
+.bar {
+  font-weight: font-weight(normal);
+}
+```
