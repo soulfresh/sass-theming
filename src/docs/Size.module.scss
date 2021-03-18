@@ -1,4 +1,4 @@
-@import '../../theme';
+@import 'theme';
 
 @mixin generate-size($all-sizes) {
   @each $size in $all-sizes {
