@@ -14,19 +14,19 @@ $icon-small: size(xs);
 $icon-large: size(l);
 $icon-margin: size(s);
 
-.AnimationSpeed,
-.AnimationEasing {
+.sfAnimationSpeed,
+.sfAnimationEasing {
   position: relative;
   @include flex-centered;
   font-family: font-family(body);
   color: foreground(faded-text);
 }
 
-.AnimationSpeed {
+.sfAnimationSpeed {
   height: $speed-count * $icon-large;
 }
 
-.AnimationEasing {
+.sfAnimationEasing {
   height: $ease-count * ($icon-large + $icon-margin);
 }
 
@@ -44,17 +44,17 @@ $icon-margin: size(s);
 
   font-family: font-family(body);
 
-  &:global(.active) {
+  &.active {
     left: 100%;
     transform: translateX(-100%);
   }
 }
 
-.AnimationEasing {
+.sfAnimationEasing {
   .anim {
     $i: 0;
     @each $name, $value in $palette-ease {
-      &:global(.#{$name}) {
+      &.#{$name} {
         top: $i * ($icon-large + $icon-margin);
         transition: left speed(m) $value, transform speed(m) $value;
       }
@@ -63,11 +63,11 @@ $icon-margin: size(s);
   }
 }
 
-.AnimationSpeed {
+.sfAnimationSpeed {
   .anim {
     $i: 0;
     @each $name, $value in $palette-speed {
-      &:global(.#{$name}) {
+      &.#{$name} {
         top: $i * ($icon-large + $icon-margin);
         transition: left $value linear, transform $value linear;
       }

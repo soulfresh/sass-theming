@@ -2,8 +2,6 @@ import React from 'react';
 
 import { combineClasses } from '@thesoulfresh/utils';
 
-import styles from './Animation.module.scss';
-
 export function AnimationItem({
   speed,
 }) {
@@ -11,7 +9,7 @@ export function AnimationItem({
   return (
     <button
       className={combineClasses(
-        styles.anim,
+        'anim',
         speed,
         active ? 'active' : null,
       )}
@@ -27,7 +25,7 @@ export function AnimationSpeed({
 }) {
   return (
     <div
-      className={combineClasses(styles.AnimationSpeed, className)}
+      className={combineClasses('sfAnimationSpeed', className)}
       {...rest}
     >
       Click The Buttons
@@ -57,7 +55,7 @@ export function AnimationEasing({
 }) {
   return (
     <div
-      className={combineClasses(styles.AnimationEasing, className)}
+      className={combineClasses('sfAnimationEasing', className)}
       {...rest}
     >
       Click The Buttons

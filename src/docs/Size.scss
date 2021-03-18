@@ -3,7 +3,7 @@
 @mixin generate-size($all-sizes) {
   @each $size in $all-sizes {
     .size-#{$size} {
-      .measurement {
+      .sfMeasurement {
         width: size($size);
 
         &::after {
@@ -18,7 +18,7 @@
   @each $size in $all-sizes {
     $val: map-get($palette-breakpoint, $size);
     .breakpoint-#{$size} {
-      .measurement {
+      .sfMeasurement {
         width: $val;
 
         &::after {
@@ -43,48 +43,46 @@
 }
 
 
-:global {
-  $sizes: xxxs, xxs, xs, s, m, l, xl, xxl, xxxl;
-  @include generate-size($sizes);
+$sizes: xxxs, xxs, xs, s, m, l, xl, xxl, xxxl;
+@include generate-size($sizes);
 
-  $breakpoints: xs, s, m, l, xl;
-  @include generate-breakpoint($breakpoints);
+$breakpoints: xs, s, m, l, xl;
+@include generate-breakpoint($breakpoints);
 
-  $radii: s, m, l;
-  @include generate-radii($radii);
+$radii: s, m, l;
+@include generate-radii($radii);
 
-  .measurement {
-    $b: 2px solid foreground();
-    border-bottom: $b;
-    border-left: $b;
-    border-right: $b;
-    height: 5px;
-    display: flex;
-    align-items: flex-end;
+.sfMeasurement {
+  $b: 2px solid foreground();
+  border-bottom: $b;
+  border-left: $b;
+  border-right: $b;
+  height: 5px;
+  display: flex;
+  align-items: flex-end;
 
-    &::after {
-      color: foreground(light-text);
-      font-size: size(xs);
-      margin-bottom: size(xxs);
-    }
+  &::after {
+    color: foreground(light-text);
+    font-size: size(xs);
+    margin-bottom: size(xxs);
   }
 }
 
-.Size {
+.sfSize {
   display: flex;
   align-items: center;
   box-sizing: content-box;
   height: size(xxl);
+
+  .name {
+    width: 100px;
+    text-align: right;
+    padding-right: size(m);
+    text-transform: uppercase;
+  }
 }
 
-.name {
-  width: 100px;
-  text-align: right;
-  padding-right: size(m);
-  text-transform: uppercase;
-}
-
-.Sizes {
+.sfSizes {
   font-family: font-family(body);
   display: flex;
   flex-direction: column;
@@ -92,7 +90,7 @@
   overflow-x: auto;
 }
 
-.Radius {
+.sfRadius {
   font-family: font-family(body);
   @include flex-centered;
   width: size(xxl);

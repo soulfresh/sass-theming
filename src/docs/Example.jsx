@@ -3,11 +3,9 @@ import React from 'react';
 import { combineClasses } from '~/util';
 import { MiniTitle } from '~/components';
 
-import styles from './Example.module.scss';
-
 export function RowOfItems(s) {
   return (
-    <div style={styles} className={styles.RowOfItems}>
+    <div className={'sfRowOfItems'}>
       { s() }
     </div>
   );
@@ -15,7 +13,7 @@ export function RowOfItems(s) {
 
 export function ColumnOfItems(s) {
   return (
-    <div className={styles.ColumnOfItems}>
+    <div className={'sfColumnOfItems'}>
       { s() }
     </div>
   );
@@ -40,8 +38,7 @@ export const Example = React.forwardRef(({
     ref={ref}
     className={combineClasses(
       className,
-      dark ? styles.dark : null,
-      dark ? 'dark' : null,
+      dark ? 'sfDark' : null,
     )}
     {...rest}
   >
@@ -63,9 +60,9 @@ export const LightTheme = React.forwardRef(({
   <Example
     ref={ref}
     className={combineClasses(
-      styles.LightTheme,
+      'sfLightTheme',
       className,
-      column ? styles.ColumnOfItems : null,
+      column ? 'sfColumnOfItems' : null,
     )}
     {...rest}
   >
@@ -91,7 +88,7 @@ export const Column = React.forwardRef(({
 }, ref) =>
   <Example
     ref={ref}
-    className={combineClasses(styles.ColumnOfItems, className)}
+    className={combineClasses('sfColumnOfItems', className)}
     {...rest}
   />
 );
@@ -105,7 +102,7 @@ export const Row = React.forwardRef(({
 }, ref) =>
   <Example
     ref={ref}
-    className={combineClasses(styles.RowOfItems, className)}
+    className={combineClasses('sfRowOfItems', className)}
     {...rest}
   />
 );
@@ -119,7 +116,7 @@ export const Centered = React.forwardRef(({
 }, ref) =>
   <Example
     ref={ref}
-    className={combineClasses(styles.Centered, className)}
+    className={combineClasses('sfCentered', className)}
     {...rest}
   />
 );

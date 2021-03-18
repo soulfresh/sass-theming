@@ -1,8 +1,8 @@
 /* Shared Story Styles */
 @import 'theme';
 
-.RowOfItems,
-.ColumnOfItems {
+.sfRowOfItems,
+.sfColumnOfItems {
   display: flex;
   flex-wrap: wrap;
 
@@ -12,19 +12,19 @@
   }
 }
 
-.ColumnOfItems {
+.sfColumnOfItems {
   flex-direction: column;
 }
 
-.Centered {
+.sfCentered {
   @include flex-centered;
 }
 
-.DarkTheme,
-.LightTheme {
+.sfDarkTheme,
+.sfLightTheme {
   padding: size(m);
 }
 
-.dark {
+.sfDark {
   background-color: background-dark();
 }

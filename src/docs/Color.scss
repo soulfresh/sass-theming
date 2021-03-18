@@ -1,31 +1,29 @@
 @import 'theme';
 
-.ForegroundPalette,
-.BackgroundPalette,
-.Palette {
+.sfForegroundPalette,
+.sfBackgroundPalette,
+.sfPalette {
   font-family: sans-serif;
   display: inline-block;
   margin-right: size(m);
   margin-bottom: size(m);
 }
 
-.Palette {
+.sfPalette {
   width: 200px;
 }
 
-.BackgroundPalette,
-.ForegroundPalette {
+.sfBackgroundPalette,
+.sfForegroundPalette {
   width: 320px;
 }
 
-.GradientsPalette,
-.ShadowsPalette {
+.sfGradientsPalette,
+.sfShadowsPalette {
   width: 400px;
-}
 
-.ShadowsPalette {
   .color {
-    margin: size(m);
+    margin: size(m) !important;
     border-bottom: none !important;
   }
 }
@@ -52,7 +50,7 @@
   }
 }
 
-:global {
+.sfPalette {
   @include generate-background-color-palettes(foreground, $theme-light, color);
   @include generate-background-color-palettes(foreground, $theme-dark, color, '.dark');
   $standard-palettes: primary, secondary, focus, grayscale, success, warn, error;

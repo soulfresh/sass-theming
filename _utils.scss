@@ -3,10 +3,8 @@
 ////
 
 
-////
-// Generate a palette with even color gradiation
-// using a single color as the 500 value.
-////
+/// Generate a palette with even color gradiation
+/// using a single color as the 500 value.
 @function make-palette($color1, $black: #000, $white: #fff) {
   @return (
     50 : mix($color1, $white, 10%),
@@ -21,10 +19,9 @@
     900: mix($color1, $black, 40%),
   );
 }
-////
-// Generate a palette with even color gradiation
-// between 2 stops (100, 900).
-////
+
+/// Generate a palette with even color gradiation
+/// between 2 stops (100, 900).
 @function make-palette-2($color1, $color9) {
   @return (
     50 : mix($color1, #ffffff, 50%),
@@ -40,10 +37,8 @@
   );
 }
 
-////
-// Generate a palette with even color gradiation
-// between 3 stops (100, 500, 900).
-////
+/// Generate a palette with even color gradiation
+/// between 3 stops (100, 500, 900).
 @function make-palette-3($color1, $color5, $color9) {
   @return (
     50 : mix($color1, #ffffff, 50%),
@@ -59,10 +54,8 @@
   );
 }
 
-////
-// Generate a palette with even color gradiation
-// between 5 stops (100, 500, 900).
-////
+/// Generate a palette with even color gradiation
+/// between 5 stops (100, 500, 900).
 @function make-palette-5($color1, $color3, $color5, $color7, $color9) {
   @return (
     50 : mix($color1, #ffffff, 50%),

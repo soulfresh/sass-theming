@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 import { combineClasses } from '@thesoulfresh/utils';
 
-import styles from './Color.module.scss';
-
 export default function Palette({
   name,
   hues,
@@ -14,8 +12,8 @@ export default function Palette({
 }) {
 
   return (
-    <div className={combineClasses(styles.Palette, className)}>
-      <h3 className={styles.paletteTitle}>{ name }</h3>
+    <div className={combineClasses('sfPalette', className)}>
+      <h3 className={'paletteTitle'}>{ name }</h3>
       <ul
         className={combineClasses(name.toLowerCase(), 'color-palette')}
         {...rest}
@@ -23,7 +21,7 @@ export default function Palette({
         { hues.map(hue => (
           <li
             key={hue}
-            className={combineClasses(`hue-${hue}`, styles.color, 'color')}
+            className={combineClasses(`hue-${hue}`, 'color')}
           >
             { hue }
           </li>
@@ -71,7 +69,7 @@ export function ForegroundPalette({
   ];
 
   return (
-    <Palette className={styles.ForegroundPalette} hues={hues} {...rest} />
+    <Palette className={'sfForegroundPalette'} hues={hues} {...rest} />
   );
 }
 
@@ -96,7 +94,7 @@ export function BackgroundPalette({
 
   return (
     <Palette
-      className={combineClasses(styles.BackgroundPalette, className)}
+      className={combineClasses('sfBackgroundPalette', className)}
       hues={hues}
       {...rest}
     />
@@ -117,7 +115,7 @@ export function ShadowsPalette({
 
   return (
     <Palette
-      className={combineClasses(styles.ShadowsPalette, className)}
+      className={combineClasses('sfShadowsPalette', className)}
       hues={hues}
       {...rest}
     />
@@ -136,7 +134,7 @@ export function GradientsPalette({
 
   return (
     <Palette
-      className={combineClasses(styles.GradientsPalette, className)}
+      className={combineClasses('sfGradientsPalette', className)}
       hues={hues}
       {...rest}
     />
