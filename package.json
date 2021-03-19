@@ -45,6 +45,8 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^5.1.1",
     "node-sass": "^5.0.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.41.5",
     "rollup-plugin-babel": "^4.4.0",
