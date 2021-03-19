@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { combineClasses } from '~/util';
-import { MiniTitle } from '~/components';
+import { combineClasses } from '@thesoulfresh/utils';
 
 export function RowOfItems(s) {
   return (
@@ -66,7 +65,7 @@ export const LightTheme = React.forwardRef(({
     )}
     {...rest}
   >
-    <MiniTitle>{ title }</MiniTitle>
+    <h4>{ title }</h4>
     { render(children) }
   </Example>
 );

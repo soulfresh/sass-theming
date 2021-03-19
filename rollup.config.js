@@ -1,8 +1,13 @@
 import resolve from '@rollup/plugin-node-resolve';
+import babel from 'rollup-plugin-babel';
+import replace from '@rollup/plugin-replace';
+import commonjs from "rollup-plugin-commonjs";
+
+import pkg from './package.json';
 
 module.exports = {
   input: [
-    './components.js',
+    './src/docs/components.js',
   ],
   output: [{
     dir: 'lib/esm',
@@ -11,5 +16,15 @@ module.exports = {
     dir: 'lib/cjs',
     format: 'cjs',
   }],
-  plugins: [resolve()],
+  plugins: [
+    babel({
+      babelrc: true,
+      exclude: "node_modules/**",
+    }),
+    resolve(),
+    commonjs(),
+  ],
+  external: [
+    ...Object.keys(pkg.peerDependencies || {})
+  ],
 }
