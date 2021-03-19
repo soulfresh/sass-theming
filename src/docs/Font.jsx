@@ -29,7 +29,6 @@ export function Font({
 }) {
   return (
     <div className={combineClasses('sfFont', className)} {...rest}>
-      <h3 className="sfFontName">{ children }</h3>
       { sizes.reverse().map(s => (
         <Lorem
           className={`font-size-${s}`}
@@ -59,7 +58,7 @@ export function FontFamilies({
             'sfFont',
           )}
         >
-          <h3 className="font-name">{ f }</h3>
+          <h3 className="sfFontName">{ f }</h3>
           <Lorem
             className={`font-size-xl`}
           />
@@ -79,7 +78,7 @@ export function FontSizes({
       className={combineClasses('sfFontFamilies', className)}
       {...rest}
     >
-      <Font className={`font-body`}>Body Font</Font>
+      <Font className={`font-body`} />
     </div>
   );
 }
@@ -96,7 +95,7 @@ export function FontWeight({
       className={combineClasses('sfFontWeight', className)}
       {...rest}
     >
-      <h3 className="font-name">{ children }</h3>
+      <h3 className="sfFontName">{ children }</h3>
       { families.map(f => (
         <Lorem
           key={f}

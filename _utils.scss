@@ -2,6 +2,15 @@
 // Utilities to help generate themes.
 ////
 
+/// Generate the fallback fonts for a Sans Serif face.
+@function sans-serif() {
+  @return -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/// Generate the fallback fonts for a Monospace face.
+@function monospace() {
+  @return source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
 
 /// Generate a palette with even color gradiation
 /// using a single color as the 500 value.

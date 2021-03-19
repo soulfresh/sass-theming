@@ -7,14 +7,18 @@ export function AnimationItem({
 }) {
   const [active, setActive] = React.useState(false);
   return (
-    <button
+    <div
       className={combineClasses(
-        'anim',
+        "sfAnimationItem",
         speed,
         active ? 'active' : null,
       )}
-      onClick={() => setActive(a => !a)}
-    >{speed}</button>
+    >
+      <button
+        className="anim"
+        onClick={() => setActive(a => !a)}
+      >{speed}</button>
+    </div>
   );
 }
 
@@ -28,7 +32,7 @@ export function AnimationSpeed({
       className={combineClasses('sfAnimationSpeed', className)}
       {...rest}
     >
-      Click The Buttons
+      <div className="sfDescription">Click The Boxes Below</div>
       {speeds.map(s => <AnimationItem speed={s} key={s} />)}
     </div>
   );
@@ -58,7 +62,7 @@ export function AnimationEasing({
       className={combineClasses('sfAnimationEasing', className)}
       {...rest}
     >
-      Click The Buttons
+      <div className="sfDescription">Click The Boxes Below</div>
       {speeds.map(s => <AnimationItem speed={s} key={s} />)}
     </div>
   );

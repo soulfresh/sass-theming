@@ -33,21 +33,21 @@ The following default font families are configured out of the box.
 }
 ```
 
-## Global Variables
+## Helper Functions
 
 In addition to the `font-family()` function, there are a couple
-font family global variables that are useful in generating font
+font family functions that are useful in generating font
 definitions. You can use them as your fallbacks after your desired font
 face.
 
-- `$sans-serif`: Fallbacks to for your Sans Serf faces.
-- `$monospace`: Fallback to use for your Code font.
+- `sans-serif()`: Fallbacks to for your Sans Serf faces.
+- `monospace()`: Fallback to use for your Code font.
 
 Here's how you can use them:
 
 ```css
-$my-title-font: Roboto $sans-serif;
-$my-code-font: Menlo $monospace;
+$my-title-font: Roboto, sans-serif();
+$my-code-font: Menlo, monospace();
 ```
 
 ## Configuration
@@ -57,9 +57,9 @@ the `$palette-font-family` map.
 
 ```css
 $palette-font-family : (
-  body  : (Roboto, $sans-serif),
-  title : ("HelveticaNeue-Light", "Helvetica Neue Light", $sans-serif),
-  code  : (Monaco, $monospace),
+  body  : (Roboto, sans-serif()),
+  title : ("HelveticaNeue-Light", "Helvetica Neue Light", sans-serif()),
+  code  : (Monaco, monospace()),
 );
 
 @import '@thesoulfresh/sass-theming/theme';

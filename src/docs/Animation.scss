@@ -10,69 +10,89 @@ $ease-count: 0;
   $ease-count: $ease-count + 1;
 }
 
-$icon-small: size(xs);
-$icon-large: size(l);
-$icon-margin: size(s);
+$anim-pad: size(xs);
+$anim-size: font-size(m);
+$data-size: font-size(xs);
 
 .sfAnimationSpeed,
 .sfAnimationEasing {
+  font-family: font-family(body);
+
+  .sfDescription {
+    color: foreground(disabled-text);
+    margin-bottom: size(m);
+    text-align: center;
+  }
+}
+
+.sfAnimationItem {
+  height: $anim-pad * 2 + $anim-size + $data-size + size(xs);
   position: relative;
-  @include flex-centered;
-  font-family: font-family(body);
-  color: foreground(faded-text);
-}
+  margin-bottom: size(xs);
+  border-bottom: 1px solid foreground(divider);
 
-.sfAnimationSpeed {
-  height: $speed-count * $icon-large;
-}
+  &:after {
+    position: absolute;
+    bottom: 0;
+    color: foreground(disabled-text);
+    font-size: $data-size;
+    padding-bottom: size(xxxs);
+  }
 
-.sfAnimationEasing {
-  height: $ease-count * ($icon-large + $icon-margin);
-}
+  .anim {
+    @include flex-centered;
+    position: absolute;
+    left: 0;
 
-.anim {
-  @include flex-centered;
-  position: absolute;
-  left: 0;
+    @include unstyled-button;
+    cursor: pointer;
+    border-radius: radius(s);
+    color: foreground-dark();
+    background-color: color(primary);
 
-  @include unstyled-button;
-  cursor: pointer;
-  border-radius: radius(s);
-  color: foreground-dark();
-  background-color: color(primary);
-  padding: $icon-small;
+    font-family: font-family(body);
 
-  font-family: font-family(body);
+    padding: $anim-pad;
+    font-size: $anim-size;
+  }
 
   &.active {
-    left: 100%;
-    transform: translateX(-100%);
+    .anim {
+      left: 100%;
+      transform: translateX(-100%);
+    }
   }
 }
 
 .sfAnimationEasing {
-  .anim {
-    $i: 0;
-    @each $name, $value in $palette-ease {
-      &.#{$name} {
-        top: $i * ($icon-large + $icon-margin);
+  $i: 0;
+  @each $name, $value in $palette-ease {
+    .#{$name} {
+      .anim {
         transition: left speed(m) $value, transform speed(m) $value;
       }
-      $i: $i + 1;
+
+      &:after {
+        content: '#{$name}: #{$value}';
+      }
     }
+    $i: $i + 1;
   }
 }
 
 .sfAnimationSpeed {
-  .anim {
-    $i: 0;
-    @each $name, $value in $palette-speed {
-      &.#{$name} {
-        top: $i * ($icon-large + $icon-margin);
+  $i: 0;
+  @each $name, $value in $palette-speed {
+    .#{$name} {
+      .anim {
         transition: left $value linear, transform $value linear;
       }
-      $i: $i + 1;
+
+      &:after {
+        content: '#{$name}: #{$value}';
+      }
     }
+    $i: $i + 1;
   }
 }
 
