@@ -1,15 +1,5 @@
 
 ////
-// Convert a pixel value into a rem value.
-// Do not pass the pixel unit (ie. 10px); just pass the value (ie. 10).
-//
-// Ex: `margin: rem(10);`
-////
-@function rem($pixels) {
-  @return $pixels * 1px;
-}
-
-////
 // Get one of the theme's font sizes.
 // The available sizes are defined in `$palette-font-size`.
 //
@@ -22,7 +12,7 @@
     @error('Could not find font size #{$size} on the theme provided: #{$palette-font-size}');
   }
 
-  @return rem($s);
+  @return $s * $font-size-unit;
 }
 
 ////

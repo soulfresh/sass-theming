@@ -1,12 +1,13 @@
+$animation-speed-unit: 1ms !default;
 
 $palette-speed: (
-  xs      : 60ms   ,
-  s       : 150ms  ,
-  m       : 300ms  ,
-  l       : 500ms  ,
-  xl      : 750ms  ,
-  xxl     : 1000ms ,
-  xxxl    : 2000ms ,
+  xs      : 60   ,
+  s       : 150  ,
+  m       : 300  ,
+  l       : 500  ,
+  xl      : 750  ,
+  xxl     : 1000 ,
+  xxxl    : 2000 ,
 );
 
 $palette-ease: (

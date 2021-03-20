@@ -9,7 +9,7 @@
     @error('Could not find measurement/size #{$size} on the theme provided: #{$palette-size}');
   }
 
-  @return rem($s);
+  @return $s * $size-unit;
 }
 
 /// Get a border radius from the theme
@@ -21,7 +21,7 @@
     @error('Could not find measurement/size #{$size} on the theme provided: #{$palette-radius}');
   }
 
-  @return rem($s);
+  @return $s * $size-unit;
 }
 
 /// Get an icon size from the theme
@@ -33,7 +33,7 @@
     @error('Could not find measurement/size #{$size} on the theme provided: #{$palette-icon-size}');
   }
 
-  @return rem($s);
+  @return $s * $size-unit;
 }
 
 /// Get a breakpoint from the theme
@@ -45,7 +45,7 @@
     @error('Could not find breakpoint #{$size} on the theme provided: #{$palette-breakpoint}');
   }
 
-  @return rem($s);
+  @return $s * $size-unit;
 }
 
 /// Minimum breakpoint width. Null for the smallest (first) breakpoint.

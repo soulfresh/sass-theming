@@ -6,7 +6,7 @@
     @error('Could not find speed #{$speed} on the theme provided: #{$palette-speed}');
   }
 
-  @return $s;
+  @return $s * $animation-speed-unit;
 }
 
 @function ease($ease: out) {

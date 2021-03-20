@@ -82,7 +82,9 @@ $data-size: font-size(xs);
 
 .sfAnimationSpeed {
   $i: 0;
-  @each $name, $value in $palette-speed {
+  // TODO Why does removing $blah below break this loop?
+  @each $name, $blah in $palette-speed {
+    $value: speed($name);
     .#{$name} {
       .anim {
         transition: left $value linear, transform $value linear;

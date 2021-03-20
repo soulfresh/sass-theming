@@ -1,3 +1,4 @@
+$size-unit: 1px !default;
 
 $palette-size: (
   xxxs       : 4  ,
@@ -13,18 +14,17 @@ $palette-size: (
 ) !default;
 
 $palette-radius: (
-  default: 4,
   s: 2,
   m: 4,
   l: 12,
 ) !default;
 
 $palette-breakpoint: (
-  xs: 360px,
-  s:  576px,
-  m:  768px,
-  l:  992px,
-  xl: 1200px
+  xs : 360,
+  s  : 576,
+  m  : 768,
+  l  : 992,
+  xl : 1200,
 ) !default;
 
 $palette-icon-size: (
