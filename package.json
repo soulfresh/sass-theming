@@ -1,6 +1,6 @@
 {
   "name": "@thesoulfresh/sass-theming",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "description": "Simple theming tools for SASS based projects.",
   "main": "lib/cjs/components.js",
   "module": "lib/esm/components.js",
