@@ -1,28 +1,28 @@
 $animation-speed-unit: 1ms !default;
 
 $palette-speed: (
-  xs      : 60   ,
-  s       : 150  ,
-  m       : 300  ,
-  l       : 500  ,
-  xl      : 750  ,
-  xxl     : 1000 ,
-  xxxl    : 2000 ,
+  'xs'   : 60   ,
+  's'    : 150  ,
+  'm'    : 300  ,
+  'l'    : 500  ,
+  'xl'   : 750  ,
+  'xxl'  : 1000 ,
+  'xxxl' : 2000 ,
 );
 
 $palette-ease: (
-  linear      : linear,
-  out         : ease-out,
-  in          : ease-in,
-  in-out      : ease-in-out,
-  out-hard    : cubic-bezier(0.075, 0.820, 0.165, 1.000),
-  in-hard     : cubic-bezier(0.600, 0.040, 0.980, 0.335),
-  in-out-hard : cubic-bezier(1.000, 0.000, 0.000, 1.000),
-  out-soft    : cubic-bezier(0.250, 0.460, 0.450, 0.940),
-  in-soft     : cubic-bezier(0.550, 0.085, 0.680, 0.530),
-  in-out-soft : cubic-bezier(0.455, 0.030, 0.515, 0.955),
-  out-bounce    : cubic-bezier(0.175, 0.885, 0.320, 1.275),
-  in-bounce     : cubic-bezier(0.600, -0.280, 0.735, 0.045),
-  in-out-bounce : cubic-bezier(0.680, -0.550, 0.265, 1.550),
+  'linear'      : linear,
+  'out'         : ease-out,
+  'in'          : ease-in,
+  'in-out'      : ease-in-out,
+  'out-hard'    : cubic-bezier(0.075, 0.820, 0.165, 1.000),
+  'in-hard'     : cubic-bezier(0.600, 0.040, 0.980, 0.335),
+  'in-out-hard' : cubic-bezier(1.000, 0.000, 0.000, 1.000),
+  'out-soft'    : cubic-bezier(0.250, 0.460, 0.450, 0.940),
+  'in-soft'     : cubic-bezier(0.550, 0.085, 0.680, 0.530),
+  'in-out-soft' : cubic-bezier(0.455, 0.030, 0.515, 0.955),
+  'out-bounce'    : cubic-bezier(0.175, 0.885, 0.320, 1.275),
+  'in-bounce'     : cubic-bezier(0.600, -0.280, 0.735, 0.045),
+  'in-out-bounce' : cubic-bezier(0.680, -0.550, 0.265, 1.550),
 );
 

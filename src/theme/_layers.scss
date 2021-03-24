@@ -4,11 +4,6 @@
 //
 // Ex: `margin: size(xxl);`
 @function layer($layer: above) {
-  $l: map-get($layers, $layer);
-
-  @if $l == null {
-    @error('Could not find layer #{$layer} on the theme provided: #{$layers}');
-  }
-
+  $l: theme-vaue($theme-light, 'layer', $layer);
   @return $l;
 }

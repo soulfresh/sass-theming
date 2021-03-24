@@ -57,24 +57,10 @@ Should you need the raw breakpoint width, you can access it as follows.
 }
 ```
 
-## breakpoint() setup
+## Configuration
 
 Both the `breakpoint-up()` mixin and the `breakpoint()` function use
-the same map under the hood. It is just a Named Palette and can be
-customized in the same way as other palettes.
-
-```css
-$palette-breakpoint: (
-  default: 0,
-  xs: 360px,
-  s:  576px,
-  m:  768px,
-  l:  992px,
-  xl: 1200px
-);
-
-/* Now import the theme which will configure the theme functions */
-@import '@thesoulfresh/sass-theming/theme';
-```
+the same palette under the hood. It is available through the
+`breakpoint` property of each theme.
 
 [NEXT](/?path=/docs/measurements-radius-palette--radius-palette)

@@ -1,24 +1,24 @@
 $font-size-unit: 1px !default;
 
 $palette-font-family : (
-  body  : (Roboto, sans-serif()),
-  title : ("HelveticaNeue-Light", "Helvetica Neue Light", sans-serif()),
-  code  : monospace(),
+  'body'  : (Roboto, sans-serif()),
+  'title' : ("HelveticaNeue-Light", "Helvetica Neue Light", sans-serif()),
+  'code'  : monospace(),
 ) !default;
 
 $palette-font-size: (
-  xxxl    : 36,
-  xxl     : 32,
-  xl      : 24,
-  l       : 16,
-  m       : 14,
-  s       : 12,
-  xs      : 10
+  'xxxl'    : 36,
+  'xxl'     : 32,
+  'xl'      : 24,
+  'l'       : 16,
+  'm'       : 14,
+  's'       : 12,
+  'xs'      : 10
 ) !default;
 
 $palette-font-weight: (
-  light   :300,
-  normal  :400,
-  medium  :500,
-  bold    :600,
+  'light'   :300,
+  'normal'  :400,
+  'medium'  :500,
+  'bold'    :600,
 ) !default;

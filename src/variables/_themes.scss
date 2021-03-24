@@ -5,6 +5,53 @@
 @import './animations';
 
 
-// TODO combine all of the palettes into the $theme-light
-// and $theme-dark variables so themes can changes the
-// sizes as well.
+// Combine all of the palettes into the themes we expose.
+$theme-light: (
+  'primary': $palette-primary,
+  'secondary': $palette-secondary,
+  'focus': $palette-focus,
+  'warn': $palette-warn,
+  'error': $palette-error,
+  'success': $palette-success,
+  'grayscale': $palette-grayscale,
+  'background': $palette-background-light,
+  'foreground': $palette-foreground-light,
+  'gradient': $palette-gradient-light,
+  'shadow': $palette-shadow-light,
+  'font-family': $palette-font-family,
+  'font-size': $palette-font-size,
+  'font-weight': $palette-font-weight,
+  'layer': $palette-layer,
+  'size': $palette-size,
+  'radius': $palette-radius,
+  'breakpoint': $palette-breakpoint,
+  'icon-size': $palette-icon-size,
+  'speed': $palette-speed,
+  'ease': $palette-ease,
+  'is-dark': false
+) !default;
+
+$theme-dark: (
+  'primary': $palette-primary,
+  'secondary': $palette-secondary,
+  'focus': $palette-focus,
+  'warn': $palette-warn,
+  'error': $palette-error,
+  'success': $palette-success,
+  'grayscale': $palette-grayscale,
+  'background': $palette-background-dark,
+  'foreground': $palette-foreground-dark,
+  'gradient': $palette-gradient-dark,
+  'shadow': $palette-shadow-dark,
+  'font-family': $palette-font-family,
+  'font-size': $palette-font-size,
+  'font-weight': $palette-font-weight,
+  'layer': $palette-layer,
+  'size': $palette-size,
+  'radius': $palette-radius,
+  'breakpoint': $palette-breakpoint,
+  'icon-size': $palette-icon-size,
+  'speed': $palette-speed,
+  'ease': $palette-ease,
+  'is-dark': true
+) !default;

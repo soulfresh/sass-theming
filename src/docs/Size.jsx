@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { combineClasses } from '@thesoulfresh/utils';
 
@@ -15,15 +16,18 @@ export default function Size({
   );
 }
 
-Size.propTypes = {
-};
-
+/**
+ * Shows the sizes available in your theme.
+ *
+ * @param {object} props
+ * @param {string[]} [props.sizes] - The list of families
+ *   in your theme if different than the defaults.
+ */
 export function Sizes({
+  sizes = ['xxxs', 'xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl', 'xxxl'],
   className,
   ...rest
 }) {
-  const sizes = ['xxxs', 'xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl', 'xxxl'];
-
   return (
     <div className={combineClasses('sfSizes', className)} {...rest}>
       { sizes.map(s =>
@@ -34,14 +38,31 @@ export function Sizes({
 }
 
 Sizes.propTypes = {
+  /**
+   * The list of sizes in your theme if different
+   * than the defaults
+   */
+  sizes: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * Any other props you specify will be applied
+   * to the root element.
+   */
+  'other props...': PropTypes.any,
 };
 
+
+/**
+ * Shows the breakpoints available in your theme.
+ *
+ * @param {object} props
+ * @param {string[]} [props.sizes] - The list of families
+ *   in your theme if different than the defaults.
+ */
 export function Breakpoints({
+  sizes = ['xs', 's', 'm', 'l', 'xl'],
   className,
   ...rest
 }) {
-  const sizes = ['xs', 's', 'm', 'l', 'xl'];
-
   return (
     <div className={combineClasses('sfSizes', className)} {...rest}>
       { sizes.map(s =>
@@ -52,7 +73,18 @@ export function Breakpoints({
 }
 
 Breakpoints.propTypes = {
+  /**
+   * The list of sizes in your theme if different
+   * than the defaults
+   */
+  sizes: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * Any other props you specify will be applied
+   * to the root element.
+   */
+  'other props...': PropTypes.any,
 };
+
 
 export function Radius({
   size,
@@ -66,15 +98,19 @@ export function Radius({
   );
 }
 
-Radius.propTypes = {
-};
 
+/**
+ * Shows the radius values available in your theme.
+ *
+ * @param {object} props
+ * @param {string[]} [props.sizes] - The list of families
+ *   in your theme if different than the defaults.
+ */
 export function Radii({
+  sizes = ['s', 'm', 'l'],
   className,
   ...rest
 }) {
-  let sizes = ['s', 'm', 'l'];
-
   return (
     <div className={combineClasses('sfRadii', className)} {...rest}>
       { sizes.map(s => (
@@ -85,5 +121,15 @@ export function Radii({
 }
 
 Radii.propTypes = {
+  /**
+   * The list of sizes in your theme if different
+   * than the defaults
+   */
+  sizes: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * Any other props you specify will be applied
+   * to the root element.
+   */
+  'other props...': PropTypes.any,
 };
 

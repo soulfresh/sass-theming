@@ -71,101 +71,33 @@ colors be partially transparent. This allows them to be placed over any backgrou
 color and look natural. This follows the recommendations from
 [Material Design Guide](https://material.io/design/color/text-legibility.html#text-backgrounds).
 
-To provide your own foreground colors, you can specify your own version of
-`$palette-foreground-light` or `$palette-foreground-dark` before
-importing `@thesoulfresh/sass-theming/theme`.
-
-The values in the maps do not need to have the same names as the default
-palettes. The maps can have any property names that make sense for your needs.
+The foreground colors are specified in the `foreground` palette of
+each theme. The values in this palette do not need to have the same names
+as provided in the default themes.
 
 ```css
-/* You can override the full map with your own, defining
-any property names/values you like. */
-$palette-foreground-light: (
-  opaque: #111,
-  default: rgba(#111, 0.9),
-  text: rgba(#111, 0.8),
-  light-text: rgba(#111, 0.65),
-  faded-text: rgba(#111, 0.3),
-  disabled-text: rgba(#111, 0.4),
-  focus: $focus-color,
-  divider: rgba(#111, 0.3),
-  border: rgba(#111, 0.08),
-  /* Any values you'd like to include... */
-  widget: rgba(#111, 0.5)
-);
-
-/* Now import the theme which will configure the theme functions */
-@import '@thesoulfresh/sass-theming/theme';
-```
-
-You can also modify individual values in the default foreground palette
-by importing `@thesoulfresh/sass-theming/variables`, making modifications
-to the map and then importing the theme.
-
-```css
-/* Import the palette definitions */
+/* Start by importing the default light and dark theme objects */
 @import '@thesoulfresh/sass-theming/variables';
+@import '@thesoulfresh/sass-theming/util';
 
-/* Use map-set to set individual keys in the palette. */
-map-set($palette-foreground-light, text, rgba(#111, 0.95));
+/* Set your values on the desired theme */
+$theme-light: map-merge($theme-light, (
+  'foreground': (
+    opaque: #111,
+    default: rgba(#111, 0.8),
+    bright: rgba(#111, 0.9),
+  ),
+));
 
-/* Now import the theme which will configure the theme functions */
+/* Import the theming infrastructure that provides
+   the convenience functions used to access the themes. */
 @import '@thesoulfresh/sass-theming/theme';
 ```
 
 ## Adding New Themes
 
 By default, this library only provides you with `light` and `dark` themes.
-If you need additional color themes, you will need to access those through
-the `theme-foreground()` function which allows you to pass an arbitrary
-theme map.
-
-### `theme-foreground()` function
-
-| Param | Type | Description |
-| --- | --- | --- |
-| `theme` | `map` | A theme map that includes a sub-palette called `foreground`. |
-| `name` | `key` | A key in the `foreground` palette to access. |
-| __Return__ | `color` | A CSS color value |
-
-This is the function used under the hood by the `foreground()` function.
-
-Here's an example of how to use it:
-
-```css
-/* _theme.scss */
-$pink-theme: (
-  foreground: (
-    text: #ff00ff;
-    ...
-  )
-  ...
-);
-
-@import '@thesoulfresh/sass-theming/theme';
-
-/* my-component.scss */
-@import '_theme.scss';
-
-.my-component {
-  color: theme-foreground($pink-theme, text);
-}
-```
-
-You could also create your own convenience method for accessing the
-foreground palette on your custom theme.
-
-```css
-/* Get a foreground color from the pink theme */
-@function foreground-pink($hue: default) {
-  @return theme-foreground($pink-theme, $hue);
-}
-
-/* And use it like this */
-.my-component {
-  color: foreground-pink(text);
-}
-```
+To add more themes, see the [Adding More Themes](/?path=/docs/introduction--page#adding-more-themes)
+section of the Intro chapter.
 
 [NEXT](/?path=/docs/colors-background-palette--background-palette)

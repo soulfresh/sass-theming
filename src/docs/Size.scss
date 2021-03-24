@@ -15,8 +15,8 @@
 }
 
 @mixin generate-breakpoint($all-sizes) {
-  @each $size in $all-sizes {
-    $val: map-get($palette-breakpoint, $size);
+  @each $size, $value in $all-sizes {
+    $val: breakpoint($size);
     .breakpoint-#{$size} {
       .sfMeasurement {
         width: $val;
@@ -46,7 +46,8 @@
 $sizes: xxxs, xxs, xs, s, m, l, xl, xxl, xxxl;
 @include generate-size($sizes);
 
-$breakpoints: xs, s, m, l, xl;
+// $breakpoints: xs, s, m, l, xl;
+$breakpoints: $palette-breakpoint;
 @include generate-breakpoint($breakpoints);
 
 $radii: s, m, l;
@@ -75,7 +76,7 @@ $radii: s, m, l;
   height: size(xxl);
 
   .name {
-    width: 100px;
+    width: size(l);
     text-align: right;
     padding-right: size(m);
     text-transform: uppercase;

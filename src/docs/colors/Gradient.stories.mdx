@@ -34,31 +34,9 @@ This Named Palette can be used to add gradients to an element backgroud.
 }
 ```
 
-## Configuration
+## `gradient()` setup
 
-To configure the gradients for your project, provide or modify the `$palette-gradient-light`
-and `$palette-gradient-dark` maps.
-
-```css
-$palette-gradient-light: (
-  primary: linear-gradient(
-    0deg,
-    map-get($palette-primary, 600) 0%,
-    map-get($palette-primary, 400) 100%
-  ),
-  focus: linear-gradient(
-    0deg,
-    mix($focus, $black, 90%) 0%,
-    mix($focus, $white, 90%) 100%
-  ),
-);
-
-@import '@thesoulfresh/sass-theming/theme';
-```
-
-## Adding New Themes
-
-Since gradients are accessed using the `color()` function, you can follow
-[the same directions](/?path=/docs/colors-palettes--color-palettes#named-color-palettes).
+The gradient palettes are available through the `gradient`
+property of each theme.
 
 [NEXT](/?path=/docs/measurements-introduction--page)

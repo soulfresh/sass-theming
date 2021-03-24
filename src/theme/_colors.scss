@@ -1,37 +1,10 @@
-////
-// Get a color out of the theme two SASS maps deep. In other words,
-// get the hue specified from palettes inside of the theme map structure.
-//
-// ```
-// .my-primary-thing {
-//   // Get the 100 color value from the primary palette.
-//   color: theme-color( $theme, primary, 100 );
-//   // Get the border from the foreground palette.
-//   border: 1px solid theme-color( $theme, foreground, border );
-// }
-// ```
-////
-@function theme-color($theme, $palette: primary, $hue: 500) {
-  $palette-map: map-get($theme, $palette);
-
-  @if $palette-map == null {
-    @error('Could not find property #{$palette} on the theme provided: #{$theme}');
-  }
-  $color: map-get($palette-map, $hue);
-
-  @if $color == null {
-    @error('Could not find hue #{$hue} on the palette: #{$palette-map}');
-  }
-
-  @return $color;
-}
 
 @function theme-background($theme: $theme-light, $hue: default) {
-  @return theme-color($theme, background, $hue);
+  @return theme-value($theme, background, $hue);
 }
 
 @function theme-foreground($theme: $theme-light, $hue: default) {
-  @return theme-color($theme, foreground, $hue);
+  @return theme-value($theme, foreground, $hue);
 }
 
 @function theme-complementary-color($name) {
@@ -42,68 +15,68 @@
 // Get a color from the light theme.
 ////
 @function color($palette: primary, $hue: 500) {
-  @return theme-color($theme-light, $palette, $hue);
+  @return theme-value($theme-light, $palette, $hue);
 }
 
 ////
 // Get a color from the dark theme.
 ///;
 @function color-dark($palette: primary, $hue: 500) {
-  @return theme-color($theme-dark, $palette, $hue);
+  @return theme-value($theme-dark, $palette, $hue);
 }
 
 ////
 // Get a background color (overlay, hover, etc) from the light theme.
 ////
 @function background($hue: default) {
-  @return theme-color($theme-light, background, $hue);
+  @return theme-value($theme-light, background, $hue);
 }
 
 ////
 // Get a background color (overlay, hover, etc) from the dark theme.
 ////
 @function background-dark($hue: default) {
-  @return theme-color($theme-dark, background, $hue);
+  @return theme-value($theme-dark, background, $hue);
 }
 
 ////
 // Get a foreground color (text color, disabled text color, etc) from the light theme.
 ///;
 @function foreground($hue: text) {
-  @return theme-color($theme-light, foreground, $hue);
+  @return theme-value($theme-light, foreground, $hue);
 }
 
 ////
 // Get a foreground color (text color, disabled text color, etc) from the dark theme.
 ////
 @function foreground-dark($hue: text) {
-  @return theme-color($theme-dark, foreground, $hue);
+  @return theme-value($theme-dark, foreground, $hue);
 }
 
 ////
 // Get a foreground color (text color, disabled text color, etc) from the light theme.
 ///;
 @function shadow($hue: overlay) {
-  @return theme-color($theme-light, shadow, $hue);
+  @return theme-value($theme-light, shadow, $hue);
 }
 
 ////
 // Get a shadow color (text color, disabled text color, etc) from the dark theme.
 ////
 @function shadow-dark($hue: overlay) {
-  @return theme-color($theme-dark, shadow, $hue);
+  @return theme-value($theme-dark, shadow, $hue);
 }
 
 ////
 // Get a foreground color (text color, disabled text color, etc) from the light theme.
 ///;
 @function gradient($hue: light) {
-  @return theme-color($theme-light, gradient, $hue);
+  @return theme-value($theme-light, gradient, $hue);
 }
 
 ////
 // Get a gradient color (text color, disabled text color, etc) from the dark theme.
 ////
 @function gradient-dark($hue: light) {
-  @return theme-color($theme-dark, gradient, $hue);
+  @return theme-value($theme-dark, gradient, $hue);
 }

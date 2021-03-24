@@ -1,19 +1,24 @@
-////
 // Utilities to help generate themes.
-////
 
 /// Generate the fallback fonts for a Sans Serif face.
+/// @example $title-font: 'Roboto', sans-serif();
 @function sans-serif() {
   @return -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 }
 
 /// Generate the fallback fonts for a Monospace face.
+/// @example $code-font: 'Menlo', monospace();
 @function monospace() {
   @return source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 /// Generate a palette with even color gradiation
 /// using a single color as the 500 value.
+/// @param {color} $color1 - The 500 color used as the starting point for other colors.
+/// @param {color} $black - The color used as the base for generating darker shades of the color.
+/// @param {color} $white - The color used as the base for generating lighter shades of the color.
+///
+/// @example $palette-primary: make-palette(#ff00ff);
 @function make-palette($color1, $black: #000, $white: #fff) {
   @return (
     50 : mix($color1, $white, 10%),
@@ -31,6 +36,8 @@
 
 /// Generate a palette with even color gradiation
 /// between 2 stops (100, 900).
+/// @param {color} $color1 - The 100 color
+/// @param {color} $color9 - The 900 color
 @function make-palette-2($color1, $color9) {
   @return (
     50 : mix($color1, #ffffff, 50%),
@@ -48,6 +55,9 @@
 
 /// Generate a palette with even color gradiation
 /// between 3 stops (100, 500, 900).
+/// @param {color} $color1 - The 100 color
+/// @param {color} $color5 - The 500 color
+/// @param {color} $color9 - The 900 color
 @function make-palette-3($color1, $color5, $color9) {
   @return (
     50 : mix($color1, #ffffff, 50%),
@@ -65,6 +75,11 @@
 
 /// Generate a palette with even color gradiation
 /// between 5 stops (100, 500, 900).
+/// @param {color} $color1 - The 100 color
+/// @param {color} $color3 - The 300 color
+/// @param {color} $color5 - The 500 color
+/// @param {color} $color7 - The 700 color
+/// @param {color} $color9 - The 900 color
 @function make-palette-5($color1, $color3, $color5, $color7, $color9) {
   @return (
     50 : mix($color1, #ffffff, 50%),
@@ -78,5 +93,41 @@
     800: mix($color7, $color9, 50%),
     900: $color9,
   );
+}
+
+/// Get an item out of the theme two SASS maps deep. In other words,
+/// get the value specified from palettes inside of a theme map.
+///
+/// This function can be very useful for creating your own functions
+/// for retrieving values from a custom theme. For example, if you
+/// have a custom theme called `$theme-pink` and you want to provide
+/// a function to retrieve the pink palette, you could use the following.
+///
+/// `@function pink($hue) { @return theme-value($theme-pink, pink, $hue); }`
+///
+/// @param {map} $theme - The theme that contains the value you want.
+/// @param {key} $palette - The palette in the theme that (ex. primary or font-family).
+/// @param {key} $hue - The name of the value you want from the palette.
+///
+/// @example
+/// .my-primary-thing {
+///   // Get the 100 color value from the primary palette.
+///   color: theme-value( $theme, primary, 100 );
+///   // Get the border from the foreground palette.
+///   border: 1px solid theme-value( $theme, foreground, border );
+/// }
+@function theme-value($theme, $palette, $hue) {
+  $palette-map: map-get($theme, $palette);
+
+  @if $palette-map == null {
+    @error('Could not find property #{$palette} on the theme provided: #{$theme}');
+  }
+  $color: map-get($palette-map, $hue);
+
+  @if $color == null {
+    @error('Could not find hue #{$hue} on the palette: #{$palette-map}');
+  }
+
+  @return $color;
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { combineClasses } from '@thesoulfresh/utils';
 
@@ -22,6 +23,13 @@ export function AnimationItem({
   );
 }
 
+/**
+ * Shows the animation speeds available to the theme.
+ *
+ * @param {object} props
+ * @param {string[]} [props.speeds] - Customize the speeds
+ *   available in your project.
+ */
 export function AnimationSpeed({
   speeds = ['xs', 's', 'm', 'l', 'xl'],
   className,
@@ -38,8 +46,27 @@ export function AnimationSpeed({
   );
 }
 
+AnimationSpeed.propTypes = {
+  /**
+   * The list of speeds available in your theme.
+   */
+  speeds: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * Any other props will be spread on the root
+   * element.
+   */
+  'other props...': PropTypes.any,
+};
+
+/**
+ * Displays list of easing functions available in your theme.
+ *
+ * @param {object} props
+ * @param {string[]} [props.easings] - The list of easing
+ *   functions available in your theme.
+ */
 export function AnimationEasing({
-  speeds = [
+  easings = [
     'linear',
     'in',
     'out',
@@ -63,7 +90,20 @@ export function AnimationEasing({
       {...rest}
     >
       <div className="sfDescription">Click The Boxes Below</div>
-      {speeds.map(s => <AnimationItem speed={s} key={s} />)}
+      {easings.map(s => <AnimationItem speed={s} key={s} />)}
     </div>
   );
 }
+
+AnimationEasing.propTypes = {
+  /**
+   * The list of speeds available in your theme.
+   */
+  easings: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * Any other props will be spread on the root
+   * element.
+   */
+  'other props...': PropTypes.any,
+};
+

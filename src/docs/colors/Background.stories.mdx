@@ -64,75 +64,7 @@ These work just the same as the `foreground()` and `foreground-dark()` functions
 
 ### background() setup
 
-To provide your own background colors, you can specify your own version of
-`$palette-background-light` or `$palette-background-dark` before
-importing `@thesoulfresh/sass-theming`.
-
-```css
-/* This is the default implementation but you can use any property names/values you like. */
-$palette-background-light: (
-  default: $white,
-  hover: rgba(#111, 0.1),
-  focus: $focus-color,
-  ...
-);
-
-/* And the dark version... */
-$palette-background-dark: (...);
-
-@import '@thesoulfresh/sass-theming/theme';
-```
-
-Or override individual palette values:
-
-```css
-/* Import the palette definitions */
-@import '@thesoulfresh/sass-theming/variables';
-
-/* Use map-set to set individual keys in the palette. */
-map-set($palette-background-light, border, rgba(#111, 0.95));
-
-/* Now import the theme which will configure the theme functions */
-@import '@thesoulfresh/sass-theming/theme';
-```
-
-## Adding New Themes
-
-Use `theme-background()` to access additional themes other than `light` and `dark`.
-
-See the [foreground docs](?path=/docs/colors-foreground--foreground-palettes#adding-new-themes)
-for more information on this.
-
-### `theme-background()` function
-
-| Param | Type | Description |
-| --- | --- | --- |
-| `theme` | `map` | A theme map that includes a sub-palette called `background`. |
-| `name` | `key` | A key in the `background` palette to access. |
-| __Return__ | `color` | A CSS color value |
-
-This is the function used under the hood by the `background()` function.
-
-Here's an example of how to use it:
-
-```css
-/* _theme.scss */
-$pink-theme: (
-  background: (
-    input: #ff00ff;
-    ...
-  )
-  ...
-);
-
-@import '@thesoulfresh/sass-theming/theme';
-
-/* my-component.scss */
-@import '_theme.scss';
-
-.my-component {
-  background-color: theme-background($pink-theme, input);
-}
-```
+The background palettes are provided through the `background` property
+of each theme.
 
 [NEXT](/?path=/docs/colors-color-palettes--color-palettes)

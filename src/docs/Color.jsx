@@ -10,7 +10,6 @@ export default function Palette({
   className,
   ...rest
 }) {
-
   return (
     <div className={combineClasses('sfPalette', className)}>
       <h3 className={'paletteTitle'}>{ name }</h3>
@@ -36,6 +35,14 @@ Palette.propTypes = {
   hues: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
+/**
+ * Shows a numbered color palette based on the palette
+ * name and hue list specified.
+ *
+ * @param {object} props
+ * @param {string} props.name - The name of the palette
+ *   to show (ex. Primary, Grayscale, Error, etc).
+ */
 export function ColorPalette({
   ...rest
 }) {
@@ -50,15 +57,35 @@ export function ColorPalette({
 }
 
 ColorPalette.propTypes = {
+  /**
+   * The name of the palette to show.
+   */
+  name: PropTypes.string.isRequired,
+  /**
+   * Any other props will be spread on
+   * the root element.
+   */
+  'other props...': PropTypes.any,
 };
 
+/**
+ * Shows the foreground palette for a theme.
+ *
+ * TODO Allow specifying the theme name to show
+ * instead of the `dark` flag which limits us to
+ * just those two themes.
+ *
+ * @param {object} props
+ * @param {string} props.name - The name of the palette
+ *   to show (ex. Primary, Grayscale, Error, etc).
+ * @param {string[]} [props.hues] - The list of hues
+ *   available for your theme if different than the default.
+ * @param {boolean} [prop.dark] - Whether it is the dark
+ *   theme you want to show.
+ */
 export function ForegroundPalette({
-  className,
-  ...rest
-}) {
-  const hues = [
+  hues = [
     'opaque',
-    'default',
     'text',
     'light-text',
     'faded-text',
@@ -66,21 +93,52 @@ export function ForegroundPalette({
     'focus',
     'divider',
     'border',
-  ];
-
+  ],
+  className,
+  ...rest
+}) {
   return (
     <Palette className={'sfForegroundPalette'} hues={hues} {...rest} />
   );
 }
 
 ForegroundPalette.propTypes = {
+  /**
+   * The name of the palette to show.
+   */
+  name: PropTypes.string.isRequired,
+  /**
+   * The list of hue names available in your project.
+   */
+  hues: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * Whether to render the dark theme.
+   */
+  dark: PropTypes.bool,
+  /**
+   * Any other props will be applied to
+   * the root element.
+   */
+  'other props...': PropTypes.any,
 };
 
+/**
+ * Shows the background palette for a theme.
+ *
+ * TODO Allow specifying the theme name to show
+ * instead of the `dark` flag which limits us to
+ * just those two themes.
+ *
+ * @param {object} props
+ * @param {string} props.name - The name of the palette
+ *   to show (ex. Primary, Grayscale, Error, etc).
+ * @param {string[]} [props.hues] - The list of hues
+ *   available for your theme if different than the default.
+ * @param {boolean} [prop.dark] - Whether it is the dark
+ *   theme you want to show.
+ */
 export function BackgroundPalette({
-  className,
-  ...rest
-}) {
-  const hues = [
+  hues = [
     'default',
     'input',
     'hover',
@@ -90,8 +148,10 @@ export function BackgroundPalette({
     'fade',
     'focus',
     'highlight',
-  ];
-
+  ],
+  className,
+  ...rest
+}) {
   return (
     <Palette
       className={combineClasses('sfBackgroundPalette', className)}
@@ -102,17 +162,48 @@ export function BackgroundPalette({
 }
 
 BackgroundPalette.propTypes = {
+  /**
+   * The name of the palette to show.
+   */
+  name: PropTypes.string.isRequired,
+  /**
+   * The list of hue names available in your project.
+   */
+  hues: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * Whether to render the dark theme.
+   */
+  dark: PropTypes.bool,
+  /**
+   * Any other props will be applied to
+   * the root element.
+   */
+  'other props...': PropTypes.any,
 };
 
+/**
+ * Shows the shadows palette for a theme.
+ *
+ * TODO Allow specifying the theme name to show
+ * instead of the `dark` flag which limits us to
+ * just those two themes.
+ *
+ * @param {object} props
+ * @param {string} props.name - The name of the palette
+ *   to show (ex. Primary, Grayscale, Error, etc).
+ * @param {string[]} [props.hues] - The list of hues
+ *   available for your theme if different than the default.
+ * @param {boolean} [prop.dark] - Whether it is the dark
+ *   theme you want to show.
+ */
 export function ShadowsPalette({
+  hues = [
+    'overlay',
+    'card',
+  ],
   className,
   ...rest
 }) {
-  const hues = [
-    'overlay',
-    'card',
-  ];
-
   return (
     <Palette
       className={combineClasses('sfShadowsPalette', className)}
@@ -122,16 +213,50 @@ export function ShadowsPalette({
   );
 }
 
+ShadowsPalette.propTypes = {
+  /**
+   * The name of the palette to show.
+   */
+  name: PropTypes.string.isRequired,
+  /**
+   * The list of hue names available in your project.
+   */
+  hues: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * Whether to render the dark theme.
+   */
+  dark: PropTypes.bool,
+  /**
+   * Any other props will be applied to
+   * the root element.
+   */
+  'other props...': PropTypes.any,
+};
+
+/**
+ * Shows the gradient palette for a theme.
+ *
+ * TODO Allow specifying the theme name to show
+ * instead of the `dark` flag which limits us to
+ * just those two themes.
+ *
+ * @param {object} props
+ * @param {string} props.name - The name of the palette
+ *   to show (ex. Primary, Grayscale, Error, etc).
+ * @param {string[]} [props.hues] - The list of hues
+ *   available for your theme if different than the default.
+ * @param {boolean} [prop.dark] - Whether it is the dark
+ *   theme you want to show.
+ */
 export function GradientsPalette({
-  className,
-  ...rest
-}) {
-  const hues = [
+  hues = [
     'light',
     'focus',
     'primary',
-  ];
-
+  ],
+  className,
+  ...rest
+}) {
   return (
     <Palette
       className={combineClasses('sfGradientsPalette', className)}
@@ -141,4 +266,24 @@ export function GradientsPalette({
   );
 }
 
+
+GradientsPalette.propTypes = {
+  /**
+   * The name of the palette to show.
+   */
+  name: PropTypes.string.isRequired,
+  /**
+   * The list of hue names available in your project.
+   */
+  hues: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * Whether to render the dark theme.
+   */
+  dark: PropTypes.bool,
+  /**
+   * Any other props will be applied to
+   * the root element.
+   */
+  'other props...': PropTypes.any,
+};
 

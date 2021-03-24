@@ -1,43 +1,24 @@
 
-////
 // Get one of the theme's font sizes.
 // The available sizes are defined in `$palette-font-size`.
 //
 // Ex: `font-size: font-size(xxl);`
-////
 @function font-size($size: m) {
-  $s: map-get($palette-font-size, $size);
-
-  @if $s == null {
-    @error('Could not find font size #{$size} on the theme provided: #{$palette-font-size}');
-  }
-
+  $s: theme-value($theme-light, 'font-size', $size);
   @return $s * $font-size-unit;
 }
 
-////
 // Get one of the theme's font weights.
 // The available weights are defined in `$palette-font-weight`.
 //
 // Ex: `font-size: font-size(bold);`
-////
 @function font-weight($weight: normal) {
-  $w: map-get($palette-font-weight, $weight);
-
-  @if $w == null {
-    @error('Could not find font weight #{$weight} on the theme provided: #{$palette-font-weight}');
-  }
-
+  $w: theme-value($theme-light, 'font-weight', $weight);
   @return $w;
 }
 
 @function font-family($family: body) {
-  $f: map-get($palette-font-family, $family);
-
-  @if $f == null {
-    @error('Could not find font family #{$family} on the theme provided: #{$palette-font-family}');
-  }
-
+  $f: theme-value($theme-light, 'font-family', $family);
   @return $f;
 }
 

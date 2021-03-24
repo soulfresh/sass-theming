@@ -1,21 +1,11 @@
 
 @function speed($speed: m) {
-  $s: map-get($palette-speed, $speed);
-
-  @if $s == null {
-    @error('Could not find speed #{$speed} on the theme provided: #{$palette-speed}');
-  }
-
+  $s: theme-value($theme-light, 'speed', $speed);
   @return $s * $animation-speed-unit;
 }
 
 @function ease($ease: out) {
-  $s: map-get($palette-ease, $ease);
-
-  @if $s == null {
-    @error('Could not find ease #{$ease} on the theme provided: #{$palette-ease}');
-  }
-
+  $s: theme-value($theme-light, 'ease', $ease);
   @return $s;
 }
 

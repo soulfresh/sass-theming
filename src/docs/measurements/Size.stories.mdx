@@ -53,45 +53,9 @@ Here are the sizes that come out of the box.
 | __Return__ | `number` | A CSS px value |
 
 
-## size() setup
+## Configuration
 
-You can override or modify the `$palette-size` SASS map in order to
-specify your own sizes. You don't have to use the s/m/l naming convention
-but it's recommended.
-
-```css
-/* Override the size palette. */
-$palette-size: (
-  default: $s-m,
-  xxxxl: $s-xxxxl,
-  xxxl : $s-xxxl,
-  xxl  : $s-xxl,
-  xl   : $s-xl,
-  l    : $s-l,
-  m    : $s-m,
-  s    : $s-s,
-  xs   : $s-xs,
-  xxs  : $s-xxs,
-  xxxs : $s-xxxs,
-  card-width: $card-width,
-  pin-width: $pin-width,
-);
-
-/* Now import the theme which will configure the theme functions */
-@import '@thesoulfresh/sass-theming/theme';
-```
-
-Here's how you can modify the default sizes.
-
-```css
-/* Import the palette definitions */
-@import '@thesoulfresh/sass-theming/variables';
-
-/* Use map-set to set individual keys in the palette. */
-map-set($palette-size, m, 22px);
-
-/* Now import the theme which will configure the theme functions */
-@import '@thesoulfresh/sass-theming/theme';
-```
+The size palettes are available through the `size`
+property of each theme.
 
 [NEXT](/?path=/docs/measurements-breakpoint-palette--breakpoint-palette)

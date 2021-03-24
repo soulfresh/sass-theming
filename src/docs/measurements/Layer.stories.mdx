@@ -43,26 +43,9 @@ Here's an example usage:
 | `name` | `key` | A key in the `$palette-layer` map. |
 | __Return__ | `number` | A value that can be used as a z-index. |
 
-## layer() setup
+## Configuration
 
-The `layer()` function exposes the `$palette-layer` map and
-can be customized in the same way as other palettes.
-
-```css
-$palette-layer: (
-  behind: -1,
-  normal: 0,
-  above: 1,
-  floating: 10,
-  header: 50,
-  dropdown: 100,
-  tooltip: 500,
-  modal: 1000,
-  login: 2000,
-);
-
-/* Now import the theme which will configure the theme functions */
-@import '@thesoulfresh/sass-theming/theme';
-```
+The layer palettes are available through the `layer`
+property of each theme.
 
 [NEXT](/?path=/docs/measurements-icon-size-palette--page)

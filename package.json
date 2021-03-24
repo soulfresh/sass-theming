@@ -21,9 +21,11 @@
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "clean": "rimraf storybook-static lib",
-    "sass-docs": "npx sassdoc2md ./src/_utils.scss --markdown ./src/docs/helpers/Mixins.stories.mdx.hbs -s Mixins > ./src/docs/helpers/Mixins.stories.mdx",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "sass-docs-utils": "npx sassdoc2md ./src/theme/_utils.scss --markdown ./src/docs/helpers/Utils.stories.mdx.hbs -s API > ./src/docs/helpers/Utils.stories.mdx",
+    "sass-docs-helpers": "npx sassdoc2md ./_utils.scss --markdown ./src/docs/helpers/ThemeHelpers.stories.mdx.hbs -s API > ./src/docs/helpers/ThemeHelpers.stories.mdx",
+    "sass-docs": "yarn sass-docs-utils & yarn sass-docs-helpers",
+    "storybook": "yarn sass-docs && start-storybook -p 6006",
+    "build-storybook": "yarn sass-docs && build-storybook",
     "release": "./scripts/release",
     "deploy-storybook": "storybook-to-ghpages",
     "deploy-storybook-ci": "storybook-to-ghpages -- --ci"

@@ -58,30 +58,136 @@ Here's a quick example of using a theme.
 }
 ```
 
-## Setting Up Your Theme
+## Getting Started
+
+```sh
+$ npm install @thesoulfresh/sass-theming
+```
+
+### SASS includePaths
+
+We recommend setting the `includePaths` for your version of SASS
+to include the root of our source directory. This way you
+can easily include your theme in all of your files using
+something like `@include 'theme';`.
+
+Here's how you set your include paths in [node-sass](https://github.com/sass/node-sass#includepaths)
+
+### Theme File
+
+Create a `_theme.scss` file in the root of your SASS path
+where you can configure the theme. It should look something
+like this:
+
+```css
+/* Start by importing the default light and dark theme objects */
+@import '@thesoulfresh/sass-theming/variables';
+/* And utilities to help generate palettes */
+@import '@thesoulfresh/sass-theming/util';
+
+/* Your customizations go here... */
+
+/* Import the theming infrastructure that provides
+   the convenience functions used to access the themes. */
+@import '@thesoulfresh/sass-theming/theme';
+```
+
+## Setting Up Your Themes
 
 Creating a new theme is pretty simple. The theme
 consists of a set of SASS map objects containing the theme values.
 Those maps are accessed through memorable convenience functions.
-You can have full control over the names and values in your theme
+You have full control over the names and values in your theme
 but `@thesoulfresh/sass-theming` provides reasonable defaults
 for all of them as well.
 
+### Definitions
+
+**Palettes** are a collection of values related to a specific use.
+For example, themes provide multiple color plattes but also provide
+non-color palettes like sizing palettes and font family palettes.
+
+**Themes** are a collection of palettes. For example, this library provides
+`light` and `dark` themes out of the box. As you might expect, the light theme
+provides dark text/foreground values paired with light background values.
+The dark theme is the inverse of that. Your project can have as many themes
+as you want to define. Themes are simply a SASS Map object with palette maps
+as their properties.
+
+**Named Palettes** have values that are accessed using a memorable
+name that describes how the value should be used. For example, the `foreground`
+palette includes colors like `text` and `light-text`. The `size`
+palette provides margin/padding sizes using names like `s` (small), `m` (medium),
+etc.
+
+**Numbered Palettes** have values that are accessed using a hue
+number that describes how dark or light the color is. These palettes provide
+a range of hues based around a single color. For example, the `primary`
+palette includes 10 colors with shades ranging from `50` (lightest)
+to `900` (darkest). Palettes are simply a SASS Map object.
+
+### Default Theme Structure
+
+By default, themes include the following palettes.
+
+- `theme`: You can have as many themes as you like in your project. This library
+           provides `light` and `dark` themes by default.
+  - `foreground`: A Named Palette of foreground colors with names like `light-text` and `border`.
+  - `background`: A Named Palette of background colors with names like `hover` and `shaded`.
+  - `gradient`: A Named Palette of reusable gradient definitions with names like `light` and `primary`.
+  - `shadow`: A Named Palette of reusable shadow defintions with names like `card` and `overlay`.
+  - `primary`: A Numbered Palette of 10 primary colors gradiented from light to dark.
+  - `secondary`: A Numbered Palette of 10 secondary colors gradiented from light to dark.
+  - `grayscale`: A Numbered Palette of 10 grayscale colors gradiented from light to dark.
+  - `focus`: A Numbered Palette of 10 focus colors gradiented from light to dark.
+  - `success`: A Numbered Palette of 10 success colors gradiented from light to dark.
+  - `warn`: A Numbered Palette of 10 warn colors gradiented from light to dark.
+  - `error`: A Numbered Palette of 10 error colors gradiented from light to dark.
+  - `font-family`: A Named Palette of font families named by their usage (ex `title`, `body`).
+  - `font-size`: A Named Palette of font sizes named using s/m/l naming convention.
+  - `font-weight`: A Named Palette of font weights named by their weight (ex. `bold`, `medium`).
+  - `size`: A Named Palette of small sizes that are useful for margin/padding spacing named using the s/m/l convention.
+  - `radius`: A Named Palette of border radius sizes using the s/m/l naming convention.
+  - `layer`: A Named Palette of z-index values named for their usage (ex. `above`, `tooltip`, `modal`).
+  - `breakpoint`: A Named Palette of page breakpoint sizes named using the s/m/l convetion.
+  - `icon-size`: A Named Palette of icon sizes named using the s/m/l convention.
+  - `speed`: A Named Palette of animation speeds named using the s/m/l convention.
+  - `ease`: A Named Palette of animation easing curves named as `ease-out`, `ease-in-hard`, etc.
+  - `is_dark`: A boolean value specifiying whether this is a dark theme.
+
+### Configuring The Default Themes
+
 The following chapters discuss in depth how to setup and use
-your theme but here's a quick example of how you migh customize
-the border radius values of your theme.
+your theme but here's a quick example of how you might customize
+the border radius values of the default light theme.
 
 `_theme.scss`
 ```css
-/* Radii is the map exposed through the radius() function.
-Define it before you load @thesoulfresh/sass-theming and
-it will overwrite the default values. */
-$radii: (
-  s: 2,
-  m: 5,
-  l: 10,
+/* Start by importing the default light and dark theme objects */
+@import '@thesoulfresh/sass-theming/variables';
+@import '@thesoulfresh/sass-theming/util';
+
+/* Define the overrides you want to apply to all themes */
+$overrides: (
+  /* Override the "radius" map of each theme */
+  'radius': (
+    's': 2,
+    'm': 5,
+    'l': 10,
+  ),
+  /* You can also add or override keys to existing palettes */
+  'size': map-merge(
+    map-get($theme-light, 'size'),
+    ('xxxxxxxxxl': 1000000000)
+  ),
 );
 
+/* Set your values on the light and dark themes */
+$theme-light: map-merge($theme-light, $overrides);
+$theme-dark: map-merge($theme-dark, $overrides);
+
+/* Import the theming infrastructure that provides
+   the convenience functions used to access the themes. */
 @import '@thesoulfresh/sass-theming/theme';
 ```
 
@@ -96,23 +202,60 @@ $radii: (
 }
 ```
 
-You also have the option of updating the existing theme maps
-if you only want to change a few values in them.
+### Adding More Themes
+
+You can define as many color themes as your project needs. Each theme can include whatever
+palette objects you want it to have. However,
+it is recommended that all of your themes provide the same
+list of palette names so your code will remain agnostic to the theme it is using.
+
+Here's how you can add a new theme and specify a convenience function
+for accessing it.
 
 `_theme.scss`
 ```css
-/* Start by importing the theme maps */
+/* Start by importing the default light and dark theme objects */
 @import '@thesoulfresh/sass-theming/variables';
 
-/* Then change the specific values you want */
-map-set($radii, m, 8);
+/* Define the overrides you want to apply to all themes */
+$theme-pink: (
+  /* Override the "primary" map of each theme */
+  'primary': make-palette(#ff00ff),
+);
 
-/* Or add new values to an existing map */
-map-set($adii, xxxxxxxxl, 10000000);
+/* Use the light theme to provide the rest of the palettes
+   on the pink theme. */
+$theme-pink: map-merge($theme-light, $theme-pink);
 
-/* Then import the theme */
+/* Provide easy access to the primary palette of the pink theme. */
+@function pink($hue: 500) {
+  @return theme-value($theme-pink, 'primary', $hue);
+}
+
+/* Import the theming infrastructure that provides
+   the convenience functions used to access the themes. */
 @import '@thesoulfresh/sass-theming/theme';
 ```
+
+`my-component.scss`
+```css
+/* Import _theme.scss with your theme definitions. */
+@import 'theme';
+
+/* And then use your theme settings... */
+.my-component {
+  background-color: pink(500);
+  /* You can also use the `theme-value` function to
+     access theme values if you don't want to create
+     convenience functions. */
+  background-color: theme-value($theme-pink, 'primary', 500);
+}
+```
+
+### Theme Helpers
+
+You can use the helper functions defined [here](/?path=/docs/utils-theme-helpers--page)
+to help you generate your themes.
 
 ## General Structure
 
@@ -127,21 +270,11 @@ maps. However, since I found myself repeating that
 work across multiple projects, I've exposed a simple way to get
 it up and running quickly in new projects.
 
-## TODO
-
-Move color generator helpers into a file that can be imported separately.
-Add documentation for:
-- Install
-- SASS Path
-- Adding keys to the theme
-- Adding more themes
-- Copying the CheatSheet
-- including the mixin docs
 
 ## Let's Get Started
 
 The following sections will walk you through all of the available
 theme functions and details on getting your theme setup.
 
-[Next](/?path=/docs/colors-introduction--page)
+[NEXT](/?path=/docs/colors-globals--page)
 

@@ -3,48 +3,28 @@
 /// Ex: `margin: size(xxl);`
 /// @param {string} $size
 @function size($size: m) {
-  $s: map-get($palette-size, $size);
-
-  @if $s == null {
-    @error('Could not find measurement/size #{$size} on the theme provided: #{$palette-size}');
-  }
-
+  $s: theme-value($theme-light, 'size', $size);
   @return $s * $size-unit;
 }
 
 /// Get a border radius from the theme
 /// @param {string} $size
 @function radius($size: m) {
-  $s: map-get($palette-radius, $size);
-
-  @if $s == null {
-    @error('Could not find measurement/size #{$size} on the theme provided: #{$palette-radius}');
-  }
-
+  $s: theme-value($theme-light, 'radius', $size);
   @return $s * $size-unit;
 }
 
 /// Get an icon size from the theme
 /// @param {string} $size
 @function icon-size($size: m) {
-  $s: map-get($palette-icon-size, $size);
-
-  @if $s == null {
-    @error('Could not find measurement/size #{$size} on the theme provided: #{$palette-icon-size}');
-  }
-
+  $s: theme-value($theme-light, 'icon-size', $size);
   @return $s * $size-unit;
 }
 
 /// Get a breakpoint from the theme
 /// @param {string} $size
 @function breakpoint($size: m) {
-  $s: map-get($breakpoint, $size);
-
-  @if $s == null {
-    @error('Could not find breakpoint #{$size} on the theme provided: #{$palette-breakpoint}');
-  }
-
+  $s: theme-value($theme-light, 'breakpoint', $size);
   @return $s * $size-unit;
 }
 

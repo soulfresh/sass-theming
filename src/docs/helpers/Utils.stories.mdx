@@ -1,13 +1,13 @@
 import { Meta, Story } from '@storybook/addon-docs/blocks';
 
-<Meta title="Utils/Mixins" />
+<Meta title="Utils/SASS Utilities" />
 
 # Utilities
 
 The following SASS utilities that I use often are also available through
 this library as a convenience.
 
-# Mixins
+# API
 
 <a id="general-function-encodecolor"></a>
 
@@ -104,12 +104,10 @@ can programatically emulate this styling.
 
 ### Parameters
 
-| Name                          | Type                                                               | Description                         | Default |
-| :---------------------------- | :----------------------------------------------------------------- | :---------------------------------- | :------ |
-| `$class`                      | **[String](https://sass-lang.com/documentation/values/strings)**   | The class name that can be used to  |         |
-| simulate the active state.    | -                                                                  |                                     |         |
-| `$global`                     | **[Boolean](https://sass-lang.com/documentation/values/booleans)** | Whether to the class name is global |         |
-| if you are using css modules. | -                                                                  |                                     |         |
+| Name      | Type                                                               | Description                                                       | Default |
+| :-------- | :----------------------------------------------------------------- | :---------------------------------------------------------------- | :------ |
+| `$class`  | **[String](https://sass-lang.com/documentation/values/strings)**   | The class name that can be used to simulate the active state.     | -       |
+| `$global` | **[Boolean](https://sass-lang.com/documentation/values/booleans)** | Whether to the class name is global if you are using css modules. | -       |
 
 <a id="general-mixin-ellipsis"></a>
 

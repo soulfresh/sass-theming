@@ -27,6 +27,7 @@ module.exports = {
     "../src/docs/animation/Speed.stories.mdx",
     "../src/docs/animation/*.stories.mdx",
     // Helpers
+    "../src/docs/helpers/ThemeHelpers.stories.mdx",
     "../src/docs/helpers/Mixins.stories.mdx",
     "../src/docs/helpers/*.stories.mdx",
     // Cheat Sheet

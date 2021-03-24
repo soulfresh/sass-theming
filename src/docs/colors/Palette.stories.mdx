@@ -62,30 +62,37 @@ the hue (ex. 100, 400, etc.) as parameters. The hue is optional and defaults to 
 
 ## color() setup
 
-The `color()` function exposes the following maps:
+The `color()` function exposes the following palettes:
 
-- `$palette-primary` Your primary (brand?) color.
-- `$palette-secondary` A secondary and complementary color.
-- `$palette-focus` The colors used to indicate element focus.
-- `$palette-success` Colors used for success messages.
-- `$palette-warn` Colors used for warnings.
-- `$palette-error` Colors used for errors.
+- `primary` Your primary (brand?) color.
+- `secondary` A secondary and complementary color.
+- `focus` The colors used to indicate element focus.
+- `success` Colors used for success messages.
+- `warn` Colors used for warnings.
+- `error` Colors used for errors.
 
 Just like other palettes, you can provide your own implementation of these
 maps or append to them with [SASS map.set()](https://sass-lang.com/documentation/values/maps#add-to-a-map).
 
 ```css
-$palette-primary: (
-  100: #fff,
-  200: #eee,
-  300: #ccc,
-  400: #aaa,
-  500: #888,
-  600: #666,
-  700: #444,
-  800: #222,
-  900: #000,
-);
+/* Start by importing the default light and dark theme objects */
+@import '@thesoulfresh/sass-theming/variables';
+@import '@thesoulfresh/sass-theming/util';
+
+/* Set your values on the desired theme */
+$theme-light: map-merge($theme-light, (
+  'primary': (
+    100: #fff,
+    200: #eee,
+    300: #ccc,
+    400: #aaa,
+    500: #888,
+    600: #666,
+    700: #444,
+    800: #222,
+    900: #000,
+  ),
+));
 
 @import '@thesoulfresh/sass-theming/theme';
 ```
@@ -173,49 +180,10 @@ map-set($theme-light, complementary, $complementary-palette);
 
 ## Adding New Themes
 
-Use `theme-color()` to access additional themes other than `light` and `dark`. This is what
+Use `theme-value()` to access additional themes other than `light` and `dark`. This is what
 the `color()` function uses under the hood.
 
-See the [foreground docs](?path=/docs/colors-foreground--foreground-palettes#adding-new-themes)
-for more information on this.
-
-### `theme-color()` function
-
-| Param | Type | Description |
-| --- | --- | --- |
-| `theme` | `map` | A theme map that includes all of your palettes. |
-| `palette` | `key` | The name of the palette you want to access. |
-| `hue` | `key` | A hue in the palette you are accessing. |
-| __Return__ | `color` | A CSS color value |
-
-Here's an example of how to use it:
-
-```css
-/* _theme.scss */
-@import '@thesoulfresh/sass-theming/utils';
-
-/* Build your theme object */
-$pink-theme: (
-  primary: make-palette(#ff00ff),
-  ...
-);
-
-@import '@thesoulfresh/sass-theming/theme';
-
-/* You could also provide a convenience function for
-   accessing colors in this palette */
-@function color-pink($palette: primary, $hue: 500) {
-  @return theme-color($pink-theme, $palette, $hue);
-}
-
-/* my-component.scss */
-@import '_theme.scss';
-
-.my-component {
-  background-color: theme-color($pink-theme, primary, 400);
-  /* or */
-  border-color: color-pink(primary, 200);
-}
-```
+See the [Adding More Themes](/?path=/docs/introduction--page#adding-more-themes)
+chapter for more details.
 
 [NEXT](/?path=/docs/colors-shadow-palette--shadow-palette)

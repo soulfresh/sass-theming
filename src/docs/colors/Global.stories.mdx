@@ -20,8 +20,36 @@ are used to influence the overall coloring of all the default theme colors.
 | `$black` | `#000` | All default colors based on black. This includes most foreground colors in the light theme and background colors in the dark theme. |
 | `$white` | `#FFF` | All default colors based on white. This includes most foreground colors in the dark theme and background colors in the light theme. |
 | `$focus` | `#4a7ddc` | Any colors used to represent focused state. |
+| `$font-size-unit` | `1px` | The unit for font-size values. |
+| `$size-unit` | `1px` | The unit used for size values. |
+| `$animation-speed-unit` | `1ms` | The unit used for animation speeds. |
 
 For example, if you wanted your text colors and the grayscale palette to be lightly
 tinted with your primary brand color, you could set `$black: mix($my-brand-color, #000, 95%)`.
+
+## Usage
+
+To use these variables, define them before you import anything from this
+library.
+
+```css
+/* Define these variables first */
+$black: #000;
+$white: #fff;
+$focus: #ff00ff;
+$font-size-unit: 1pt;
+$size-unit: 1rem;
+$animation-speed-unit: 1s;
+
+/* Now you can import the default variables and helpers. */
+@import '@thesoulfresh/sass-theming/variables';
+@import '@thesoulfresh/sass-theming/util';
+
+/* Configure your theme here... */
+
+/* Import the theming infrastructure that provides
+   the convenience functions used to access the themes. */
+@import '@thesoulfresh/sass-theming/theme';
+```
 
 [NEXT](/?path=/docs/colors-foreground-palette--foreground-palette)

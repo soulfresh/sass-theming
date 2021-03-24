@@ -4,4 +4,70 @@ import { Meta, Story } from '@storybook/addon-docs/blocks';
 
 # Boilerplate
 
-TODO Boilerplate SCSS for getting started
+Here's a template you can use to get started with your
+theme customiziations. Place this inside of a `_theme.scss`
+file in the root of your SASS path.
+
+```css
+$primary: #2255FF;
+$focus: $primary;
+
+// Import utilities for generating the themes.
+@import '@thesoulfresh/sass-theming/utils';
+@import '@thesoulfresh/sass-theming/variables';
+
+// Provide your customizations here...
+$palette-font-family: (
+  'title': ('Proxima Nova', sans-serif()),
+  'body': ('Proxima Nova', sans-serif()),
+  'code': monospace(),
+);
+
+$palette-font-size: (
+  'xxxl': 36,
+  'xxl': 24,
+  'xl': 18,
+  'l': 16,
+  'm': 14,
+  's': 12,
+  'xs': 10,
+);
+
+$palette-font-weight: (
+  'extrabold': 600,
+  'bold': 500,
+  'medium': 400,
+  'normal': 200,
+);
+
+// Create a theme with just the palettes you want to override
+// in the default themes...
+$overrides: (
+  'primary': make-palette($primary),
+  'grayscale': make-palette-2(#EAEAEF, #0F0E14),
+  'focus': make-palette($focus),
+  'success': make-palette-3(#D6FFEB, #1FE686, #045a31),
+  'warn': make-palette-3(#FFF7CC, #FFE454, #4c4313),
+  'error': make-palette-3(#FFD4D4, #ED4E4E, #460d0d),
+  'font-family': $palette-font-family,
+  'font-size': $palette-font-size,
+  'font-weight': $palette-font-weight,
+);
+
+// Apply your overrides to the default themes...
+$theme-light: map-merge($theme-light, $overrides);
+$theme-dark: map-merge($theme-dark, $overrides);
+
+// Generate your own themes...
+$theme-custom: map-merge($theme-light, (
+  // Your theme customizations go here...
+));
+
+// Provide custom functions for accessing your theme...
+@function color-custom($palette: primary, $hue: 500) {
+  @return theme-value($theme-custom, $palette, $hue);
+}
+
+// Import the theming utilities
+@import '@thesoulfresh/sass-theming/theme';
+```

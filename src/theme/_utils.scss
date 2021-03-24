@@ -29,10 +29,8 @@
 /// Short cut to defining hover + focus + active styling.
 /// An additional class selector is also added so you
 /// can programatically emulate this styling.
-/// @param {string} $class - The class name that can be used to
-///    simulate the active state.
-/// @param {boolean} $global - Whether to the class name is global
-///    if you are using css modules.
+/// @param {string} $class - The class name that can be used to simulate the active state.
+/// @param {boolean} $global - Whether to the class name is global if you are using css modules.
 @mixin active($class: 'active', $global: true) {
   @if $global {
     &:global(.#{$class}),

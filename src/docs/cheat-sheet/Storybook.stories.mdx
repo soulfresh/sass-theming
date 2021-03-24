@@ -1,8 +1,232 @@
-import { Meta, Story } from '@storybook/addon-docs/blocks';
-import { AnimationSpeed } from '../Animation.jsx';
+import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/addon-docs/blocks';
+
+import {
+  ColorPalette,
+  ForegroundPalette,
+  BackgroundPalette,
+  ShadowsPalette,
+  GradientsPalette,
+} from '../Color.jsx';
+import { FontFamilies, FontSizes, FontWeights } from '../Font.jsx';
+import { Sizes, Breakpoints, Radii } from '../Size.jsx';
+import { AnimationSpeed, AnimationEasing } from '../Animation.jsx';
 
 <Meta title="Cheat Sheet/Storybook" />
 
-# Cheat Sheet
+# Storybook Components
 
-TODO Describe components for documenting custom palettes
+If you use Storybook and you want to document your theme
+in your Storybook, we provide a set of
+components to help you do that.
+
+## Cheat Sheet
+
+A good place to start with this is to just copy our
+[Cheat Sheet Story](/?path=/docs/cheat-sheet-cheat-sheet--foregrounds)
+into your own project. We use
+MDX syntax but even if you don't, it provides a good
+example of how to use the Storybook components to
+document your theme.
+
+You can copy our Cheat Sheet into your project using:
+
+```sh
+$ cp ./node_modules/@thesoulfresh/sass-theming/src/docs/cheat-sheet/Cheat.stories.mdx ./src
+```
+
+### Configure SASS
+
+The components are setup to use your theme if it's
+importable using `@import 'theme'`.
+
+- This usually requires adding your `src` directory
+  to the SASS paths option.
+- If your `_theme.scss` is not available in the root,
+  you can add one that imports your theme wherever
+  you've defined it.
+
+### Configure Storybook
+
+Once SASS is configured, you will need to import our
+storybook component SASS. We do that by adding the following
+to our storybook `preview.js` file.
+
+`.storybook/preview.js`
+
+```
+// Import your theme definition.
+import '../src/index.scss';
+
+// Import the sass-theming storybook component styles.
+import '@thesoulfresh/sass-theming/components.scss';
+```
+
+## Available Components
+
+The following documentation describes all of the components
+available to you.
+
+## Colors
+
+### ColorPalette
+
+<Description of={ColorPalette} />
+
+<Canvas>
+  <Story name="ColorPalette">
+    <ColorPalette name="Primary" />
+  </Story>
+</Canvas>
+
+<ArgsTable of={ColorPalette} />
+
+### ForegroundPalette
+
+<Description of={ForegroundPalette} />
+
+<Canvas>
+  <Story name="ForegroundPalette">
+    <ForegroundPalette name="Foreground" />
+  </Story>
+</Canvas>
+
+<ArgsTable of={ForegroundPalette} />
+
+### BackgroundPalette
+
+<Description of={BackgroundPalette} />
+
+<Canvas>
+  <Story name="BackgroundPalette">
+    <BackgroundPalette name="Background" />
+  </Story>
+</Canvas>
+
+<ArgsTable of={BackgroundPalette} />
+
+### ShadowsPalette
+
+<Description of={ShadowsPalette} />
+
+<Canvas>
+  <Story name="ShadowsPalette">
+    <ShadowsPalette name="Shadows" />
+  </Story>
+</Canvas>
+
+<ArgsTable of={ShadowsPalette} />
+
+### GradientsPalette
+
+<Description of={GradientsPalette} />
+
+<Canvas>
+  <Story name="GradientsPalette">
+    <GradientsPalette name="Gradients" />
+  </Story>
+</Canvas>
+
+<ArgsTable of={GradientsPalette} />
+
+## Fonts
+
+### FontFamilies
+
+<Description of={FontFamilies} />
+
+<Canvas>
+  <Story name="FontFamilies">
+    <FontFamilies />
+  </Story>
+</Canvas>
+
+<ArgsTable of={FontFamilies} />
+
+### FontSizes
+
+<Description of={FontSizes} />
+
+<Canvas>
+  <Story name="FontSizes">
+    <FontSizes />
+  </Story>
+</Canvas>
+
+<ArgsTable of={FontSizes} />
+
+### FontWeights
+
+<Description of={FontWeights} />
+
+<Canvas>
+  <Story name="FontWeights">
+    <FontWeights />
+  </Story>
+</Canvas>
+
+<ArgsTable of={FontWeights} />
+
+## Sizing
+
+### Sizes
+
+<Description of={Sizes} />
+
+<Canvas>
+  <Story name="Sizes">
+    <Sizes />
+  </Story>
+</Canvas>
+
+<ArgsTable of={Sizes} />
+
+### Breakpoints
+
+<Description of={Breakpoints} />
+
+<Canvas>
+  <Story name="Breakpoints">
+    <Breakpoints />
+  </Story>
+</Canvas>
+
+<ArgsTable of={Breakpoints} />
+
+### Radii
+
+<Description of={Radii} />
+
+<Canvas>
+  <Story name="Radii">
+    <Radii />
+  </Story>
+</Canvas>
+
+<ArgsTable of={Radii} />
+
+## Animation
+
+### AnimationEasing
+
+<Description of={AnimationEasing} />
+
+<Canvas>
+  <Story name="AnimationEasing">
+    <AnimationEasing />
+  </Story>
+</Canvas>
+
+<ArgsTable of={AnimationEasing} />
+
+### AnimationSpeed
+
+<Description of={AnimationSpeed} />
+
+<Canvas>
+  <Story name="AnimationSpeed">
+    <AnimationSpeed />
+  </Story>
+</Canvas>
+
+<ArgsTable of={AnimationSpeed} />
+

@@ -1,12 +1,14 @@
 @import 'theme';
 
 $speed-count: 0;
-@each $name in $palette-speed {
+$speeds: map-get($theme-light, speed);
+@each $name in $speeds {
   $speed-count: $speed-count + 1;
 }
 
 $ease-count: 0;
-@each $name in $palette-ease {
+$easings: map-get($theme-light, ease);
+@each $name in $easings {
   $ease-count: $ease-count + 1;
 }
 
@@ -66,7 +68,7 @@ $data-size: font-size(xs);
 
 .sfAnimationEasing {
   $i: 0;
-  @each $name, $value in $palette-ease {
+  @each $name, $value in $easings {
     .#{$name} {
       .anim {
         transition: left speed(m) $value, transform speed(m) $value;
@@ -83,7 +85,7 @@ $data-size: font-size(xs);
 .sfAnimationSpeed {
   $i: 0;
   // TODO Why does removing $blah below break this loop?
-  @each $name, $blah in $palette-speed {
+  @each $name, $blah in $speeds {
     $value: speed($name);
     .#{$name} {
       .anim {

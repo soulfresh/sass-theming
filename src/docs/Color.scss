@@ -33,7 +33,12 @@
   padding: size(m) 0 size(xs) size(xs);
 }
 
-@mixin generate-background-color-palettes($palettes, $theme: $theme-light, $selector: background-color, $qualifier: '') {
+@mixin generate-background-color-palettes(
+  $palettes,
+  $theme: $theme-light,
+  $selector: background-color,
+  $qualifier: ''
+) {
   @each $paletteName in $palettes {
     $palette: map-get($theme, $paletteName);
     @each $name, $value in $palette {
@@ -57,10 +62,10 @@
   @include generate-background-color-palettes($standard-palettes);
   @include generate-background-color-palettes(background, $theme-light, background-color);
   @include generate-background-color-palettes(background, $theme-dark, background-color, '.dark');
-  @include generate-background-color-palettes(shadows, $theme-light, box-shadow);
-  @include generate-background-color-palettes(shadows, $theme-dark, box-shadow, '.dark');
-  @include generate-background-color-palettes(gradients, $theme-light, background);
-  @include generate-background-color-palettes(gradients, $theme-dark, background, '.dark');
+  @include generate-background-color-palettes(shadow, $theme-light, box-shadow);
+  @include generate-background-color-palettes(shadow, $theme-dark, box-shadow, '.dark');
+  @include generate-background-color-palettes(gradient, $theme-light, background);
+  @include generate-background-color-palettes(gradient, $theme-dark, background, '.dark');
 
   .color {
     display: flex;

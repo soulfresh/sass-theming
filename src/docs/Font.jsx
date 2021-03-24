@@ -4,6 +4,7 @@ import { combineClasses } from '@thesoulfresh/utils';
 
 export const defaultFamilies = ['Title', 'Body', 'Code'];
 export const defaultWeights = ['Normal', 'Medium', 'Bold'];
+export const defaultSizes = ['xs', 's', 'm', 'l', 'xl', 'xxl', 'xxxl'];
 
 export function Lorem({
   className,
@@ -24,7 +25,7 @@ export function Lorem({
 export function Font({
   children,
   className,
-  sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl', 'xxxl'],
+  sizes = defaultSizes,
   ...rest
 }) {
   return (
@@ -39,7 +40,13 @@ export function Font({
   );
 }
 
-
+/**
+ * Shows the font families available in your theme.
+ *
+ * @param {object} props
+ * @param {string[]} [props.families] - The list of families
+ *   in your theme if different than the defaults.
+ */
 export function FontFamilies({
   className,
   families = defaultFamilies,
@@ -68,9 +75,30 @@ export function FontFamilies({
   );
 }
 
+FontFamilies.propTypes = {
+  /**
+   * The list of families in your theme if different
+   * than the defaults
+   */
+  families: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * Any other props you specify will be applied
+   * to the root element.
+   */
+  'other props...': PropTypes.any,
+}
 
+
+/**
+ * Shows the font sizes available in your theme.
+ *
+ * @param {object} props
+ * @param {string[]} [props.sizes] - The list of families
+ *   in your theme if different than the defaults.
+ */
 export function FontSizes({
   className,
+  sizes = defaultSizes,
   ...rest
 }) {
   return (
@@ -83,6 +111,18 @@ export function FontSizes({
   );
 }
 
+FontSizes.propTypes = {
+  /**
+   * The list of sizes in your theme if different
+   * than the defaults
+   */
+  sizes: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * Any other props you specify will be applied
+   * to the root element.
+   */
+  'other props...': PropTypes.any,
+}
 
 export function FontWeight({
   className,
@@ -110,7 +150,13 @@ export function FontWeight({
   );
 }
 
-
+/**
+ * Shows the font families available in your theme.
+ *
+ * @param {object} props
+ * @param {string[]} [props.weights] - The list of families
+ *   in your theme if different than the defaults.
+ */
 export function FontWeights({
   weights = defaultWeights,
   className,
@@ -128,5 +174,18 @@ export function FontWeights({
       ))}
     </div>
   );
+}
+
+FontWeights.propTypes = {
+  /**
+   * The list of weights in your theme if different
+   * than the defaults
+   */
+  weights: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * Any other props you specify will be applied
+   * to the root element.
+   */
+  'other props...': PropTypes.any,
 }
 
