@@ -1,12 +1,17 @@
 $black: #000 !default;
 $white: #FFF !default;
 $focus: #4a7ddc !default;
+$primary: #3798e0 !default;
+$secondary: #e0a92d !default;
+$success: #44b151 !default;
+$warn: #e3b526 !default;
+$error: #dd3d37 !default;
 
 //// PRIMARY ////
-$palette-primary: make-palette-2(#6ec6ff, #0069c0) !default;
+$palette-primary: make-palette($primary) !default;
 
 //// SECONDARY ////
-$palette-secondary: make-palette-2(#ffd95a, #c17900) !default;
+$palette-secondary: make-palette($secondary) !default;
 
 //// FOCUS ////
 $palette-focus: make-palette($focus) !default;
@@ -15,13 +20,13 @@ $palette-focus: make-palette($focus) !default;
 $palette-grayscale: make-palette-2(#dddddd, #111111) !default;
 
 //// SUCCESS ////
-$palette-success: make-palette-2(#80e27e, #087f23) !default;
+$palette-success: make-palette($success) !default;
 
 //// WARN ////
-$palette-warn: make-palette-2(#ffe54c, #c68400) !default;
+$palette-warn: make-palette($warn) !default;
 
 //// ERROR ////
-$palette-error: make-palette-2(#ff7961, #ba000d) !default;
+$palette-error: make-palette($error) !default;
 
 
 //// BACKGROUND ////
