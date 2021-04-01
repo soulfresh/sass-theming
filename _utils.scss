@@ -1,4 +1,7 @@
-// Utilities to help generate themes.
+// Utilities to help generate themes or that don't depend on the theme.
+
+// Also expose general mixins and functions that don't require the theme.
+@import './src/theme/utils';
 
 /// Generate the fallback fonts for a Sans Serif face.
 /// @example $title-font: 'Roboto', sans-serif();
