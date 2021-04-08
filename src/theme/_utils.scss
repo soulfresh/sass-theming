@@ -21,13 +21,13 @@
 /// @param {string} $line-cap [square] - The linke-cap to use. One of 'butt', 'square', 'round'.
 /// @param {number} $stroke-width [2px] - The width of the stroke if using the 'chevron' style.
 @function dropdown-arrow-icon(
-  $color: 'currentColor',
+  $color: currentColor,
   $style: 'triangle',
-  $line-join: 'miter',
-  $line-cap: 'square',
+  $line-join: miter,
+  $line-cap: square,
   $stroke-width: 2px,
 ) {
-  $c: encodecolor($color);
+  $c: if($c != currentColor, encodecolor($color), $color);
 
   // The styles for the svg.
   $s: if(
@@ -63,6 +63,66 @@
   background-size: $arrow-width;
   background-repeat: no-repeat;
   background-position: right 0 top 50%;
+}
+
+/// The select-background mixin allows you to customize the
+/// background of a `<select>` element, including the drop down
+/// arrow. It sets the `background` property of the element with
+/// an arrow icon and background coloring because this is the most
+/// cross browser consitent way to style Select elements. Additionally,
+/// this mixin will set the padding of the input in order to fit
+/// the custom down arrow image. Lastly, it will also set the
+/// `text-overflow`, `white-space` and `overflow` to support
+/// ellipsis.
+///
+/// @param {number} $padding-sides [5px] - The left and right padding around the input. This will be used on the left edge and either side of the arrow.
+/// @param {number} $padding-vertical - The top and bottom padding. If not set, the save value as the sides will be used.
+/// @param {string} $arrow-style [triangle] - The arrow shape to use. One of `triangle`, `chevron`.
+/// @param {number} $arrow-width [10px] - The width of the arrow shape.
+/// @param {color} $arrow-color [currentColor] - The color of the arrow shape.
+/// @param {string} $line-join [miter] - The `stroke-linejoin` to use for the arrow.
+/// @param {string} $line-cap [square] - The `stroke-linecap` to use for the arrow.
+/// @param {number} $stroke-width [2px] - The `stroke-width` to use from the arrow.
+/// @param {color} $bg-color [white] - The background color of the select element.
+/// @param {color} $bg-color-hover [white] - The background color of the select element when hovered.
+/// @param {color} $bg-color-focus [white] - The background color of the select element when focused.
+@mixin select-background(
+  $padding-vertical: null,
+  $padding-sides: 5px,
+  $arrow-style: 'triangle',
+  $arrow-width: 10px,
+  $arrow-color: black,
+  $line-join: miter,
+  $line-cap: square,
+  $stroke-width: 2px,
+  $bg-color: white,
+  $bg-color-hover: white,
+  $bg-color-focus: white,
+) {
+  $padding-vertical: if($padding-vertical == null, $padding-sides, $padding-vertical);
+  $arrow-icon: dropdown-arrow-icon($arrow-color, $arrow-style, $line-join, $line-cap);
+  $padding-right: $padding-sides * 2 + $arrow-width;
+  // Use a linear-gradient as the background color in order to prevent
+  // Firefox from changing the options menu coloring.
+  $background-color: linear-gradient(to bottom, #{$bg-color} 0%, #{$bg-color} 100%);
+  $background-color-hover: linear-gradient(to bottom, #{$bg-color-hover} 0%, #{$bg-color-hover} 100%);
+  $background-color-focus: linear-gradient(to bottom, #{$bg-color-focus} 0%, #{$bg-color-focus} 100%);
+
+  // Hide the default down arrow.
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-expand: none;
+
+  background-image: $arrow-icon, $background-color;
+  background-position: right #{$padding-sides} top 50%, 0 0;
+  background-repeat: no-repeat, repeat;
+  background-size: $arrow-width, 100%;
+  padding: $padding-vertical $padding-right $padding-vertical $padding-sides;
+  cursor: pointer;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 /// Short cut to defining hover + focus + active styling.
