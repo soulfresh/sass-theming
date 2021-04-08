@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+set -e
+
+echo 'Building Docs 🚀'
+
+npx sassdoc2md ./src/theme/_utils.scss > ./src/theme/Utils.md
+npx sassdoc2md ./_utils.scss > ./Utils.md
+
+echo 'Donzo 💪'
+
