@@ -59,6 +59,15 @@ Style options are:
 + **@mixin down-arrow** Adds a background down arrow icon that can be
   used for dropdown elements. The arrow is right aligned
   to the bounding box.
++ **@mixin select-background** The select-background mixin allows you to customize the
+  background of a `<select>` element, including the drop down
+  arrow. It sets the `background` property of the element with
+  an arrow icon and background coloring because this is the most
+  cross browser consitent way to style Select elements. Additionally,
+  this mixin will set the padding of the input in order to fit
+  the custom down arrow image. Lastly, it will also set the
+  `text-overflow`, `white-space` and `overflow` to support
+  ellipsis.
 
 <a id="general-function-hsls"></a>
 
@@ -100,6 +109,43 @@ to the bounding box.
 | `$line-cap`     | **[String](https://sass-lang.com/documentation/values/strings)**   | The linke-cap to use. One of 'butt', 'square', 'round'.                             | `square`       |
 | `$stroke-width` | **[Number](https://sass-lang.com/documentation/values/numbers)**   | The width of the stroke if using the 'chevron' style.                               | `2px`          |
 | `$arrow-width`  | **[Number](https://sass-lang.com/documentation/values/numbers)**   | The width of the arrow svg.                                                         | `10px`         |
+
+## Dependencies
+
++ **[@function dropdown-arrow-icon](#general-function-dropdown-arrow-icon)**
+
+<a id="general-mixin-select-background"></a>
+
+# @mixin select-background
+
+The select-background mixin allows you to customize the
+background of a `<select>` element, including the drop down
+arrow. It sets the `background` property of the element with
+an arrow icon and background coloring because this is the most
+cross browser consitent way to style Select elements. Additionally,
+this mixin will set the padding of the input in order to fit
+the custom down arrow image. Lastly, it will also set the
+`text-overflow`, `white-space` and `overflow` to support
+ellipsis.
+
++ **Group:** General
++ **Access:** public
+
+## Parameters
+
+| Name                | Type                                                             | Description                                                                                                   | Default        |
+| :------------------ | :--------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------ | :------------- |
+| `$padding-sides`    | **[Number](https://sass-lang.com/documentation/values/numbers)** | The left and right padding around the input. This will be used on the left edge and either side of the arrow. | `5px`          |
+| `$padding-vertical` | **[Number](https://sass-lang.com/documentation/values/numbers)** | The top and bottom padding. If not set, the save value as the sides will be used.                             | -              |
+| `$arrow-style`      | **[String](https://sass-lang.com/documentation/values/strings)** | The arrow shape to use. One of `triangle`, `chevron`.                                                         | `triangle`     |
+| `$arrow-width`      | **[Number](https://sass-lang.com/documentation/values/numbers)** | The width of the arrow shape.                                                                                 | `10px`         |
+| `$arrow-color`      | **[Color](https://sass-lang.com/documentation/values/colors)**   | The color of the arrow shape.                                                                                 | `currentColor` |
+| `$line-join`        | **[String](https://sass-lang.com/documentation/values/strings)** | The `stroke-linejoin` to use for the arrow.                                                                   | `miter`        |
+| `$line-cap`         | **[String](https://sass-lang.com/documentation/values/strings)** | The `stroke-linecap` to use for the arrow.                                                                    | `square`       |
+| `$stroke-width`     | **[Number](https://sass-lang.com/documentation/values/numbers)** | The `stroke-width` to use from the arrow.                                                                     | `2px`          |
+| `$bg-color`         | **[Color](https://sass-lang.com/documentation/values/colors)**   | The background color of the select element.                                                                   | `white`        |
+| `$bg-color-hover`   | **[Color](https://sass-lang.com/documentation/values/colors)**   | The background color of the select element when hovered.                                                      | `white`        |
+| `$bg-color-focus`   | **[Color](https://sass-lang.com/documentation/values/colors)**   | The background color of the select element when focused.                                                      | `white`        |
 
 ## Dependencies
 

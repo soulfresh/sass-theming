@@ -27,7 +27,7 @@
   $line-cap: square,
   $stroke-width: 2px,
 ) {
-  $c: if($c != currentColor, encodecolor($color), $color);
+  $c: if($color != currentColor, encodecolor($color), $color);
 
   // The styles for the svg.
   $s: if(
