@@ -26,22 +26,37 @@ URL encode a color value.
 
 ### Dependents
 
-+ **@function dropdown-arrow-icon** Generate a dropdown arrow image.
++ **@function dropdown-arrow-icon** Generate a dropdown arrow image. By default it will draw a
+  downward triangle but you can change this with the `$style`
+  parameter.
+  Style options are:
+
+
++ 'triangle'
++ 'chevron'
 
 <a id="general-function-dropdown-arrow-icon"></a>
 
 ## @function dropdown-arrow-icon
 
-Generate a dropdown arrow image.
+Generate a dropdown arrow image. By default it will draw a
+downward triangle but you can change this with the `$style`
+parameter.
+Style options are:
+
++ 'triangle'
++ 'chevron'
+
 
 + **Group:** General
 + **Access:** public
 
 ### Parameters
 
-| Name     | Type                                                           | Description             | Default |
-| :------- | :------------------------------------------------------------- | :---------------------- | :------ |
-| `$color` | **[Color](https://sass-lang.com/documentation/values/colors)** | The color of the arrow. | -       |
+| Name     | Type                                                               | Description                                                     | Default    |
+| :------- | :----------------------------------------------------------------- | :-------------------------------------------------------------- | :--------- |
+| `$color` | **[Color](https://sass-lang.com/documentation/values/colors)**     | The color of the arrow.                                         | -          |
+| `$style` | **[Boolean](https://sass-lang.com/documentation/values/booleans)** | The style of arrow image to draw. One of 'triangle', 'chevron'. | `triangle` |
 
 ### Dependencies
 
@@ -83,9 +98,10 @@ used for dropdown elements.
 
 ### Parameters
 
-| Name     | Type                                                           | Description             | Default |
-| :------- | :------------------------------------------------------------- | :---------------------- | :------ |
-| `$color` | **[Color](https://sass-lang.com/documentation/values/colors)** | The color of the arrow. | -       |
+| Name     | Type                                                               | Description                                                     | Default    |
+| :------- | :----------------------------------------------------------------- | :-------------------------------------------------------------- | :--------- |
+| `$color` | **[Color](https://sass-lang.com/documentation/values/colors)**     | The color of the arrow.                                         | -          |
+| `$style` | **[Boolean](https://sass-lang.com/documentation/values/booleans)** | The style of arrow image to draw. One of 'triangle', 'chevron'. | `triangle` |
 
 ### Dependencies
 
