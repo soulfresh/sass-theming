@@ -9,7 +9,7 @@
   @return $string;
 }
 
-/// Generate a dropdown arrow image. By default it will draw a
+/// Generate a dropdown arrow image as a url. By default it will draw a
 /// downward triangle but you can change this with the `$style`
 /// parameter.
 /// Style options are:
@@ -42,9 +42,8 @@
   @return url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 10 6' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%0A%3E%3Cpath style='#{$s};' d='#{$d}'/%3E%3C/svg%3E");
 }
 
-/// Adds a background down arrow icon that can be
-/// used for dropdown elements. The arrow is right aligned
-/// to the bounding box.
+/// Adds a down arrow icon as the background-image of the element
+/// The arrow is right aligned to the bounding box.
 /// @param {color} $color [currentColor] - The color of the arrow.
 /// @param {boolean} $style [triangle] - The style of arrow image to draw. One of 'triangle', 'chevron'.
 /// @param {string} $line-join [miter] - The stroke-line join to use. One of 'miter', 'round', 'bevel', 'miter-clip', 'arcs'
@@ -58,11 +57,12 @@
   $line-cap: 'square',
   $stroke-width: 2px,
   $arrow-width: 10px,
+  $padding-right: 0,
 ) {
   background-image: dropdown-arrow-icon($color, $style, $line-join, $line-cap, $stroke-width);
   background-size: $arrow-width;
   background-repeat: no-repeat;
-  background-position: right 0 top 50%;
+  background-position: right $padding-right top 50%;
 }
 
 /// The select-background mixin allows you to customize the
@@ -239,7 +239,8 @@
 
 /// Make button look like a regular "div"
 @mixin unstyled-button {
-  background: none;
+  background-color: transparent;
+  // background: none;
   border: none;
   border-radius: 0;
   outline: none;

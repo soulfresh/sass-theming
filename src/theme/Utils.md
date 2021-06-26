@@ -15,7 +15,7 @@ URL encode a color value.
 
 ## Dependents
 
-+ **@function dropdown-arrow-icon** Generate a dropdown arrow image. By default it will draw a
++ **@function dropdown-arrow-icon** Generate a dropdown arrow image as a url. By default it will draw a
   downward triangle but you can change this with the `$style`
   parameter.
   Style options are:
@@ -28,7 +28,7 @@ URL encode a color value.
 
 # @function dropdown-arrow-icon
 
-Generate a dropdown arrow image. By default it will draw a
+Generate a dropdown arrow image as a url. By default it will draw a
 downward triangle but you can change this with the `$style`
 parameter.
 Style options are:
@@ -56,9 +56,8 @@ Style options are:
 
 ## Dependents
 
-+ **@mixin down-arrow** Adds a background down arrow icon that can be
-  used for dropdown elements. The arrow is right aligned
-  to the bounding box.
++ **@mixin down-arrow** Adds a down arrow icon as the background-image of the element
+  The arrow is right aligned to the bounding box.
 + **@mixin select-background** The select-background mixin allows you to customize the
   background of a `<select>` element, including the drop down
   arrow. It sets the `background` property of the element with
@@ -92,9 +91,8 @@ values to HEX.
 
 # @mixin down-arrow
 
-Adds a background down arrow icon that can be
-used for dropdown elements. The arrow is right aligned
-to the bounding box.
+Adds a down arrow icon as the background-image of the element
+The arrow is right aligned to the bounding box.
 
 + **Group:** General
 + **Access:** public
