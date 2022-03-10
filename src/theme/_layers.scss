@@ -4,6 +4,6 @@
 //
 // Ex: `margin: size(xxl);`
 @function layer($layer: above) {
-  $l: theme-vaue($theme-light, 'layer', $layer);
+  $l: theme-value($theme-light, 'layer', $layer);
   @return $l;
 }
