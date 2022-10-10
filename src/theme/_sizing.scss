@@ -29,10 +29,10 @@
 }
 
 /// Minimum breakpoint width. Null for the smallest (first) breakpoint.
-///  >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+///  >> breakpoint-value(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
 ///  576px
 /// @access private
-@function breakpoint-min($name, $breakpoints: $palette-breakpoint) {
+@function breakpoint-value($name, $breakpoints: $palette-breakpoint) {
   $min: map-get($breakpoints, $name);
   @return if($min != 0, $min * 1px, null);
 }
@@ -40,9 +40,23 @@
 /// Make the given @content apply to the given breakpoint and wider.
 /// @param {string} $name
 @mixin breakpoint-up($name: m, $breakpoints: $palette-breakpoint) {
-  $min: breakpoint-min($name, $breakpoints);
+  $min: breakpoint-value($name, $breakpoints);
   @if $min {
     @media (min-width: $min) {
+      @content;
+    }
+  }
+  @else {
+    @content;
+  }
+}
+
+/// Make the given @content apply below the given breakpoint.
+/// @param {string} $name
+@mixin breakpoint-down($name: m, $breakpoints: $palette-breakpoint) {
+  $max: breakpoint-value($name, $breakpoints);
+  @if $max {
+    @media (max-width: $max) {
       @content;
     }
   }
